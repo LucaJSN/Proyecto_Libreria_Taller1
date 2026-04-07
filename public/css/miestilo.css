@@ -1,0 +1,129 @@
+body{
+    background-color: #606060;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container{
+    background: white;
+    color:#606060;
+    padding: 20 px;
+    max-width: 600 px;
+}
+
+h1{
+    color:#333;
+}
+
+p{
+    line-height: 1.6;
+}
+
+body{
+    background-color: rgb(245, 179, 87);
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+}
+
+.principal{
+    color: blue;
+}
+
+.secudario{
+    color: black;
+}
+
+
+.imagen_producto{
+    /* Asegura que la imagen no se desborde */
+    width: 200px;
+    display: block;
+    height: auto;
+    border: 5px solid black;
+}
+
+.seccion_productos{
+    display: flex;
+    /* Permite que los productos pasen a la siguiente línea si no caben */
+    flex-wrap: wrap; 
+    
+    /* Define la separación entre los productos (vertical y horizontal) */
+    gap: 10px; 
+    
+    /* Centra los productos en la pantalla */
+    justify-content: center; 
+    padding: 20px;
+}
+
+.producto{
+    /* Convierte el contenedor en un bloque flexible vertical */
+    display: flex;
+    flex-direction: column;
+    
+    /* Hace que el contenedor se ajuste al ancho de su contenido (la imagen) */
+    width: min-content; 
+
+
+    column-gap: normal;
+}
+
+.descripcion{
+    display: inline-block;
+    justify-content: center;
+    background-color: white;
+    padding: 10px 20px;    
+    width: auto;         
+    height: auto; 
+}
+
+
+
+.btn{
+    padding: 5px 10px;
+    text-decoration: none;
+    color: rgb(254, 0, 0);
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px 20px;    
+    width: auto;         
+    height: auto;
+}
+
+.comprar_producto{
+   /* El botón ocupará todo el ancho disponible (el de la imagen) */
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    background-color: black;
+}
+
+.agregar_carrito{
+    background-color: yellow;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.precio_producto{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    color: blue;
+}
+
+.card{
+    background-color: rgb(245, 179, 87);
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
+#contacto{
+    background-color: rgb(245, 179, 87);
+    border-radius: 10 px;
+    color: black;
+    display: flex;
+    justify-content: center;
+}
