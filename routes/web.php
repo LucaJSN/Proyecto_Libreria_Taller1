@@ -3,17 +3,16 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    echo view('navbar', ['title'=> 'Libreria | Inicio']);
-    echo view('index');
+    // Solo retornas la vista principal. 
+    // El título lo pasas aquí y el Layout lo recibirá.
+    return view('index', ['title' => 'Libreria | Inicio']);
 });
 
 Route::get('/sobre-mi', function() {
-    return view('sobre_mi');
+    return view('sobre_mi', ['title' => 'Libreria | Sobre Mí']);
 });
 
 Route::get('/contacto', function(){
-    echo view('navbar', ['title'=> 'Libreria | Contacto']);
-    echo view('contacto');
+    return view('contacto', ['title' => 'Libreria | Contacto']);
 });
-
 ?>

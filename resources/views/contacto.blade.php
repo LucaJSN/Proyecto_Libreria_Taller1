@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/miestilo.css">
-    </head>
-    <body>
+@extends('layouts.app')
+
+@section('content')
         <div class="container" id="contacto">
             <div class="row">
                 <div class="col-12">
@@ -29,5 +24,4 @@
                 </div>
             </div>        
         </div>
-    </body>
-</html>
+@endsection
