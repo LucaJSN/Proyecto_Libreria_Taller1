@@ -15,4 +15,8 @@ Route::get('/sobre-mi', function() {
 Route::get('/contacto', function(){
     return view('contacto', ['title' => 'Libreria | Contacto']);
 });
+
+Route::get('/catalogo', function(){
+    return view('catalogo');
+});
 ?>
