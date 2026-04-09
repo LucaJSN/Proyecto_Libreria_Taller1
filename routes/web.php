@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     // Solo retornas la vista principal. 
@@ -19,4 +20,7 @@ Route::get('/contacto', function(){
 Route::get('/catalogo', function(){
     return view('catalogo');
 });
+
+Route::get('/catalogo', [ProductController::class, 'index']);
+
 ?>
