@@ -11,9 +11,8 @@
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-
-        <div class="card" style="width: 18rem;">
         @foreach($productos as $producto)
+        <div class="card" style="width: 18rem;">
             <img class="card-img-top" src="{{ $producto->imagen }}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{ $producto->nombre }}</h5>
@@ -28,6 +27,7 @@
     </container>
     <container>
         <h1>Crea productos</h1>
+        <a href="/productos/crear" class="btn btn-primary">Crear Producto</a>
     </container>
 </div>
 @endsection
