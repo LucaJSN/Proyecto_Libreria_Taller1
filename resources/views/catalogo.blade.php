@@ -3,7 +3,7 @@
 @section('content')
 <div>
     <h1>Hola Mira los productos</h1>
-    {{dd($productos) }} //prueba para ver si viene algo de la base
+    {{-- {{dd($productos) }} //prueba para ver si viene algo de la base --}}
     <container>
         <div class="card">
         <div class="card-body">
@@ -26,8 +26,8 @@
         </div>
 
     </container>
-        
-
-    <h1>weps</h1>
+    <container>
+        <h1>Crea productos</h1>
+    </container>
 </div>
 @endsection
