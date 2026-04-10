@@ -22,6 +22,8 @@ Route::get('/contacto', function(){
 Route::get('/catalogo', function(){
     return view('catalogo');
 });
+
+
 //CRUD para Productos
 // Ruta para ver el formulario
 Route::get('/productos/crear', function () {
@@ -31,7 +33,7 @@ Route::get('/productos/crear', function () {
 // Ruta para guardar
 Route::post('/catalogo', function (Request $request) {
     $datos = $request->only(['nombre', 'descripcion', 'precio', 'imagen']);
-
+    //Necesario para guardar imagenes
     if ($request->hasFile('imagen')) {
         // 1. Tomamos el archivo
         $file = $request->file('imagen');
@@ -46,8 +48,8 @@ Route::post('/catalogo', function (Request $request) {
     // Aquí guardas en la base de datos
     // Producto::create($request->all());
     App\Models\Producto::create($datos);
-    return redirect('/catalogo');
-})->name('productos.store');    
+    return redirect('/productos/crear');
+})->name('productos.store');
 
 Route::get('/catalogo', [ProductController::class, 'index']);
 
