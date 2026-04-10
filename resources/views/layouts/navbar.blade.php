@@ -30,5 +30,18 @@
                     </li>
                 </ul>
             </div>
+            @auth
+                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-danger btn-sm nav-link border-0">
+                        Cerrar Sesión ({{ Auth::user()->name }})
+                    </button>
+                </form>
+            @endauth
+            @guest
+                <button type="submit" class="btn btn-dark"">
+                        <a href="/ingresar">Iniciar Sesión</a>
+                </button>
+            @endguest
         </div>
     </nav>
