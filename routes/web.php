@@ -25,10 +25,7 @@ Route::get('/catalogo', function(){
     return view('catalogo');
 });
 
-Route::get('/vistaAdmin', function(){
-    return view('vistaAdmin');
-});
-
+Route::get('/vistaAdmin', [ProductController::class, 'AdminIndex']);
 
 //CRUD para Productos
 // Ruta para ver el formulario

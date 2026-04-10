@@ -28,7 +28,7 @@ class UserController extends Controller
         // Esta línea es MUY IMPORTANTE: regenera la sesión por seguridad
         $request->session()->regenerate();
 
-        // Si es Admin, podrías mandarlo a un lugar especial (opcional)
+        // Si es Admin, manda a vistaAdmin
         if (Auth::user()->role === 'admin') {
             return redirect('/vistaAdmin'); 
         }

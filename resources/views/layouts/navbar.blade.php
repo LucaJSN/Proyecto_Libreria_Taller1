@@ -38,5 +38,10 @@
                     </button>
                 </form>
             @endauth
+            @guest
+                <button type="submit" class="btn btn-dark"">
+                        <a href="/ingresar">Iniciar Sesión</a>
+                </button>
+            @endguest
         </div>
     </nav>

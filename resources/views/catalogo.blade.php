@@ -41,15 +41,7 @@
         @endforeach
     </div>
 
-    {{-- Sección de Administración --}}
-    <div class="row mt-5 py-5 bg-light rounded-3 text-center">
-        <div class="col-12">
-            <h2 class="h4 mb-3">Acciones de Administrador</h2>
-            <a href="/productos/crear" class="btn btn-success btn-lg px-4">
-                <i class="bi bi-plus-circle me-2"></i>Crear Nuevo Producto
-            </a>
-        </div>
-    </div>
+
 </div>
 
 <style>
