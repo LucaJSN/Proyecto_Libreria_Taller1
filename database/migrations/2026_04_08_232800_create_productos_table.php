@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('productos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->timestamps(); //Alta
+            //Tendria que haber fecha de baja/modificación
 
             $table->string('nombre');
             $table->text('descripcion');
