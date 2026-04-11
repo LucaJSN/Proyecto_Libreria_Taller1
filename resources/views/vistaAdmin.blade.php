@@ -2,7 +2,7 @@
 
 @section('content')
     <nav>
-
+    @auth
         @if(auth()->user()->role === 'admin')
             {{-- Sección de Administración --}}
             <div class="row mt-5 py-5 bg-light rounded-3 text-center">
@@ -47,4 +47,10 @@
             <h1>No autorizado a esta vista</h1>
         @endif
     </nav>
+    @endauth
+    @guest
+        <div>
+            <h1>Logueate como admin para poder ver esta vista</h1>
+        </div>
+    @endguest
 @endsection

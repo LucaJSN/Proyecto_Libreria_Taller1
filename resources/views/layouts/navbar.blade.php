@@ -28,6 +28,14 @@
                         <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
                     </li>
+                    @auth
+                    <!-- Solo se verá el link (btn admin) a esta vista para los administradores -->
+                    @if(auth()->user()->role === 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vistaAdmin">Administración</a>
+                    </li>
+                    @endif
+                    @endauth
                 </ul>
             </div>
             @auth
