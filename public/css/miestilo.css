@@ -1,34 +1,30 @@
 body{
-    background-color: #606060;
-    color: white;
+    background-color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .container{
-    background: white;
+    background: f5b357;
     color:#606060;
     padding: 20 px;
     max-width: 600 px;
 }
 
 h1{
-    color:#333;
+    color: #606060;
 }
 
 p{
     line-height: 1.6;
 }
 
-body{
-    background-color: rgb(245, 179, 87);
-}
 .titulo{
     display: flex;
     justify-content: center;
 }
 
 .principal{
-    color: blue;
+    color: #ff9700;
 }
 
 .secudario{
@@ -126,4 +122,22 @@ body{
     color: black;
     display: flex;
     justify-content: center;
+}
+
+#quienessomos{
+    text-align: center;
+}
+
+#Nvision{
+    color: white;
+    background-color: #606060;
+}
+
+#navbar{
+    background-color:#41779d;
+}
+
+footer{
+    background-color:#41779d;
+    color: white;
 }
