@@ -21,30 +21,47 @@
                         <a class="nav-link active" aria-current="page" href="<?php echo('/');?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo('quienes-somos')?>">Quienes Somos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo('comercializacion');?>">Comercialización</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo('terminos');?>">Terminos y Usos</a>
+                        <a class="nav-link" href="/sobre-mi">Quienes Somos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo('contacto');?>">Contacto</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/catalogo">Catalogo</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Productos</a>
+                        Productos
+                        </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Lapices</a></li>
                         <li><a class="dropdown-item" href="#">Cuadernos</a></li>
                         <li><a class="dropdown-item" href="#">Libros</a></li>
                     </ul>
                     </li>
+                    @auth
+                    <!-- Solo se verá el link (btn admin) a esta vista para los administradores -->
+                    @if(auth()->user()->role === 'admin')
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vistaAdmin">Administración</a>
+                    </li>
+                    @endif
+                    @endauth
                 </ul>
             </div>
+            @auth
+                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-danger btn-sm nav-link border-0">
+                        Cerrar Sesión ({{ Auth::user()->name }})
+                    </button>
+                </form>
+            @endauth
+            @guest
+                <button type="submit" class="btn btn-dark"">
+                        <a href="/ingresar">Iniciar Sesión</a>
+                </button>
+            @endguest
         </div>
     </nav>
-    </body>
-</html>

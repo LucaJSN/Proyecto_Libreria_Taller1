@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
+use App\Models\Producto;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     echo view('navbar', ['title'=> 'Libreria | Inicio']);
@@ -9,12 +14,11 @@ Route::get('/', function () {
 });
 /*
 Route::get('/sobre-mi', function() {
-    return view('sobre_mi');
+    return view('sobre_mi', ['title' => 'Libreria | Sobre Mí']);
 });
 */
 Route::get('/contacto', function(){
-    echo view('navbar', ['title'=> 'Libreria | Contacto']);
-    echo view('contacto');
+    return view('contacto', ['title' => 'Libreria | Contacto']);
 });
 
 Route::get('/quienes-somos', function() {

@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/miestilo.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    </head>
-    <body>
+@extends('layouts.app')
+
+@section('content')
     <h1 class="titulo principal">Libreria</h1>
     <div>
         <h2 class="titulo secundario">Nuestros Productos</h2>
@@ -51,5 +45,4 @@
         <a href="/extras">Ver extras</a>
         
     </div>
-</body>
-</html>
+@endsection
