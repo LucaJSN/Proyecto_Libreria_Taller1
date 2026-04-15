@@ -348,7 +348,7 @@ body{
 
 /* Tarjeta del Formulario */
 .contacto-card {
-    background-color: #fff;
+    background-color:   #a4ffeb;
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -365,7 +365,8 @@ body{
 
 .custom-input:focus {
     border-color: #2c3e50;
-    box-shadow: 0 0 0 0.25 margin-bottom: 20px;rem rgba(44, 62, 80, 0.1);
+    box-shadow: 0 0 0 0.25
+    margin-bottom: 20px;rem rgba(44, 62, 80, 0.1);
     outline: none;
 }
 
@@ -389,7 +390,7 @@ body{
 }
 
 .btn-enviar:hover {
-    background-color: #1a252f;
+    background-color: #0084ff;
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);

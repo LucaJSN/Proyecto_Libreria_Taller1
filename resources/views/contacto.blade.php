@@ -10,30 +10,8 @@
 
         <div class="row g-4">
             <div class="col-lg-8">
-                <div class="contacto-card">
-                    <form action="#" method="POST">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Nombre y Apellido</label>
-                                <input type="text" class="form-control custom-input" placeholder="Tu nombre">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-control custom-input" placeholder="nombre@ejemplo.com">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Teléfono</label>
-                            <input type="tel" class="form-control custom-input" placeholder="+54 000 000000">
-                        </div>
-                        <div class="mb-4">
-                            <label class="form-label">Mensaje</label>
-                            <textarea class="form-control custom-input" rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-enviar w-100">Enviar Mensaje</button>
-                    </form>
-                </div>
+                <h2>Donde encontrarnos</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3540.1055964934553!2d-58.7851455246145!3d-27.46597171654735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94456ae1f9f545a7%3A0x4480e6b34abd15ce!2sCampus%20Unne!5e0!3m2!1ses-419!2sar!4v1776297058801!5m2!1ses-419!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <div class="col-lg-4">
