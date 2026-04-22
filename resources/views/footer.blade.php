@@ -10,8 +10,7 @@
                     <li class="footer-item"><a class="nav-link" href="<?php echo('quienes-somos');?>">Quienes Somos</a></li>
                     <li class="footer-item"><a class="nav-link" href="<?php echo('comercializacion');?>">Comercialización</a></li>
                     <li class="footer-item"><a class="nav-link" href="<?php echo('terminos');?>">Terminos y usos</a></li>
-                    <li class="footer-item"><a class="nav-link" href="<?php echo('contacto');?>">Contacto</a></li>
-
+                    <li class="footer-item"><a class="nav-link" href="<?php echo('contacto');?>">Información de contacto</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -20,10 +19,7 @@
                 <p>+54 000 00000</p>
                 <p>379-00-00000</p>
                 <p>9 de Julio - Corrientes</p>
-            </div>
-            <div class="col-md-4">
-                <h3>Suscríbete para más actualizaciones</h3>
-                <input type="text" class="form-control" id="autoSizingInput" placeholder="merequetengue@gmail.com">
+                <a href="<?php echo('consulta');?>">Haznos una consulta</a>
             </div>
         </div>
     </footer>

@@ -28,6 +28,10 @@ Route::get('/catalogo', function(){
     return view('catalogo');
 });
 
+Route::get('/consulta', function(){
+    return view('consulta');
+});
+
 Route::get('/vistaAdmin', [ProductController::class, 'AdminIndex']);
 
 //CRUD para Productos
