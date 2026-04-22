@@ -364,9 +364,16 @@ body{
 }
 
 .custom-input:focus {
+    /* Cambia el color del borde al azul oscuro */
     border-color: #2c3e50;
-    box-shadow: 0 0 0 0.25
-    margin-bottom: 20px;rem rgba(44, 62, 80, 0.1);
+    
+    /* El "anillo" de enfoque: 0 desplazamiento, 0 desenfoque, 0.25rem de grosor */
+    box-shadow: 0 0 0 0.25rem rgba(44, 62, 80, 0.25);
+    
+    /* Mantiene el margen inferior */
+    margin-bottom: 20px;
+    
+    /* Quita el borde azul por defecto del navegador */
     outline: none;
 }
 
