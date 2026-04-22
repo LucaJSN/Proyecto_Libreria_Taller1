@@ -1,48 +1,44 @@
-/* Estilos generales (para móviles) */
+/* Estilos generales (para móviles); */
 body { font-size: 16px; }
 
 /* Para pantallas más grandes que 768px (Tablets/Laptops) */
 @media (min-width: 768px) {
-  body { font-size: 18px; }
-  .contenedor { display: flex; }
+    body { font-size: 18px; }
+    .contenedor { display: flex; }
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 body{
-    background-color: #606060;
-    color: white;
+    background-color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .container{
-    background: white;
-    color:#606060;
+    background: #606060;
+    color:#41779d;
     padding: 20 px;
-    max-width: 600 px;
+    max-width: 1200 px;
 }
 
 h1{
-    color:#333;
+    color: #606060;
 }
 
 p{
     line-height: 1.6;
 }
 
-body{
-    background-color: rgb(245, 179, 87);
-}
 .titulo{
     display: flex;
     justify-content: center;
 }
 
 .principal{
-    color: blue;
+    color: #41779d;
 }
 
 .secudario{
@@ -124,7 +120,7 @@ body{
     display: flex;
     justify-content: center;
     background-color: white;
-    color: blue;
+    color: #41779d;
 }
 
 .card{
@@ -135,11 +131,31 @@ body{
 }
 
 #contacto{
-    background-color: rgb(245, 179, 87);
     border-radius: 10 px;
     color: black;
     display: flex;
     justify-content: center;
+}
+
+#quienessomos{
+    text-align: center;
+}
+
+#Nvision{
+    color: white;
+    background-color: #606060;
+}
+
+#navbar{
+    background-color:#41779d;
+    color:white;
+}
+
+footer{
+    background-color:#41779d;
+    color: white;
+    padding: 10 px;
+    margin: 10 px;
 }
 
 /* Para Vista Comercializacion */
@@ -151,77 +167,74 @@ body{
     margin: 0 auto;
 }
 
-    .seccion-comercializacion {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: #333;
-        max-width: 1000px;
-        margin: 40px auto;
-        padding: 20px;
-        text-align: center;
-    }
+.seccion-comercializacion {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+/* Estilos de los títulos */
+.seccion-comercializacion h1 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.seccion-comercializacion h2 {
+    color: #7f8c8d;
+    font-weight: normal;
+    margin-bottom: 40px;
+}
+/* Contenedor de la lista de métodos de pago */
+.lista-pagos {
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0;
+    display: grid; /* Usamos Grid para alinearlos */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo automático */
+    gap: 30px; /* Espacio entre tarjetas */
+    justify-items: center; /* Centra las tarjetas horizontalmente */
+}
 
-    /* Estilos de los títulos */
-    .seccion-comercializacion h1 {
-        color: #2c3e50;
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
+/* Estilos individuales de cada método de pago (las tarjetas) */
+.metodo-pago {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Sombra suave */
+    transition: transform 0.2s, box-shadow 0.2s; /* Animación al pasar el mouse */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-    .seccion-comercializacion h2 {
-        color: #7f8c8d;
-        font-weight: normal;
-        margin-bottom: 40px;
-    }
+/* Efecto hover sobre la tarjeta */
+.metodo-pago:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
 
-    /* Contenedor de la lista de métodos de pago */
-    .lista-pagos {
-        list-style: none; /* Quita los puntos de la lista */
-        padding: 0;
-        display: grid; /* Usamos Grid para alinearlos */
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo automático */
-        gap: 30px; /* Espacio entre tarjetas */
-        justify-items: center; /* Centra las tarjetas horizontalmente */
-    }
+/* Estilos de los títulos dentro de las tarjetas */
+.metodo-pago h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+}
 
-    /* Estilos individuales de cada método de pago (las tarjetas) */
-    .metodo-pago {
-        background-color: #fff;
-        border: 1px solid #e0e0e0;
-        border-radius: 12px;
-        padding: 30px;
-        width: 100%;
-        max-width: 320px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Sombra suave */
-        transition: transform 0.2s, box-shadow 0.2s; /* Animación al pasar el mouse */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Efecto hover sobre la tarjeta */
-    .metodo-pago:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-    }
-
-    /* Estilos de los títulos dentro de las tarjetas */
-    .metodo-pago h3 {
-        color: #2c3e50;
-        margin-bottom: 20px;
-        font-size: 1.4rem;
-    }
-
-    /* Estilos de las imágenes */
-    .metodo-pago img {
-        display: block;
-        height: auto;
-        object-fit: contain; /* Mantiene la proporción */
-        /* Eliminado width fijo para mayor flexibilidad si las imágenes son de distintos tamaños */
-        width: 120px;
-    }
+/* Estilos de las imágenes */
+.metodo-pago img {
+    display: block;
+    height: auto;
+    object-fit: contain; /* Mantiene la proporción */
+    /* Eliminado width fijo para mayor flexibilidad si las imágenes son de distintos tamaños */
+    width: 120px;
+}
 
     /* Estilos para Métodos de Envío (reutilizando la lógica de tarjetas) */
 .metodos-envio {
@@ -321,81 +334,7 @@ body{
     font-style: italic;
 }
 
-
-/* Para vista Contacto */
-/* Sección de Contacto */
-.contacto-wrapper {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.contacto-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.contacto-header h1 {
-    color: #2c3e50;
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.contacto-header p {
-    color: #7f8c8d;
-    font-size: 1.1rem;
-}
-
-/* Tarjeta del Formulario */
-.contacto-card {
-    background-color:   #a4ffeb;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    border: 1px solid #f0f0f0;
-}
-
-/* Estilo de los Inputs */
-.custom-input {
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    padding: 12px 15px;
-    transition: all 0.3s ease;
-}
-
-.custom-input:focus {
-    border-color: #2c3e50;
-    box-shadow: 0 0 0 0.25
-    margin-bottom: 20px;rem rgba(44, 62, 80, 0.1);
-    outline: none;
-}
-
-.form-label {
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 8px;
-}
-
-/* Botón Personalizado */
-.btn-enviar {
-    background-color: #2c3e50;
-    color: white;
-    padding: 12px 40px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    border: none;
-}
-
-.btn-enviar:hover {
-    background-color: #0084ff;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.contacto-container{
-    background-color: rgb(255, 205, 4);
+.img-qs{
+    margin-top: 15px;
+    margin-bottom: 10px;
 }

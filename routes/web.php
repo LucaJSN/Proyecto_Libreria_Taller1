@@ -8,17 +8,20 @@ use App\Models\Producto;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    // Solo retornas la vista principal. 
-    // El título lo pasas aquí y el Layout lo recibirá.
-    return view('index', ['title' => 'Libreria | Inicio']);
+    echo view('index');
 });
-
+/*
 Route::get('/sobre-mi', function() {
     return view('sobre_mi', ['title' => 'Libreria | Sobre Mí']);
 });
-
+*/
 Route::get('/contacto', function(){
     return view('contacto', ['title' => 'Libreria | Contacto']);
+});
+
+
+Route::get('/quienes-somos', function(){
+    return view('quienes-somos');
 });
 
 Route::get('/catalogo', function(){
@@ -36,6 +39,10 @@ Route::get('/comercializacion', function() {
 Route::get('/productos/crear', function () {
     return view('productos.crear');
 })->name('productos.crear');
+
+Route::get('/terminos', function(){
+    return view('terminos');
+});
 
 // Ruta para guardar
 Route::post('/catalogo', function (Request $request) {
@@ -60,6 +67,9 @@ Route::post('/catalogo', function (Request $request) {
 
 Route::get('/catalogo', [ProductController::class, 'index']);
 
+Route::get('/comercializacion', function() {
+    return view('comercializacion', ['title' => 'Libreria | Comercialización']);
+});
 
 //Rutas para vista Admin
 
@@ -100,4 +110,5 @@ Route::post('/logout', function (Request $request) {
 
     return redirect('/ingresar'); // 4. Te manda de vuelta al login
 })->name('logout');
+
 ?>
