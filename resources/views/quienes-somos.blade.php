@@ -14,7 +14,7 @@
                 <h2>Nuestra Mision</h2>
                 <p>Facilitar el acceso universal al conocimiento y a la imaginación a través de una selección diversa de títulos, apoyando el crecimiento intelectual de nuestros clientes mediante un servicio experto y personalizado.</p>
             </div>
-            <img class="imagen" src="libreria-prototipo.png" heigth="1080" width="1920">
+            <img class="img-qs" src="img/libreria-prototipo.png" heigth="1080" width="1920">
         </div>
 </div>
 

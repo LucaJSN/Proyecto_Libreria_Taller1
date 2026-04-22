@@ -22,6 +22,13 @@
                     </div>
                     <button type="button" class="btn btn-dark">Enviar</button>
                 </div>
+                <div class="col-6">
+                    <h3>Contactanos</h3>
+                        <p>bautiovallebravo@gmail.com</p>
+                        <p>+54 000 00000</p>
+                        <p>379-00-00000</p>
+                        <p>9 de Julio - Corrientes</p>
+                </div>
             </div>        
         </div>
 @endsection
