@@ -9,11 +9,11 @@
         <ul class="lista-pagos">
             <li class="metodo-pago">
                 <h3>Paga con Mercado Pago</h3>
-                <img src="{{ asset('imagenes/metodo-de-pago.png') }}" alt="Mercado Pago" class="img-formato-unico">
+                <img src="{{ asset('img/metodo-de-pago.png') }}" alt="Mercado Pago" class="img-formato-unico">
             </li>
             <li class="metodo-pago">
                 <h3>Paga con Tarjeta</h3>
-                <img src="{{ asset('imagenes/pago.png') }}" alt="Pago con tarjeta" class="img-formato-unico">
+                <img src="{{ asset('img/pago.png') }}" alt="Pago con tarjeta" class="img-formato-unico">
             </li>
         </ul>
 
@@ -21,11 +21,11 @@
         <div class="contenedor-flex">
             <div class="tarjeta-metodo">
                 <h3>Envío a Domicilio</h3>
-                <img src="{{ asset('imagenes/envio1.png') }}" alt="Envío a domicilio" class="img-formato-unico">
+                <img src="{{ asset('img/envio1.png') }}" alt="Envío a domicilio" class="img-formato-unico">
             </div>
             <div class="tarjeta-metodo">
                 <h3>Retiro en Sucursal</h3>
-                <img src="{{ asset('imagenes/retiro-local.png') }}" alt="Retiro en sucursal" class="img-formato-unico">
+                <img src="{{ asset('img/retiro-local.png') }}" alt="Retiro en sucursal" class="img-formato-unico">
                 <p class="ubicacion-texto">Campus Deodoro Roca</p>
             </div>        
         </div>

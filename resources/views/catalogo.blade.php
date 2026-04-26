@@ -11,7 +11,13 @@
         <div class="col-md-6">
             <form class="d-flex shadow-sm">
                 <input class="form-control me-2" type="search" placeholder="¿Qué estás buscando?" aria-label="Search">
-                <button class="btn btn-dark" type="submit">Buscar</button>
+                <button class="btn btn-dark" popovertarget="popup">Buscar</button>
+                <div popover id="popup">
+                    Página en construccion
+                    <br>
+                    <br>
+                    <button popovertargetaction="hide">cerrar</button>
+                </div>
             </form>
         </div>
     </div>

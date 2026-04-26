@@ -18,7 +18,7 @@
             <div class="carousel-item">
               <img src="img/articulos-libros.jpg" class="d-block w-100" alt="...">
             </div>
-            <div class="img/carousel-item">
+            <div class="carousel-item">
               <img src="img/articulos-oficina.jpg" class="d-block w-100" alt="...">
             </div>
           </div>
@@ -70,5 +70,6 @@
       </div>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </div>
 @endsection

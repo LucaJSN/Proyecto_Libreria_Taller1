@@ -5,11 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-        <link rel="stylesheet" href="../css/miestilo.css" >
-
+        <link rel="stylesheet" href="../css/miestilo.css" media="all">
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" id="NB">
         <div class="container-fluid" id="navbar">
             <a class="navbar-brand" href="<?php echo('/')?>">
                 <img src="img/punto-y-barra-blanco.png" width="20px" height="20px">
@@ -20,7 +19,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?php echo('/');?>">Home</a>
+                        <a class="nav-link" href="<?php echo('/');?>">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo('quienes-somos');?>">Quienes Somos</a>
@@ -37,7 +36,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo('terminos');?>">Terminos y Usos</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <!--<li class="nav-item dropdown">
                         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Productos
@@ -48,7 +47,7 @@
                         <li><a class="dropdown-item" href="#">Libros</a></li>
                         <li><a class="dropdown-item" href="#">Materiales escolares</a></li>
                     </ul>
-                    </li>
+                    </li>-->
                     @auth
                     <!-- Solo se verá el link (btn admin) a esta vista para los administradores -->
                     @if(auth()->user()->role === 'admin')
@@ -58,6 +57,7 @@
                     @endif
                     @endauth
                 </ul>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
                 @auth
                 <form action="{{ route('logout') }}" method="POST" class="d-inline">
                     @csrf
@@ -67,11 +67,10 @@
                 </form>
             @endauth
             @guest
-                <button type="submit" class="btn btn-dark"">
+                <button type="submit" class="btn btn-dark">
                         <a href="/ingresar">Iniciar Sesión</a>
                 </button>
             @endguest
             </div>
-        
         </div>
     </nav>

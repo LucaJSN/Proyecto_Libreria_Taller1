@@ -13,7 +13,7 @@ img {
 }
 
 body{
-    background-color: white;
+    background-color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -74,8 +74,6 @@ p{
     
     /* Hace que el contenedor se ajuste al ancho de su contenido (la imagen) */
     width: min-content; 
-
-
     column-gap: normal;
 }
 
@@ -124,10 +122,18 @@ p{
 }
 
 .card{
-    background-color: rgb(245, 179, 87);
-    color: black;
+    background-color: #41779d;
+    color: white;
     display: flex;
-    justify-content: center;
+}
+
+#card-qs{
+    border: 5px;
+}
+
+#qs{
+    display:flex;
+    justify-content:center;
 }
 
 #contacto{
@@ -138,6 +144,8 @@ p{
 }
 
 #quienessomos{
+    color: white;
+    background-color: #606060;
     text-align: center;
 }
 
@@ -146,8 +154,15 @@ p{
     background-color: #606060;
 }
 
+nav{
+    padding:0%;;
+    margin: 0px;
+    border: 0px;
+}
+
 #navbar{
     background-color:#41779d;
+    border-color: #41779d;
     color:white;
 }
 
@@ -169,7 +184,7 @@ footer{
 
 .seccion-comercializacion {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
+    color: #41779d;
     max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
@@ -177,14 +192,14 @@ footer{
 }
 /* Estilos de los títulos */
 .seccion-comercializacion h1 {
-    color: #2c3e50;
+    color: #e67e22;
     font-size: 2.5rem;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 .seccion-comercializacion h2 {
-    color: #7f8c8d;
+    color: #41779d;
     font-weight: normal;
     margin-bottom: 40px;
 }
@@ -285,7 +300,7 @@ footer{
 /* Estilos para Política de Envío */
 /* Ajuste para el título de la sección de políticas */
 .politca-envio h1 {
-    color: #2c3e50;
+    color: #e67e22;
     font-size: 2.2rem;
     font-weight: bold;
     text-align: center; /* Asegura el centrado */
@@ -410,4 +425,55 @@ footer{
 
 .contacto-container{
     background-color: rgb(255, 205, 4);
+}
+
+ul{
+    list-style-type: none;
+}
+
+#terminos{
+    padding: 25px;
+    padding-top: 10px;
+    justify-content: center;
+    background-color:#606060;
+    color:#ffffff;
+    text-align: justify;
+}
+
+#terminos h1{
+    color:#0084ff;
+    justify-self: center;
+}
+
+.img-qs{
+    padding: 10px;
+}
+
+#NB{
+    padding:0%;
+    border: #41779d 10px;
+    margin:0%;
+}
+
+.nav-link{
+    color: white;
+    
+}
+
+.nav-link.active{
+    background-color:#2c3e50;
+    color: white;
+}
+
+#popup{
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px;
+    animation: mostrar o.25s ease-out
+}
+
+@keyframes mostrar{
+    from{
+        transform: translateY(-200px);
+    }
 }
