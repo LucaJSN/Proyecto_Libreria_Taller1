@@ -34,6 +34,10 @@ Route::get('/consulta', function(){
 
 Route::get('/vistaAdmin', [ProductController::class, 'AdminIndex']);
 
+Route::get('/comercializacion', function() {
+    return view('comercializacion', ['title' => 'Libreria | Comercialización']);
+});
+
 //CRUD para Productos
 // Ruta para ver el formulario
 Route::get('/productos/crear', function () {

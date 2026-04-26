@@ -19,11 +19,4 @@
     
     @include('layouts.footer')
 </body>
-@auth
-    <p style="color: green;">ESTÁS LOGUEADO</p>
-@endauth
-
-@guest
-    <p style="color: red;">ERES UN INVITADO</p>
-@endguest
 </html>
