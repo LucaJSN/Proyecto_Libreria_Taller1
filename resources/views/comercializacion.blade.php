@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5"> 
+<div class="container py-5" id="comercializacion"> 
     <div class="seccion-comercializacion">
         <h1>Comercialización</h1>
 

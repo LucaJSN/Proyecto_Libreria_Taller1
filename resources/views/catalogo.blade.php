@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5">
+<div class="container py-5" id="catalogo">
     {{-- Encabezado y Buscador --}}
     <div class="row mb-5 align-items-center">
         <div class="col-md-6">
