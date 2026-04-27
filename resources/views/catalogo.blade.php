@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5">
+<div class="container py-5" id="catalogo">
     {{-- Encabezado y Buscador --}}
     <div class="row mb-5 align-items-center">
         <div class="col-md-6">
@@ -11,13 +11,26 @@
         <div class="col-md-6">
             <form class="d-flex shadow-sm">
                 <input class="form-control me-2" type="search" placeholder="¿Qué estás buscando?" aria-label="Search">
-                <button class="btn btn-dark" popovertarget="popup">Buscar</button>
-                <div popover id="popup">
-                    Página en construccion
-                    <br>
-                    <br>
-                    <button popovertargetaction="hide">cerrar</button>
-                </div>
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Buscar
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Error</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>La página a la que quiere acceder se encuentra en construcción, por favor</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
             </form>
         </div>
     </div>

@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="contacto-container">
-    <div class="container py-5 contacto-container">
-        <div class="contacto-wrapper">
+<div class="contacto-container" id="contacto">
+        {{-- <div> --}}
             <div class="contacto-header">
                 <h1>Contacto</h1>
-                <p>Estamos aquí para ayudarte. Ponete en contacto con nosotros.</p>
             </div>
-
+            <div>
+            <p>Estamos aquí para ayudarte. Ponete en contacto con nosotros.</p>
+            </div>
             <div class="row g-4">
                 <div class="col-lg-8">
                     <h2>Donde encontrarnos</h2>
@@ -46,13 +46,13 @@
                         <hr>
 
                         <div class="contacto-directo">
+                            <h3>Contacto Directo</h3>
                             <p><i class="fas fa-map-marker-alt"></i> Campus Deodoro Roca</p>
                             <p><i class="fas fa-envelope"></i> contacto@puntoybarra.com</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        {{-- </div> --}}
 </div>
 @endsection
