@@ -1,30 +1,67 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="row justify-content-center">
-      {{-- <div class="col-md-4"> --}}
-          <div class="card p-4 shadow" id="ingresar-card">
-              <form action="/ingresar" method="POST">
-                  @csrf {{-- token de seguridad! --}}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow p-4 border-0" style="border-radius: 15px;">
+                <h2 class="mb-4 text-center fw-bold">Ingresar</h2>
+                
+                {{-- ID: formLogin para el script --}}
+                <form id="formLogin">
+                    @csrf
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" required>
+                    </div>
 
-                  <div class="mb-3">
-                      <label for="name" class="form-label">Nombre</label>
-                      <input type="name" name="name" class="form-control" id="name" placeholder="Nombre" notRequired>
-                  </div>
-                  
-                  <div class="mb-3"> {{-- En Bootstrap 5 se usa mb-3 en lugar de form-group --}}
-                      <label for="email" class="form-label">Correo Electronico</label>
-                      <input type="email" name="email" class="form-control" id="email" placeholder="email@ejemplo.com" required>
-                  </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" placeholder="********" required>
+                    </div>
 
-                  <div class="mb-3">
-                      <label for="password" class="form-label">Contraseña</label>
-                      <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña " required>
-                  </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="remember">
+                        <label class="form-check-label" for="remember">Recordarme</label>
+                    </div>
 
-                  <button type="submit" class="btn btn-primary w-100">Ingresar</button>
-              </form>
-          </div>
-      {{-- </div> --}}
-  </div>
+                    <button type="submit" class="btn btn-warning w-100 fw-bold">Entrar</button>
+                </form>
+                
+                <div class="text-center mt-3">
+                    <small class="text-muted">¿No tienes cuenta? <a href="#" class="text-dark fw-bold">Regístrate</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 1. Esperamos a que TODO el HTML esté cargado en el navegador
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const form = document.getElementById('formLogin');
+        
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                // 2. Frenamos el envío para evitar errores de Symfony
+                event.preventDefault();
+
+                // 3. Buscamos el elemento en el DOM
+                const modalElement = document.getElementById('pagina_construccion');
+
+                if (modalElement) {
+                    // 4. Si lo encuentra, lo inicializamos y mostramos
+                    const miModal = new bootstrap.Modal(modalElement);
+                    miModal.show();
+                } else {
+                    // Si entra aquí es que el @ include fallo o el ID es distinto
+                    console.error("DEBUG: El ID 'pagina_construccion' no existe en esta página.");
+                    alert("El modal no se cargó. Revisa el código fuente con Ctrl+U.");
+                }
+            });
+        }
+    });
+</script>
 @endsection

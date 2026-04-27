@@ -14,9 +14,13 @@
     <container class="contenedor-central">
         
         @yield('content')
-        
     </container>
     </main>
+
+    @include('layouts.pagina_construccion') 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 <footer class="bg-dark text-white py-4">
     @include('layouts.footer')

@@ -37,18 +37,16 @@
     </div>
 </div>
 
-{{-- Esto es para el modal pero no funciona --}}
 <script>
-document.getElementById("formConsulta").addEventListener("submit", function(e) {
-    e.preventDefault(); // 🚫 evita envío a Laravel
+    document.getElementById('formContacto').addEventListener('submit', function(event) {
+        // 1. Evitamos que la página se recargue o envíe a una ruta (Evita el error de Symfony)
+        event.preventDefault();
 
-    if (this.checkValidity()) {
-        // Mostrar modal de Bootstrap
-        let modal = new bootstrap.Modal(document.getElementById('pagina_construccion'));
-        modal.show();
-    } else {
-        this.reportValidity(); // muestra errores de required
-    }
-});
+        // 2. Si llegamos aquí, es porque el navegador ya validó que el email tiene @ y que todo está lleno
+        // 3. Llamamos al modal manualmente usando el ID que pusiste en el layout
+        var miModal = new bootstrap.Modal(document.getElementById('pagina_construccion'));
+        miModal.show();
+    });
 </script>
 @endsection
+
