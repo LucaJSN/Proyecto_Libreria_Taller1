@@ -27,7 +27,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="red-link facebook">
+                                <a href="https://www.facebook.com/" class="red-link facebook">
                                 <i class="fab fa-facebook-f"></i> Facebook
                                 </a>
                             </li>

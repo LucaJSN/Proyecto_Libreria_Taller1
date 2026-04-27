@@ -38,14 +38,30 @@
 </div>
 
 <script>
-    document.getElementById('formContacto').addEventListener('submit', function(event) {
-        // 1. Evitamos que la página se recargue o envíe a una ruta (Evita el error de Symfony)
-        event.preventDefault();
+    // 1. Esperamos a que TODO el HTML esté cargado en el navegador
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const form = document.getElementById('formConsulta');
+        
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                // 2. Frenamos el envío para evitar errores de Symfony
+                event.preventDefault();
 
-        // 2. Si llegamos aquí, es porque el navegador ya validó que el email tiene @ y que todo está lleno
-        // 3. Llamamos al modal manualmente usando el ID que pusiste en el layout
-        var miModal = new bootstrap.Modal(document.getElementById('pagina_construccion'));
-        miModal.show();
+                // 3. Buscamos el elemento en el DOM
+                const modalElement = document.getElementById('pagina_construccion');
+
+                if (modalElement) {
+                    // 4. Si lo encuentra, lo inicializamos y mostramos
+                    const miModal = new bootstrap.Modal(modalElement);
+                    miModal.show();
+                } else {
+                    // Si entra aquí es que el @ include fallo o el ID es distinto
+                    console.error("DEBUG: El ID 'pagina_construccion' no existe en esta página.");
+                    alert("El modal no se cargó. Revisa el código fuente con Ctrl+U.");
+                }
+            });
+        }
     });
 </script>
 @endsection

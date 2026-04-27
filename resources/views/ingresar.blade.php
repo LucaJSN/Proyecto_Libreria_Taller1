@@ -28,10 +28,7 @@
 
                     <button type="submit" class="btn btn-warning w-100 fw-bold">Entrar</button>
                 </form>
-                
-                <div class="text-center mt-3">
-                    <small class="text-muted">¿No tienes cuenta? <a href="#" class="text-dark fw-bold">Regístrate</a></small>
-                </div>
+
             </div>
         </div>
     </div>
