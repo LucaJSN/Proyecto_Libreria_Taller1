@@ -37,18 +37,32 @@
     </div>
 </div>
 
-{{-- Esto es para el modal pero no funciona --}}
 <script>
-document.getElementById("formConsulta").addEventListener("submit", function(e) {
-    e.preventDefault(); // 🚫 evita envío a Laravel
+    // 1. Esperamos a que TODO el HTML esté cargado en el navegador
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const form = document.getElementById('formConsulta');
+        
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                // 2. Frenamos el envío para evitar errores de Symfony
+                event.preventDefault();
 
-    if (this.checkValidity()) {
-        // Mostrar modal de Bootstrap
-        let modal = new bootstrap.Modal(document.getElementById('pagina_construccion'));
-        modal.show();
-    } else {
-        this.reportValidity(); // muestra errores de required
-    }
-});
+                // 3. Buscamos el elemento en el DOM
+                const modalElement = document.getElementById('pagina_construccion');
+
+                if (modalElement) {
+                    // 4. Si lo encuentra, lo inicializamos y mostramos
+                    const miModal = new bootstrap.Modal(modalElement);
+                    miModal.show();
+                } else {
+                    // Si entra aquí es que el @ include fallo o el ID es distinto
+                    console.error("DEBUG: El ID 'pagina_construccion' no existe en esta página.");
+                    alert("El modal no se cargó. Revisa el código fuente con Ctrl+U.");
+                }
+            });
+        }
+    });
 </script>
 @endsection
+
