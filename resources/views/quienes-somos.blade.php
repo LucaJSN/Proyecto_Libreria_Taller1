@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row" id="qs">
         <div class="col-md-12" id="quienessomos">
-            <h1 id="quienessomos">¿Quienes somos?</h1>
+            <h1>¿Quienes somos?</h1>
             <p>"Impulsando el conocimiento, página a página."</p>
             <p>Entendemos que el aprendizaje nunca se detiene. Por eso, nos dedicamos a facilitar el acceso a la cultura y la educación a través de un catálogo dinámico y accesible. Somos lectores apasionados ayudando a otros lectores a encontrar las herramientas necesarias para su crecimiento personal y profesional.</p>
         </div>

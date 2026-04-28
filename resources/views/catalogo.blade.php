@@ -23,18 +23,130 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <p>La página a la que quiere acceder se encuentra en construcción, por favor</p>
+                                <p>La página a la que quiere acceder se encuentra en construcción</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
-                            </div>
                         </div>
                     </div>
+                </div>
             </form>
         </div>
     </div>
 
+    <!--Carrusel estático -->
+  <section class="carrusel-de-productos">
+    <h2>Nuestros Productos</h2>
+    <div id="carouselExampleFade" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active" id="carrusel-productos">
+          <div class="row" id="fila-carrusel">
+            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
+              <img src="img/Libro-normal.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-text">Libro Normal</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        comprar
+                    </button>
+              </div>
+            </div>
+            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
+              <img src="img/marcadores.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-text">Marcadores</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        comprar
+                    </button>
+              </div>
+            </div>
+            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
+              <img src="img/birome.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-text">Birome</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        comprar
+                    </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item" id="carrusel-productos">
+          <div class="row" id="fila-carrusel">
+            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
+              <img src="img/Cartuchera.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-text">Cartuchera</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        comprar
+                    </button>
+              </div>
+            </div>
+            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
+              <img src="img/cuadernito.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-text">Libro de bocetos</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        comprar
+                    </button>
+              </div>
+            </div>
+            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
+              <img src="img/mochila.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-text">Mochila</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        comprar
+                    </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item " id="carrusel-productos">
+          <div class="row" id="fila-carrusel">
+            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
+              <img src="img/sacapuntas.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-text">Sacapuntas</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        comprar
+                    </button>
+              </div>
+            </div>
+            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
+              <img src="img/cuadernos-bocetos.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-text">Cuadernos</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        comprar
+                    </button>
+              </div>
+            </div>
+            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
+              <img src="img/Resaltadores.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-text">Resaltadores</h5>
+                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        comprar
+                    </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        </div>
+    </div>
+</section>
+<!-- Fin de carrusel estático -->
     <hr class="mb-5">
 
     {{-- Listado de Productos --}}
