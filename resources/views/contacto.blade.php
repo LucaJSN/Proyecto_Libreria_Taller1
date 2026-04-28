@@ -1,14 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="contacto-container">
-    <div class="container py-5 contacto-container">
-        <div class="contacto-wrapper">
+<div class="contacto-container" id="contacto">
+        {{-- <div> --}}
             <div class="contacto-header">
                 <h1>Contacto</h1>
-                <p>Estamos aquí para ayudarte. Ponete en contacto con nosotros.</p>
             </div>
-
             <div class="row g-4">
                 <div class="col-lg-8">
                     <h2>Donde encontrarnos</h2>
@@ -21,38 +18,30 @@
                         <p>Seguinos para enterarte de todas las novedades.</p>
                         
                         <div class="redes-lista">
-                            <li>
-                                <a href="#" class="red-link instagram">
-                                <i class="fab fa-instagram"></i> Instagram
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="red-link facebook">
-                                <i class="fab fa-facebook-f"></i> Facebook
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="red-link whatsapp">
-                                <i class="fab fa-whatsapp"></i> WhatsApp
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="red-link tiktok">
-                                <i class="fab fa-tiktok"></i> TikTok
-                                </a>
-                            </li>
+                            <a href="https://www.instagram.com" class="red-link instagram">
+                            <img src="img/instagram.png">
+                            </a>
+                            <a href="https://www.facebook.com/" class="red-link facebook">
+                            <img src="img/facebook.png">
+                            </a>
+                            <a href="https://api.whatsapp.com" class="red-link whatsapp">
+                            <img src="img/whatsapp.png">
+                            </a>
+                            <a href="https://www.tiktok.com/es-419/ class="red-link tiktok">
+                            <img src="img/tik-tok.png">
+                            </a>
                         </div>
 
                         <hr>
 
                         <div class="contacto-directo">
+                            <h3>Contacto Directo</h3>
                             <p><i class="fas fa-map-marker-alt"></i> Campus Deodoro Roca</p>
                             <p><i class="fas fa-envelope"></i> contacto@puntoybarra.com</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        {{-- </div> --}}
 </div>
 @endsection

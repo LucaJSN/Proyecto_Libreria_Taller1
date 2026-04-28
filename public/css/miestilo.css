@@ -1,3 +1,18 @@
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Esto mata el scroll lateral por completo */
+    position: relative;
+}
+
+.contenedor-central {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    flex-direction: column;  /* Para que los elementos queden uno arriba del otro */
+}
+
 /* Estilos generales (para móviles); */
 body { font-size: 16px; }
 
@@ -5,6 +20,14 @@ body { font-size: 16px; }
 @media (min-width: 768px) {
     body { font-size: 18px; }
     .contenedor { display: flex; }
+
+    h1 {
+        font-size: 1.8rem !important; /* Ajusta el número a lo que necesites */
+        width: 100% !important;
+        white-space: normal !important; /* Permite que el texto salte de línea */
+        word-wrap: break-word !important;
+    }
+
 }
 
 img {
@@ -13,19 +36,13 @@ img {
 }
 
 body{
-    background-color: #ffffff;
+    background-color: #41779d;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .container{
-    background: #606060;
-    color:#41779d;
     padding: 20 px;
     max-width: 1200 px;
-}
-
-h1{
-    color: #606060;
 }
 
 p{
@@ -38,7 +55,7 @@ p{
 }
 
 .principal{
-    color: #41779d;
+    color: white ;
 }
 
 .secudario{
@@ -99,6 +116,29 @@ p{
     height: auto;
 }
 
+/**Footer*/
+
+.btn-footer{
+    padding: 5px 10px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    background-color: #41779d;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px 20px;    
+    width: auto;         
+    height: auto;
+}
+
+footer{
+    background-color:#41779d;
+    color: white;
+    padding: 10 px;
+    margin: 10 px;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
 .comprar_producto{
    /* El botón ocupará todo el ancho disponible (el de la imagen) */
     text-align: center;
@@ -124,9 +164,15 @@ p{
 .card{
     background-color: #41779d;
     color: white;
-    display: flex;
+    display: flex;  
 }
 
+#ingresar-card{
+    background-color: #ffffff;
+    padding-bottom: 20px;
+}
+
+/**Vista de Quienes Somos*/
 #card-qs{
     border: 5px;
 }
@@ -134,44 +180,20 @@ p{
 #qs{
     display:flex;
     justify-content:center;
-}
-
-#contacto{
-    border-radius: 10 px;
-    color: black;
-    display: flex;
-    justify-content: center;
+    gap: 1.5rem;
 }
 
 #quienessomos{
+    padding: 10px;
     color: white;
-    background-color: #606060;
     text-align: center;
 }
 
 #Nvision{
     color: white;
-    background-color: #606060;
 }
 
-nav{
-    padding:0%;;
-    margin: 0px;
-    border: 0px;
-}
 
-#navbar{
-    background-color:#41779d;
-    border-color: #41779d;
-    color:white;
-}
-
-footer{
-    background-color:#41779d;
-    color: white;
-    padding: 10 px;
-    margin: 10 px;
-}
 
 /* Para Vista Comercializacion */
 .img-formato-unico {
@@ -184,22 +206,22 @@ footer{
 
 .seccion-comercializacion {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #41779d;
-    max-width: 1000px;
+    color: #212529;
+    max-width: 100%;
     margin: 40px auto;
     padding: 20px;
     text-align: center;
 }
 /* Estilos de los títulos */
 .seccion-comercializacion h1 {
-    color: #e67e22;
+    color: rgb(238, 238, 72);;
     font-size: 2.5rem;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 .seccion-comercializacion h2 {
-    color: #41779d;
+    color: #212529 ;
     font-weight: normal;
     margin-bottom: 40px;
 }
@@ -292,7 +314,7 @@ footer{
 /* Estilo específico para la ubicación dentro de la tarjeta */
 .ubicacion-texto {
     margin-top: 15px;
-    color: #e67e22; /* Un tono naranja para resaltar la ubicación */
+    color: rgb(238, 238, 72);; /* Un tono naranja para resaltar la ubicación */
     font-weight: bold;
     font-size: 0.9rem;
 }
@@ -300,7 +322,7 @@ footer{
 /* Estilos para Política de Envío */
 /* Ajuste para el título de la sección de políticas */
 .politca-envio h1 {
-    color: #e67e22;
+    color: rgb(238, 238, 72);;
     font-size: 2.2rem;
     font-weight: bold;
     text-align: center; /* Asegura el centrado */
@@ -353,8 +375,15 @@ footer{
 /* Para vista Contacto */
 /* Sección de Contacto */
 .contacto-wrapper {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
+}
+
+#contacto{
+    border-radius: 10 px;
+    color: #212529 ;
+    display: flex;
+    justify-content: center;
 }
 
 .contacto-header {
@@ -363,14 +392,14 @@ footer{
 }
 
 .contacto-header h1 {
-    color: #2c3e50;
+    color: white;
     font-size: 2.5rem;
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .contacto-header p {
-    color: #7f8c8d;
+    color: #212529 ;
     font-size: 1.1rem;
 }
 
@@ -423,14 +452,34 @@ footer{
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.contacto-container{
+/* 1. Estilos para TODAS las pantallas (Base) */
+/*Contacto*/
+.contacto-container {
     background-color: rgb(255, 205, 4);
+    background-color:#41779d;
+    padding: 40px; 
+    display: flex;
+    flex-direction: column; /* Apila el contenido verticalmente */
+    align-items: center;    /* Centra el contenido horizontalmente */
+    width: 100%;
+}
+
+/* 2. Ajustes específicos para MÓVIL (Pantallas menores a 768px) */
+@media screen and (max-width: 768px) {
+    .contacto-container {
+        padding: 20px;
+        display: flex;
+        flex-direction: column; /* Importante: para que los elementos se apilen uno bajo el otro */
+        text-align: center;
+        justify-content: center;
+    }
 }
 
 ul{
     list-style-type: none;
 }
 
+/**Terminos*/
 #terminos{
     padding: 25px;
     padding-top: 10px;
@@ -449,20 +498,40 @@ ul{
     padding: 10px;
 }
 
+/*Navbar | Barra de Navegación*/
+
+nav{
+    padding:0%;;
+    margin: 0px;
+    border: 0px;
+}
+
+#navbar{
+    background-color:#212529 ;
+    border-color: #212529 ;
+    color:white;
+    text-decoration-color: white;
+}
+
 #NB{
     padding:0%;
-    border: #41779d 10px;
+    border: #212529  10px;
     margin:0%;
 }
 
 .nav-link{
     color: white;
-    
+}
+
+#navbar-link{
+    color: white;
 }
 
 .nav-link.active{
-    background-color:#2c3e50;
-    color: white;
+    color: #ffffff !important;
+    font-weight: bold;
+    border-bottom: 2px solid #ffffff;
+    background-color: transparent; /* importante para quitar el fondo oscuro */
 }
 
 #popup{
@@ -472,8 +541,179 @@ ul{
     animation: mostrar o.25s ease-out
 }
 
+#terminos{
+    h1{
+        color:#000000;
+        justify-self: center;
+    }
+
+    background-color: #8d8c8c;
+    color: white;
+    padding: 20px;
+}
+
+/* 1. Estilos del contenedor principal*/
+#comercializacion {
+    /*background-color: rgb(238, 238, 72);*/
+    background-color: #41779d;
+}
+
+/* 2. Estilos del título para celular */
+#comercializacion h1 {
+    font-size: 1.8rem !important; 
+    width: 100% !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+}
+
+/* 3. Estilos del título para PC*/
+@media (min-width: 992px) { 
+    #comercializacion h1 {
+        font-size: 3.5rem !important; 
+    }
+}
+
+
+/* Para POLITICA Y PRIVACIDAD */
+/* Fondo sutil para que la tarjeta resalte */
+.terminos-page-bg {
+    background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo de la tarjeta alargada */
+.terminos-card {
+    background-color: #ffffff;
+    padding: 60px; /* Mucho aire interno para que se vea prolijo */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 50px;
+    border: 1px solid #e0e0e0;
+}
+
+/* Títulos y texto */
+.terminos-header h1 {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.terminos-body h3 {
+    margin-top: 30px;
+    font-size: 1.4rem;
+    color: #555;
+}
+
+.terminos-body p {
+    line-height: 1.8; /* Más espacio entre líneas para lectura fácil */
+    color: #666;
+    text-align: justify; /* Alineación tipo documento */
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .terminos-card {
+        padding: 30px 20px; /* Reducimos padding en celular para no perder espacio */
+        margin: 10px;
+    }
+}
+
+
+/* ARREGLAR PROBLEMA DE FOOTER VOLADOR */
+/* Aplicar al contenedor principal que envuelve todo (usualmente el body o un div#app) */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupa el 100% de la altura de la pantalla */
+    margin: 0;
+}
+
+/* El contenido principal debe crecer para empujar al footer */
+main {
+    flex: 1;
+    background-color: #41779d;
+}
+
+.redes-lista{
+    justify-content: center;
+    list-style-type: none;
+    align-items: center;
+    gap: 20px;
+}
+
+.carrusel-de-productos{
+    justify-items: center;
+}
+
+#carrusel-productos{
+    align-content: center;
+    justify-content: justify;
+}
+
+#fila-carrusel{
+    display:flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+#tarjetas-carrusel{
+    justify-content: center;
+    height: auto;
+    padding: 5px;
+    border: 5px;
+    flex: 0 0 auto;
+}
+
+#tarjetas-carrusel img{
+    width: 20rem;
+    height: 20rem;
+}
+
+/* Algo mas para COMERCIALIZACION */
+.tarjeta-pago {
+    position: relative;
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-pago:hover {
+    transform: translateY(-5px);
+}
+
+.oferta-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4d4d;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.oferta-texto {
+    margin-top: 10px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.oferta-texto p {
+    margin: 3px 0;
+}
+
+
+/* 
 @keyframes mostrar{
     from{
         transform: translateY(-200px);
     }
-}
+} */

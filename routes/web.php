@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ConsultasController;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
@@ -115,4 +116,14 @@ Route::post('/logout', function (Request $request) {
     return redirect('/ingresar'); // 4. Te manda de vuelta al login
 })->name('logout');
 
+
+//Para Consultas
+
+// La ruta que muestra el formulario (opcional si es estática)
+Route::get('/consulta', function () {
+    return view('consulta');
+});
+
+// La ruta que procesa el formulario
+Route::post('/consulta', [ConsultasController::class, 'store']);
 ?>
