@@ -6,7 +6,7 @@
     <div class="row mb-5 align-items-center">
         <div class="col-md-6">
             <h1 class="display-5 fw-bold">Nuestros Productos</h1>
-            <p class="text-muted">Explora nuestra selección exclusiva</p>
+            <p class="text-muted">Explora nuestra selección de articulos    </p>
         </div>
         <div class="col-md-6">
             <form class="d-flex shadow-sm">
@@ -35,123 +35,11 @@
         </div>
     </div>
 
-    <!--Carrusel estático -->
-  <section class="carrusel-de-productos">
-    <h2>Nuestros Productos</h2>
-    <div id="carouselExampleFade" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="carousel-item active" id="carrusel-productos">
-          <div class="row" id="fila-carrusel">
-            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
-              <img src="img/Libro-normal.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-text">Libro Normal</h5>
-                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        comprar
-                    </button> -->
-              </div>
-            </div>
-            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
-              <img src="img/marcadores.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-text">Marcadores</h5>
-                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        comprar
-                    </button> -->
-              </div>
-            </div>
-            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
-              <img src="img/birome.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-text">Birome</h5>
-                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        comprar
-                    </button> -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item" id="carrusel-productos">
-          <div class="row" id="fila-carrusel">
-            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
-              <img src="img/Cartuchera.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-text">Cartuchera</h5>
-                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        comprar
-                    </button> -->
-              </div>
-            </div>
-            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
-              <img src="img/cuadernito.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-text">Libro de bocetos</h5>
-                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        comprar
-                    </button> -->
-              </div>
-            </div>
-            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
-              <img src="img/mochila.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-text">Mochila</h5>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        comprar
-                    </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="carousel-item " id="carrusel-productos">
-          <div class="row" id="fila-carrusel">
-            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
-              <img src="img/sacapuntas.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-text">Sacapuntas</h5>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        comprar
-                    </button>
-              </div>
-            </div>
-            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
-              <img src="img/cuadernos-bocetos.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-text">Cuadernos</h5>
-                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        comprar
-                    </button> -->
-              </div>
-            </div>
-            <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
-              <img src="img/Resaltadores.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-text">Resaltadores</h5>
-                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        comprar
-                    </button> -->
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-        </div>
-    </div>
-</section>
-<!-- Fin de carrusel estático -->
     <hr class="mb-5">
 
     {{-- Listado de Productos --}}
     <div class="row g-4">
-        @foreach($productos as $producto)
+        {{-- @foreach($productos as $producto)
         <div class="col-12 col-md-6 col-lg-4 col-xl-3">
             <div class="card h-100 border-0 shadow-sm hover-shadow transition">
                 <img src="{{ $producto->imagen }}" class="card-img-top p-3" alt="{{ $producto->nombre }}" style="height: 200px; object-fit: contain;">
@@ -169,7 +57,95 @@
                 </div>
             </div>
         </div>
-        @endforeach
+        @endforeach --}}
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
+                <img src="img/1.jpg" class="card-img-top p-3" alt="Carpeta A4" style="height: 200px; object-fit: contain;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">Carpeta A4</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Una carpeta de tamaño A4 con 100 páginas, ideal para organizar documentos o para uso escolar. Su diseño clásico y versátil lo convierte en el compañero perfecto para cualquier ocasión.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
+                <img src="img/2.jpg" class="card-img-top p-3" alt="Regla Blanda" style="height: 200px; object-fit: contain;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">Regla Blanda</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Marca Maped, una regla flexible de 30 cm, perfecta para medir y dibujar líneas curvas. Su diseño duradero y resistente la convierte en una herramienta esencial para estudiantes y profesionales por igual.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
+                <img src="img/3.jpg" class="card-img-top p-3" alt="Transportador" style="height: 200px; object-fit: contain;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">Transportador</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Un transportador de plástico con 180 grados, ideal para dibujar ángulos y líneas rectas. Su diseño ergonómico y resistente lo convierte en una herramienta esencial para estudiantes y profesionales por igual.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
+                <img src="img/4.jpg" class="card-img-top p-3" alt="Microfibras" style="height: 200px; object-fit: contain;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">Microfibras</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Microfibras de colores surtidos, perfectas para escribir, dibujar y resaltar. Su diseño ergonómico y tinta de alta calidad las convierte en una herramienta esencial para estudiantes y profesionales por igual.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
+                <img src="img/5.jpg" class="card-img-top p-3" alt="Calculadora CT-806" style="height: 200px; object-fit: contain;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">Calculadora CT-806</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Una calculadora infantil de 8 dígitos, ideal para realizar operaciones matemáticas básicas. Su diseño compacto y fácil de usar la convierte en una herramienta esencial para estudiantes infantiles
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
+                <img src="img/6.jpg" class="card-img-top p-3" alt="Mochila" style="height: 200px; object-fit: contain;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">Mochila</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Mochila estilo "mini bag", para chicas.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
+                <img src="img/7.jpg" class="card-img-top p-3" alt="Cuaderno Inteligente" style="height: 200px; object-fit: contain;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">Cuaderno Inteligente</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Cuaderno A4 Clasico, con 100 páginas, ideal para tomar notas diarias o para uso escolar. Su diseño clásico y versátil lo convierte en el compañero perfecto para cualquier ocasión.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
+                <img src="img/Libro-normal.jpg" class="card-img-top p-3" alt="Libro Normal" style="height: 200px; object-fit: contain;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold">Libro Normal</h5>
+                    <p class="card-text text-muted small flex-grow-1">
+                        Un libro de tapa blanda con 100 páginas, ideal para tomar notas diarias o para uso escolar. Su diseño clásico y versátil lo convierte en el compañero perfecto para cualquier ocasión.
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
 
