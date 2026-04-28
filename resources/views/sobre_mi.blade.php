@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt4">
+    <div class="container mt4" id="sobreMi">
         <div class="card-body">
             <div class="card-title">
                 <h1>Sobre Mi</h1>    

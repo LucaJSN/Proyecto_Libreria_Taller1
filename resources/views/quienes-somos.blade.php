@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" id="quienesSomos">
     <div class="row" id="qs">
         <div class="col-md-12" id="quienessomos">
             <h1>¿Quienes somos?</h1>

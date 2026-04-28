@@ -46,27 +46,27 @@
               <img src="img/Libro-normal.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-text">Libro Normal</h5>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         comprar
-                    </button>
+                    </button> -->
               </div>
             </div>
             <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
               <img src="img/marcadores.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-text">Marcadores</h5>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         comprar
-                    </button>
+                    </button> -->
               </div>
             </div>
             <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
               <img src="img/birome.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-text">Birome</h5>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         comprar
-                    </button>
+                    </button> -->
               </div>
             </div>
           </div>
@@ -78,18 +78,18 @@
               <img src="img/Cartuchera.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-text">Cartuchera</h5>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         comprar
-                    </button>
+                    </button> -->
               </div>
             </div>
             <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
               <img src="img/cuadernito.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-text">Libro de bocetos</h5>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         comprar
-                    </button>
+                    </button> -->
               </div>
             </div>
             <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
@@ -119,18 +119,18 @@
               <img src="img/cuadernos-bocetos.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-text">Cuadernos</h5>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         comprar
-                    </button>
+                    </button> -->
               </div>
             </div>
             <div class="card col-mb-4" id="tarjetas-carrusel" style="width: 20rem;">
               <img src="img/Resaltadores.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-text">Resaltadores</h5>
-                <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         comprar
-                    </button>
+                    </button> -->
               </div>
             </div>
           </div>
@@ -162,9 +162,9 @@
                         <!-- //para que las descripciones largas no rompan el diseño. -->
                     </p>
                     <div class="d-grid mt-3">
-                        <a href="#" class="btn btn-outline-primary">
+                        <!-- <a href="#" class="btn btn-outline-primary">
                             <i class="bi bi-cart-plus me-2"></i>Comprar
-                        </a>
+                        </a> -->
                     </div>
                 </div>
             </div>

@@ -9,22 +9,22 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" id="navbar-link" href="<?php echo('/');?>">Inicio</a>
+                        <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ url('/') }}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="navbar-link" href="<?php echo('quienes-somos');?>">Quienes Somos</a>
+                        <a class="nav-link {{ request()->is('quienes-somos') ? 'active' : '' }}" href="{{ url('/quienes-somos') }}">Quienes Somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="navbar-link" href="<?php echo('contacto');?>">Contacto</a>
+                        <a class="nav-link {{ request()->is('contacto') ? 'active' : '' }}" href="{{ url('/contacto') }}">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="navbar-link" href="<?php echo('catalogo');?>">Catalogo</a>
+                        <a class="nav-link {{ request()->is('catalogo') ? 'active' : '' }}" href="{{ url('/catalogo') }}">Catalogo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="navbar-link" href="<?php echo('comercializacion');?>">Comercialización</a>
+                        <a class="nav-link {{ request()->is('comercializacion') ? 'active' : '' }}" href="{{ url('/comercializacion') }}">Comercialización</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="navbar-link" href="<?php echo('terminos');?>">Terminos y Usos</a>
+                        <a class="nav-link {{ request()->is('terminos') ? 'active' : '' }}" href="{{ url('/terminos') }}">Terminos y Usos</a>
                     </li>
                     @auth
                     <!-- Solo se verá el link (btn admin) a esta vista para los administradores -->

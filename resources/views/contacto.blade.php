@@ -42,11 +42,6 @@
                     </div>
                 </div>
             </div>
-            <div class="contacto-header">
-                <p>Estamos aquí para ayudarte. Ponete en contacto con nosotros.</p>
-                <p>También puedes hacernos una consulta</p>
-                <a role="button" href="<?php echo('/consulta')?>" class="btn btn-dark">Consulta</a>
-            </div>
         {{-- </div> --}}
 </div>
 @endsection

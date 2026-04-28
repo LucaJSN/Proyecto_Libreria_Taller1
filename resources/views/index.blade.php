@@ -2,7 +2,7 @@
 
 @section('content')
 <h1 class="titulo principal">Punto Y Barra | Librería</h1>
-<div>
+<div id="index">
   <h2 class="titulo secundario">Nuestros Productos</h2>
   <div class=seccion_productos>
     <div id="carouselExampleIndicators" class="carousel slide">

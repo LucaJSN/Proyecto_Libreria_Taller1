@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5">
+<div class="container py-5" id="consulta">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-sm p-4">
@@ -22,7 +22,7 @@
 
                     <div class="mb-3">
                         <label for="phone" class="form-label">Teléfono</label>
-                        <input type="tel" name="phone" class="form-control" id="phone" placeholder="+54..." required>
+                        <input type="number" name="phone" class="form-control" id="phone" placeholder="+54..." required>
                     </div>
 
                     <div class="mb-3">

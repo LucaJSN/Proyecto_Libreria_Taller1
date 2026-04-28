@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="terminos-page-bg">
+<div class="terminos-page-bg" id="terminos">
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-10 col-lg-8">

@@ -7,13 +7,26 @@
 
         <h2 class="mb-5">Métodos de Pago</h2>
         <ul class="lista-pagos">
-            <li class="metodo-pago">
+            <li class="metodo-pago tarjeta-pago">
+                <div class="oferta-badge">HOY</div>
                 <h3>Paga con Mercado Pago</h3>
                 <img src="{{ asset('img/metodo-de-pago.png') }}" alt="Mercado Pago" class="img-formato-unico">
+                
+                <div class="oferta-texto">
+                    <p><strong>Lunes:</strong> 10% OFF</p>
+                    <p><strong>Miércoles:</strong> 3 cuotas sin interés</p>
+                </div>
             </li>
-            <li class="metodo-pago">
+
+            <li class="metodo-pago tarjeta-pago">
+                <div class="oferta-badge">PROMO</div>
                 <h3>Paga con Tarjeta</h3>
                 <img src="{{ asset('img/pago.png') }}" alt="Pago con tarjeta" class="img-formato-unico">
+                
+                <div class="oferta-texto">
+                    <p><strong>Martes:</strong> 15% OFF</p>
+                    <p><strong>Viernes:</strong> 6 cuotas sin interés</p>
+                </div>
             </li>
         </ul>
 
