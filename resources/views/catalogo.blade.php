@@ -3,7 +3,7 @@
 @section('content')
 <div class="container py-5" id="catalogo">
     {{-- Encabezado y Buscador --}}
-    <div class="row mb-5 align-items-center">
+    <div class="row mb-5 align-items-center" id="cabecera-catalogo">
         <div class="col-md-6">
             <h1 class="display-5 fw-bold">Nuestros Productos</h1>
             <p class="text-muted">Explora nuestra selección de articulos    </p>

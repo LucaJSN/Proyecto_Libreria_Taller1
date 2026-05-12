@@ -1,13 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="terminos-page-bg" id="terminos">
-    <div class="container py-5">
+<div class="terminos-page-bg" >
+    <div class="container py-5" id="terminos">
+        <h1>Punto y Barra | Términos y Condiciones</h1>
         <div class="row justify-content-center">
+            
             <div class="col-md-10 col-lg-8">
                 <div class="terminos-card">
                     <div class="terminos-header">
-                        <h1>Punto y Barra | Términos y Condiciones</h1>
+                        
                         <p class="text-muted">Última actualización: Abril 2026</p>
                     </div>
                     

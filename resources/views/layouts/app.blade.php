@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Inicio</title>
+    <title><?php echo $title?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/img/punto-y-barra.png">
@@ -22,7 +22,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<footer class="bg-dark text-white py-4">
+<footer class="bg-dark text-white py-4"> <!-- El bg-dark ya le da estilo al footer -->
     @include('layouts.footer')
 </footer>
 </html>
