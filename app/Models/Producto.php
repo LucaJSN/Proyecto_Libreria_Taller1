@@ -22,4 +22,9 @@ class producto extends Model
         'stock' => 'integer',
         'activo' => 'boolean'
     ];
+
+    function categoria()
+    {
+        return $this->belongsTo(Categoria::class, 'id_categoria');
+    }
 }

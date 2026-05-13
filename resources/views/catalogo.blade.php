@@ -38,117 +38,57 @@
     <hr class="mb-5">
 
     {{-- Listado de Productos --}}
+    {{-- Buscamos los productos --}}
+    @php
+        $productos = App\Models\Producto::all();
+    @endphp
     <div class="row g-4">
-        {{-- @foreach($productos as $producto)
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
-                <img src="{{ $producto->imagen }}" class="card-img-top p-3" alt="{{ $producto->nombre }}" style="height: 200px; object-fit: contain;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title fw-bold">{{ $producto->nombre }}</h5>
-                    <p class="card-text text-muted small flex-grow-1">
-                        {{ Str::limit($producto->descripcion, 80) }}
-                        <!-- //para que las descripciones largas no rompan el diseño. -->
-                    </p>
-                    <div class="d-grid mt-3">
-                        <!-- <a href="#" class="btn btn-outline-primary">
-                            <i class="bi bi-cart-plus me-2"></i>Comprar
-                        </a> -->
+        @foreach($productos  as $producto)
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+                <div class="card h-100 border-0 shadow-sm hover-shadow transition" style="border-radius: 12px; overflow: hidden;">
+                    <!-- Contenedor de imagen con fondo sutil para resaltar el producto -->
+                    <div class="bg-light p-3 d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <img src="{{ asset($producto->url_imagen) }}" class="card-img-top" alt="{{ $producto->nombre }}" style="max-height: 100%; object-fit: contain;">
+                    </div>
+                    
+                    <div class="card-body d-flex flex-column p-4">
+                        <!-- Categoría en la parte superior -->
+                        <div class="mb-2">
+                            <span class="badge bg-secondary-subtle text-secondary px-2 py-1 small fw-semibold" style="font-size: 0.75rem;">
+                                {{ $producto->categoria->nombre }}
+                            </span>
+                        </div>
+
+                        <!-- Título -->
+                        <h5 class="card-title fw-bold text-dark mb-2 text-truncate" title="{{ $producto->nombre }}">
+                            {{ $producto->nombre }}
+                        </h5>
+                        
+                        <!-- Descripción -->
+                        <p class="card-text text-muted small flex-grow-1 mb-3">
+                            {{ Str::limit($producto->descripcion, 75) }}
+                        </p>
+                        
+                        <!-- Fila de Precio y Stock (Contraste con Naranja Cálido) -->
+                        <div class="d-flex align-items-baseline justify-content-between mb-3 pt-2 border-top">
+                            <span class="fs-4 fw-extrabold" style="color: #f57c00; font-weight: 800;">
+                                ${{ number_format($producto->precio, 2, ',', '.') }}
+                            </span>
+                            <span class="text-muted small">
+                                Stock: <strong class="{{ $producto->stock > 0 ? 'text-success' : 'text-danger' }}">{{ $producto->stock }}</strong>
+                            </span>
+                        </div>
+                        
+                        <!-- Botón de Acción Azul -->
+                        <div class="d-grid mt-auto">
+                            <a href="#" class="btn btn-primary py-2 fw-semibold shadow-sm" style="background-color: #0d6efd; border-radius: 8px;">
+                                <i class="bi bi-cart-plus me-2"></i>Agregar al carrito
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        @endforeach --}}
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
-                <img src="img/1.jpg" class="card-img-top p-3" alt="Carpeta A4" style="height: 200px; object-fit: contain;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title fw-bold">Carpeta A4</h5>
-                    <p class="card-text text-muted small flex-grow-1">
-                        Una carpeta de tamaño A4 con 100 páginas, ideal para organizar documentos o para uso escolar. Su diseño clásico y versátil lo convierte en el compañero perfecto para cualquier ocasión.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
-                <img src="img/2.jpg" class="card-img-top p-3" alt="Regla Blanda" style="height: 200px; object-fit: contain;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title fw-bold">Regla Blanda</h5>
-                    <p class="card-text text-muted small flex-grow-1">
-                        Marca Maped, una regla flexible de 30 cm, perfecta para medir y dibujar líneas curvas. Su diseño duradero y resistente la convierte en una herramienta esencial para estudiantes y profesionales por igual.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
-                <img src="img/3.jpg" class="card-img-top p-3" alt="Transportador" style="height: 200px; object-fit: contain;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title fw-bold">Transportador</h5>
-                    <p class="card-text text-muted small flex-grow-1">
-                        Un transportador de plástico con 180 grados, ideal para dibujar ángulos y líneas rectas. Su diseño ergonómico y resistente lo convierte en una herramienta esencial para estudiantes y profesionales por igual.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
-                <img src="img/4.jpg" class="card-img-top p-3" alt="Microfibras" style="height: 200px; object-fit: contain;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title fw-bold">Microfibras</h5>
-                    <p class="card-text text-muted small flex-grow-1">
-                        Microfibras de colores surtidos, perfectas para escribir, dibujar y resaltar. Su diseño ergonómico y tinta de alta calidad las convierte en una herramienta esencial para estudiantes y profesionales por igual.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
-                <img src="img/5.jpg" class="card-img-top p-3" alt="Calculadora CT-806" style="height: 200px; object-fit: contain;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title fw-bold">Calculadora CT-806</h5>
-                    <p class="card-text text-muted small flex-grow-1">
-                        Una calculadora infantil de 8 dígitos, ideal para realizar operaciones matemáticas básicas. Su diseño compacto y fácil de usar la convierte en una herramienta esencial para estudiantes infantiles
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
-                <img src="img/6.jpg" class="card-img-top p-3" alt="Mochila" style="height: 200px; object-fit: contain;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title fw-bold">Mochila</h5>
-                    <p class="card-text text-muted small flex-grow-1">
-                        Mochila estilo "mini bag", para chicas.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
-                <img src="img/7.jpg" class="card-img-top p-3" alt="Cuaderno Inteligente" style="height: 200px; object-fit: contain;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title fw-bold">Cuaderno Inteligente</h5>
-                    <p class="card-text text-muted small flex-grow-1">
-                        Cuaderno A4 Clasico, con 100 páginas, ideal para tomar notas diarias o para uso escolar. Su diseño clásico y versátil lo convierte en el compañero perfecto para cualquier ocasión.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card h-100 border-0 shadow-sm hover-shadow transition">
-                <img src="img/Libro-normal.jpg" class="card-img-top p-3" alt="Libro Normal" style="height: 200px; object-fit: contain;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title fw-bold">Libro Normal</h5>
-                    <p class="card-text text-muted small flex-grow-1">
-                        Un libro de tapa blanda con 100 páginas, ideal para tomar notas diarias o para uso escolar. Su diseño clásico y versátil lo convierte en el compañero perfecto para cualquier ocasión.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+        @endforeach 
 </div>
 
 <style>
