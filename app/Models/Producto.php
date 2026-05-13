@@ -10,7 +10,16 @@ class producto extends Model
     protected $fillable = [
         'nombre', 
         'descripcion', 
-        'precio', 
-        'imagen'
+        'id_categoria',
+        'precio',
+        'stock',
+        'ulr_imagen',
+        'activo'
+    ];
+
+    protected $casts = [
+        'precio' => 'decimal:2',
+        'stock' => 'integer',
+        'activo' => 'boolean'
     ];
 }

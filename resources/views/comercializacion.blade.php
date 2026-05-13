@@ -14,7 +14,7 @@
                     <img src="{{ asset('img/metodos-pago/visa.jpg') }}" alt="Visa">
                     <img src="{{ asset('img/metodos-pago/NaranjaX-logo.png') }}" alt="NaranjaX">
                 </div>
-                
+                <p class="ubicacion-texto">Paga en cuotas de 3, 6 y hasta 12 cuotas sin interés</p>
             </li>
 
             <li class="metodo-pago tarjeta-pago">
@@ -32,6 +32,7 @@
                     <img src="{{ asset('img/metodos-pago/mastercard-debito.png') }}" alt="Mastercard Debito">
                     <img src="{{ asset('img/metodos-pago/visa-debito.jpg') }}" alt="Visa debito">
                 </div>
+                <p class="ubicacion-texto">Podes hacer tu compra en un solo pago</p>
             </li>            
         </ul>
 
@@ -44,6 +45,7 @@
                     <img src="{{ asset('img/metodos-envio/Correo-argentino.jpg') }}" alt="Retiro en sucursal" class="img-formato-unico">
                     <img src="{{ asset('img/metodos-envio/va_cargo_logo.jpg') }}" alt="Retiro en sucursal" class="img-formato-unico">
                 </div>
+                <p class="ubicacion-texto">Podés pedir que los envios lleguen hasta la puerta de tu casa o simplemente retirar desde alguno de los puntos de entrega disponibles</p>
             </div>
             <div class="metodos-envio metodo-envio">
                 <h3>Retiro en Sucursal</h3>

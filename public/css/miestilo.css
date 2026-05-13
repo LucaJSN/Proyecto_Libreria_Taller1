@@ -190,6 +190,7 @@ footer{
 /**Vista de Quienes Somos*/
 #card-qs{
     border: 5px;
+    padding: 0.5rem;
     transition: transform 0.2s, box-shadow 0.2s; /* Animación al pasar el mouse */
 }
 
