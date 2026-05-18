@@ -102,6 +102,10 @@ Route::get('/ingresar', [UserController::class, 'index'])->name('login')->middle
 
 Route::post('/ingresar', [UserController::class, 'store']);
 
+Route::get('/registro',function(){
+    return view('registro', ['title'=> 'Punto y Barra | Registro']);
+});
+
 //Ruta Cerrar Sesiom
 Route::post('/logout', function (Request $request) {
     Auth::logout(); // 1. Cierra la sesión en el servidor

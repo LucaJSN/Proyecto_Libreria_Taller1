@@ -5,20 +5,33 @@
     <div class="row justify-content-center">
         <div class="col-md-4">
             <div class="card shadow p-4 border-0" style="border-radius: 15px;">
-                <h2 class="mb-4 text-center fw-bold">Ingresar</h2>
+                <h2 class="mb-4 text-center fw-bold">Crear una cuenta nueva</h2>
                 
                 {{-- ID: formLogin para el script --}}
                 <form id="formLogin">
                     @csrf
-                    
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Nombre usuario</label>
+                        <input type="username" class="form-control" id="nombre" placeholder="usuario123" required>
+                    </div>
+
+
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" required>
+                        <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" 
+                        required pattern="[^@]+@[^@]+\.[^@]+"
+                        title="El email debe tener un punto después del @ (ejemplo: usuario@dominio.com)">
                     </div>
 
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" placeholder="********" required>
+                        <input type="password" class="form-control" id="password" placeholder="********" required minlength="8">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="corfirmpassword" class="form-label">Confirma la contraseña</label>
+                        <input type="password" class="form-control" id="confirm_password" placeholder="********" required>
+                        <div class="error" id="confirmError"></div>
                     </div>
 
                     <div class="mb-3 form-check">
@@ -29,14 +42,36 @@
                     <button type="submit" class="btn btn-warning w-100 fw-bold">Entrar</button>
                 </form>
 
-                <p>¿No tienes cuenta?</p>
-                <a href="<?php echo ('/registro')?>">Registrate Aquí</a>
+                <p>¿Ya tienes cuenta?</p>
+                <a href="<?php echo ('ingresar')?>">Inicia sesion aquí</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm_password');
+    
+    password.addEventListener('input', function() {
+        if(this.value.length < 8) {
+            document.getElementById('passwordError').textContent = 
+                '❌ La contraseña debe tener al menos 8 caracteres';
+        } else {
+            document.getElementById('passwordError').textContent = '✅';
+        }
+    });
+
+    confirmPassword.addEventListener('input', function() {
+            if(this.value !== password.value) {
+                document.getElementById('confirmError').textContent = 
+                    '❌ Las contraseñas no coinciden';
+            } else {
+                document.getElementById('confirmError').textContent = 'Las contraseñas coinciden';
+            }
+        });
+    
+
     // 1. Esperamos a que TODO el HTML esté cargado en el navegador
     document.addEventListener('DOMContentLoaded', function() {
         

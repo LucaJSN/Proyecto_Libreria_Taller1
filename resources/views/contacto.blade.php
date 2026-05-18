@@ -32,6 +32,7 @@
                         <hr>
                         <div class="contacto-directo">
                             <h3>Contacto Directo</h3>
+                            <p>Ante cualquier consulta nos puedes contactar directamente por estos medios:</p>
                             <p><i class="fas fa-map-marker-alt"></i> Campus Deodoro Roca - Av. Libertad 5470. Capital Corrientes 3400.</p>
                             <p><i class="fas fa-envelope"></i> contacto@puntoybarra.com</p>
                         </div>
