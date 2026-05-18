@@ -9,28 +9,12 @@
             <p class="text-muted">Explora nuestra selección de articulos    </p>
         </div>
         <div class="col-md-6">
-            <form class="d-flex shadow-sm">
-                <input class="form-control me-2" type="search" placeholder="¿Qué estás buscando?" aria-label="Search">
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <!-- Buscador de Productos -->
+            <form method="GET" class="d-flex shadow-sm">
+                <input class="form-control me-2" type="text" name="buscar" placeholder="¿Qué estás buscando?" value="{{ $busqueda ?? ''}}" aria-label="Search">
+                    <button type="submit" class="btn btn-secondary">
                         Buscar
                     </button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Error</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>La página a la que quiere acceder se encuentra en construcción</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </form>
         </div>
     </div>
@@ -39,11 +23,8 @@
 
     {{-- Listado de Productos --}}
     {{-- Buscamos los productos --}}
-    @php
-        $productos = App\Models\Producto::all();
-    @endphp
     <div class="row g-4">
-        @foreach($productos  as $producto)
+        @forelse($productos as $producto)
             <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
                 <div class="card h-100 border-0 shadow-sm hover-shadow transition" style="border-radius: 12px; overflow: hidden;">
                     <!-- Contenedor de imagen con fondo sutil para resaltar el producto -->
@@ -88,7 +69,11 @@
                     </div>
                 </div>
             </div>
-        @endforeach 
+        @empty
+
+            <p>No hay productos para mostrar</p>
+
+        @endforelse
 </div>
 
 <style>

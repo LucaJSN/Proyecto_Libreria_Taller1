@@ -66,7 +66,8 @@ Route::post('/catalogo', function (Request $request) {
     return redirect('/productos/crear');
 })->name('productos.store');
 
-Route::get('/catalogo', [ProductController::class, 'index']);
+//Modificación para agregar busqueda de productos
+Route::get('/catalogo', [ProductController::class, 'index']) ->name('productos.index');
 
 Route::get('/comercializacion', function() {
     return view('comercializacion', ['title' => 'Libreria | Comercialización']);
@@ -126,8 +127,9 @@ Route::get('/consulta', function () {
 // La ruta que procesa el formulario
 Route::post('/consulta', [ConsultasController::class, 'store']);
 
-Route::get('/catalogo', function(){
-    return view('catalogo', ['title' => 'Punto y Barra | Catalogo']);
-});
+// Esta ruta estaba de sobra
+// Route::get('/catalogo', function(){
+//     return view('catalogo', ['title' => 'Punto y Barra | Catalogo']);
+// });
 
 ?>
