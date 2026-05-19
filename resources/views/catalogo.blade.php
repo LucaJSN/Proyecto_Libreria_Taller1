@@ -74,8 +74,10 @@
             <p>No hay productos para mostrar</p>
 
         @endforelse
+        <div class="mt-5 d-flex justify-content-center">
+            {{ $productos->links() }}
+        </div>
 </div>
-
 <style>
     .hover-shadow:hover {
         transform: translateY(-5px);
