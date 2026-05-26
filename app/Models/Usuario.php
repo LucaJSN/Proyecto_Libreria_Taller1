@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Usuario extends Model
+class Usuario extends Authenticatable
 {
     use HasFactory, SoftDeletes;
 
@@ -21,6 +23,6 @@ class Usuario extends Model
     }
 
     public function rol() {
-        return $this->belongsTo(Rol::class, 'rol_id');
+        return $this->belongsto(Rol::class, 'rol_id');
     }
 }

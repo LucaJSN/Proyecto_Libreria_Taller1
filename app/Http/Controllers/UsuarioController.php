@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use App\Models\Rol;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -16,13 +18,18 @@ class UsuarioController extends Controller
         return view('usuarios.index', compact('usuarios'));
     }
 
+    public function mostrarFormularioRegistro()
+    {
+        return view('usuarios.registro', ['title' => 'Punto y Barra | Registro']);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
         $roles = Rol::all();
-        return view('usuarios.create', compact('roles'));
+        return view('usuarios.registro', compact('roles'));
     }
 
     /**
@@ -30,14 +37,20 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'nombre' => 'required|string|max:100',
             'email' => 'required|email|unique:usuarios',
             'password' => 'required|min:8|confirmed',
-            'rol_id' => 'required|exists:roles,id'
         ]);
-        Usuario::create($request->only(['nombre', 'email', 'password', 'rol_id']));
-        return redirect()->route('usuarios.index')->with('exito', 'usuario registrado');
+
+        $usuario = Usuario::create([
+            'nombre' => $validated['nombre'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'rol_id'=>1,
+        ]);
+        
+        return redirect()->route('index')->with('exito', 'usuario registrado');
     }
 
     /**

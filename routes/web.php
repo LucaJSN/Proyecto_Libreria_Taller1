@@ -4,13 +4,14 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ConsultasController;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('index', ['title' => 'Punto y Barra | Inicio']);
-});
+})->name('index');
 /*
 Route::get('/sobre-mi', function() {
     return view('sobre_mi', ['title' => 'Libreria | Sobre Mí']);
@@ -95,17 +96,14 @@ Route::get('/admin', function () {
 
 //Para vista ingresar
 
-Route::get('/ingresar', function() {
-    return view('ingresar', ['title' => 'Punto y Barra | Login']);
-});
 // Solo pueden entrar los que NO están logueados (guest)
-Route::get('/ingresar', [UserController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/ingresar', [UserController::class, '/'])->name('login')->middleware('guest');
 
 Route::post('/ingresar', [UserController::class, 'store']);
 
-Route::get('/registro',function(){
-    return view('registro', ['title'=> 'Punto y Barra | Registro']);
-});
+
+Route::get('registro', [UsuarioController::class, 'mostrarFormularioRegistro'])->name('registro');
+Route::post('registro', [UsuarioController::class, 'store']); 
 
 //Ruta Cerrar Sesiom
 Route::post('/logout', function (Request $request) {
@@ -118,7 +116,7 @@ Route::post('/logout', function (Request $request) {
 })->name('logout');
 
 Route::get('/ingresar', function() {
-    return view('ingresar', ['title' => 'Punto y Barra | Login']);
+    return view('usuarios.ingresar', ['title' => 'Punto y Barra | Login']);
 });
 
 //Para Consultas
@@ -130,6 +128,8 @@ Route::get('/consulta', function () {
 
 // La ruta que procesa el formulario
 Route::post('/consulta', [ConsultasController::class, 'store']);
+
+Route::resource('usuarios', UsuarioController::class);
 
 // Esta ruta estaba de sobra
 // Route::get('/catalogo', function(){

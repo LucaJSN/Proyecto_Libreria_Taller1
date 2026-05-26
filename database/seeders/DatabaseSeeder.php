@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin Luca',
             'email' => 'admin@test.com',
             'password' => Hash::make('admin123'),
-            'role' => 'admin', // <--- Necesitaremos agregar esta columna luego
+            'rol' => 'admin', // <--- Necesitaremos agregar esta columna luego
         ]);
 
         // Crear un Usuario Común
@@ -29,7 +29,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Juan Perez',
             'email' => 'juan@test.com',
             'password' => Hash::make('user123'),
-            'role' => 'comun',
+            'rol' => 'comun',
         ]);
+
+        $this->call([RolesSeeder::class]);
     }
 }

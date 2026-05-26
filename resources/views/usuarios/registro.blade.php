@@ -8,29 +8,29 @@
                 <h2 class="mb-4 text-center fw-bold">Crear una cuenta nueva</h2>
                 
                 {{-- ID: formLogin para el script --}}
-                <form id="formLogin">
+                <form action="{{ route('registro') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="username" class="form-label">Nombre usuario</label>
-                        <input type="username" class="form-control" id="nombre" placeholder="usuario123" required>
+                        <label for="nombre" class="form-label">Nombre usuario</label>
+                        <input type="text" name='nombre' class="form-control" id="nombre" placeholder="usuario123" required>
                     </div>
 
 
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" 
-                        required pattern="[^@]+@[^@]+\.[^@]+"
+                        required pattern="[^@]+@[^@]+\.[^@]+" name='email'
                         title="El email debe tener un punto después del @ (ejemplo: usuario@dominio.com)">
                     </div>
 
                     <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" placeholder="********" required minlength="8">
+                        <input type="password" name='password'class="form-control" id="password" placeholder="********" required minlength="8">
                     </div>
 
                     <div class="mb-3">
-                        <label for="corfirmpassword" class="form-label">Confirma la contraseña</label>
-                        <input type="password" class="form-control" id="confirm_password" placeholder="********" required>
+                        <label for="password_confirmation" class="form-label">Confirma la contraseña</label>
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="********" required>
                         <div class="error" id="confirmError"></div>
                     </div>
 
@@ -39,7 +39,7 @@
                         <label class="form-check-label" for="remember">Recordarme</label>
                     </div>
 
-                    <button type="submit" class="btn btn-warning w-100 fw-bold">Entrar</button>
+                    <button type="submit" class="btn btn-warning w-100 fw-bold">Registrarse</button>
                 </form>
 
                 <p>¿Ya tienes cuenta?</p>
@@ -71,7 +71,7 @@
             }
         });
     
-
+/*
     // 1. Esperamos a que TODO el HTML esté cargado en el navegador
     document.addEventListener('DOMContentLoaded', function() {
         
@@ -96,6 +96,6 @@
                 }
             });
         }
-    });
+    }); */
 </script>
 @endsection
