@@ -132,4 +132,9 @@ Route::post('/consulta', [ConsultasController::class, 'store']);
 //     return view('catalogo', ['title' => 'Punto y Barra | Catalogo']);
 // });
 
+
+//Para Carrito
+Route::get('/carrito', function () {
+    return view('carrito');
+});
 ?>

@@ -50,5 +50,16 @@
                 </button>
             @endguest
             </div>
+
+            <div class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2 {{ request()->is('carrito') ? 'active' : '' }}" 
+                href="{{ url('/carrito') }}">
+
+                    <i class="bi bi-cart3"></i>
+
+                    <span>Carrito</span>
+
+                </a>
+            </div>
         </div>
 </nav>
