@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carritos', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('id_usuario')->nullable();
-            $table->unsignedBigInteger('id_producto');
-            $table->integer('cantidad');
-            $table->timestamps();
-    
-            // Agregar la clave foránea a productos
-            $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade');
-        });
+    Schema::create('carritos', function (Blueprint $table) {
+        $table->id();
+        $table->unsignedBigInteger('id_usuario')->nullable(); // Para cuando tengas usuarios
+        $table->string('session_id')->nullable();            // <--- ASEGURATE DE QUE ESTA LÍNEA ESTÉ AQUÍ
+        $table->unsignedBigInteger('id_producto');
+        $table->integer('cantidad');
+        $table->timestamps();
+
+        // Claves foráneas
+        $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade');
+    });
     }
 
     /**

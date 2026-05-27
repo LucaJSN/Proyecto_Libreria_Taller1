@@ -8,6 +8,7 @@ class Carrito extends Model
 {
     protected $fillable = [
         'id_usuario',
+        'session_id',
         'id_producto',
         'cantidad', 
     ];
