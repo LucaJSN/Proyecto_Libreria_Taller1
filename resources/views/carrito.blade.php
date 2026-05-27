@@ -13,6 +13,7 @@
             <div class="card border-0 shadow-sm rounded-4 p-4">
 
                 <!-- Producto -->
+                @foreach($itemsCarrito as $items)
                 <div class="row align-items-center mb-4">
 
                     <div class="col-md-2 text-center">
@@ -21,7 +22,7 @@
 
                     <div class="col-md-5">
                         <h5 class="fw-semibold mb-2">
-                            Nombre del producto
+                            {{ $items->producto->nombre }}
                         </h5>
 
                         <button class="btn btn-outline-dark btn-sm">
@@ -37,7 +38,7 @@
                             </button>
 
                             <span class="px-4 fw-semibold">
-                                1
+                                {{ $items->cantidad }}
                             </span>
 
                             <button class="btn btn-light rounded-0 px-3">
@@ -49,11 +50,12 @@
 
                     <div class="col-md-2 text-end">
                         <h5 class="fw-bold mb-0">
-                            $20.000
+                            {{ $items->producto->precio }}
                         </h5>
                     </div>
 
                 </div>
+                @endforeach
 
                 <hr>
 
@@ -88,19 +90,24 @@
                 </div>
 
                 <hr>
-
+                @php
+                    $total = 0;
+                    foreach($itemsCarrito as $item) {
+                        $total += $item->producto->precio * $item->cantidad;
+                    }
+                @endphp
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="fw-bold mb-0">Total</h4>
-                    <h4 class="fw-bold mb-0">$120.000</h4>
+                    <h4 class="fw-bold mb-0">${{$total}}</h4>
                 </div>
 
                 <button class="btn btn-dark w-100 py-3 rounded-3 mb-3">
                     Finalizar compra
                 </button>
 
-                <button class="btn btn-outline-dark w-100 py-3 rounded-3">
+                <a class="btn btn-outline-dark w-100 py-3 rounded-3" href="/catalogo">
                     Seguir comprando
-                </button>
+                </a>
 
             </div>
 
