@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ConsultasController;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CarritoController; 
 
 Route::get('/', function () {
     return view('index', ['title' => 'Punto y Barra | Inicio']);
@@ -136,5 +137,11 @@ Route::post('/consulta', [ConsultasController::class, 'store']);
 //Para Carrito
 Route::get('/carrito', function () {
     return view('carrito');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
+    Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+    Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
 });
 ?>

@@ -62,9 +62,21 @@
                         
                         <!-- Botón de Acción Azul -->
                         <div class="d-grid mt-auto">
-                            <a href="#" class="btn btn-primary py-2 fw-semibold shadow-sm" style="background-color: #0d6efd; border-radius: 8px;">
-                                <i class="bi bi-cart-plus me-2"></i>Agregar al carrito
-                            </a>
+                            @if($producto->stock > 0)
+                                <form action="{{ route('carrito.agregar') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="id_producto" value="{{ $producto->id }}">
+                                    <input type="hidden" name="cantidad" value="1">
+                                    
+                                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold shadow-sm" style="background-color: #0d6efd; border-radius: 8px;">
+                                        <i class="bi bi-cart-plus me-2"></i>Agregar al carrito
+                                    </button>
+                                </form>
+                            @else
+                                <button class="btn btn-secondary py-2 fw-semibold" disabled style="border-radius: 8px;">
+                                    Agotado
+                                </button>
+                            @endif
                         </div>
                     </div>
                 </div>
