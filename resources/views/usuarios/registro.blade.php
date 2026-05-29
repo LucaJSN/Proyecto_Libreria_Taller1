@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+<head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
 @section('content')
 <div class="container py-5" id="ingresar">
     <div class="row justify-content-center">
@@ -34,11 +36,6 @@
                         <div class="error" id="confirmError"></div>
                     </div>
 
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="remember">
-                        <label class="form-check-label" for="remember">Recordarme</label>
-                    </div>
-
                     <button type="submit" class="btn btn-warning w-100 fw-bold">Registrarse</button>
                 </form>
 
@@ -50,27 +47,38 @@
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirm_password');
     
+    // Verificá que los elementos existan antes de seguir
+    if (!password || !confirmPassword) {
+        console.error('No se encontraron los campos de contraseña');
+        return;
+    }
+    
     password.addEventListener('input', function() {
+        const passwordError = document.getElementById('passwordError');
+        if (!passwordError) return;
+        
         if(this.value.length < 8) {
-            document.getElementById('passwordError').textContent = 
-                '❌ La contraseña debe tener al menos 8 caracteres';
+            passwordError.textContent = '❌ La contraseña debe tener al menos 8 caracteres';
         } else {
-            document.getElementById('passwordError').textContent = '✅';
+            passwordError.textContent = '✅';
         }
     });
 
     confirmPassword.addEventListener('input', function() {
-            if(this.value !== password.value) {
-                document.getElementById('confirmError').textContent = 
-                    '❌ Las contraseñas no coinciden';
-            } else {
-                document.getElementById('confirmError').textContent = 'Las contraseñas coinciden';
-            }
-        });
-    
+        const confirmError = document.getElementById('confirmError');
+        if (!confirmError) return;
+        
+        if(this.value !== password.value) {
+            confirmError.textContent = '❌ Las contraseñas no coinciden';
+        } else {
+            confirmError.textContent = '✅ Las contraseñas coinciden';
+        }
+    });
+}); 
 /*
     // 1. Esperamos a que TODO el HTML esté cargado en el navegador
     document.addEventListener('DOMContentLoaded', function() {

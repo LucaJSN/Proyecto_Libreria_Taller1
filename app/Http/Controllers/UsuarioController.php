@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Rol;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,9 +19,18 @@ class UsuarioController extends Controller
         return view('usuarios.index', compact('usuarios'));
     }
 
+    public function mostrar(){
+        $usuarios = Usuario::all();
+        return view('usuarios.mostrar', compact('usuaros'));
+    }
+
     public function mostrarFormularioRegistro()
     {
         return view('usuarios.registro', ['title' => 'Punto y Barra | Registro']);
+    }
+
+    public function mostrarFormularioLogin(){
+        return view('usuarios.ingresar', ['title' => 'Punto y Barra | Ingrsso']);
     }
 
     /**
@@ -30,6 +40,22 @@ class UsuarioController extends Controller
     {
         $roles = Rol::all();
         return view('usuarios.registro', compact('roles'));
+    }
+
+    public function autenticar(Request $request){
+        $credenciales = $request->validate([
+            'email'=> 'required|email',
+            'password'=>'required']);
+        if(Auth::attempt($credenciales)){
+            $request->session()->regenerate();
+            $usuario = Auth::Usuario();
+            session([
+                'id' => $usuario->id,
+                'nombre' => $usuario->nombre,
+                'login_time' => now()
+            ]);
+            return redirect()->route('index')->with('exito', 'usuario registrado');
+        }
     }
 
     /**
@@ -47,9 +73,11 @@ class UsuarioController extends Controller
             'nombre' => $validated['nombre'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
-            'rol_id'=>1,
+            'rol_id'=>2, /*Otorga por defecto el valor 2 (cliente) al usuario recién registrado*/
         ]);
-        
+
+        Auth::login($usuario);
+
         return redirect()->route('index')->with('exito', 'usuario registrado');
     }
 
