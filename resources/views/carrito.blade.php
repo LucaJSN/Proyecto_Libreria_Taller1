@@ -13,6 +13,17 @@
             <div class="card border-0 shadow-sm rounded-4 p-4">
 
                 <!-- Producto -->
+                 @if($itemsCarrito->count() > 0)
+                 <form action="{{ route('carrito.vaciar') }}" method="POST" onsubmit="return confirm('¿Estás seguro de que quieres vaciar el carrito completamente?');">
+                    @csrf
+                    @method('DELETE') {{-- Simula una petición DELETE --}}
+                    
+                    <button type="submit" class="btn btn-outline-dark btn-sm d-flex align-items-center" style="border-radius: 6px;">
+                        <i class="bi bi-trash me-1"></i> Vaciar Carrito
+                    </button>
+                </form>
+                @endif
+
                 @forelse($itemsCarrito as $items)
                 <div class="row align-items-center mb-4">
 
@@ -106,9 +117,14 @@
                     <h4 class="fw-bold mb-0">${{$total}}</h4>
                 </div>
 
-                <button class="btn btn-dark w-100 py-3 rounded-3 mb-3">
-                    Finalizar compra
-                </button>
+                @if($itemsCarrito->count() > 0)
+                    <form action="{{ route('carrito.confirmar') }}" method="POST" class="text-end mt-4">
+                        @csrf
+                        <button type="submit" class="btn btn-dark w-100 py-3 rounded-3 mb-3" style="border-radius: 8px;">
+                            <i class="bi bi-check-circle me-2"></i>Confirmar Compra
+                        </button>
+                    </form>
+                @endif
 
                 <a class="btn btn-outline-dark w-100 py-3 rounded-3" href="/catalogo">
                     Seguir comprando

@@ -12,11 +12,7 @@ use App\Http\Controllers\CarritoController;
 Route::get('/', function () {
     return view('index', ['title' => 'Punto y Barra | Inicio']);
 });
-/*
-Route::get('/sobre-mi', function() {
-    return view('sobre_mi', ['title' => 'Libreria | Sobre Mí']);
-});
-*/
+
 Route::get('/contacto', function(){
     return view('contacto', ['title' => 'Punto y Barra | Contacto']);
 });
@@ -128,19 +124,15 @@ Route::get('/consulta', function () {
 // La ruta que procesa el formulario
 Route::post('/consulta', [ConsultasController::class, 'store']);
 
-// Esta ruta estaba de sobra
-// Route::get('/catalogo', function(){
-//     return view('catalogo', ['title' => 'Punto y Barra | Catalogo']);
-// });
-
 
 //Para Carrito
-Route::get('/carrito', function () {
-    return view('carrito');
-});
 
 // Rutas del carrito públicas (tanto para invitados como para registrados)
 Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
 Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
 Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
+
+Route::post('/carrito/confirmar', [CarritoController::class, 'procesarCompra'])->name('carrito.confirmar');
+
+Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciarCarrito'])->name('carrito.vaciar');
 ?>
