@@ -97,8 +97,8 @@ Route::get('/admin', function () {
 //Para vista ingresar
 
 // Solo pueden entrar los que NO están logueados (guest)
-Route::get('ingreso', [UsuarioController::class, 'mostrarFormularioLogin'])->middleware('guest');
-Route::post('ingreso', [UsuarioController::class, 'autenticar'])->name('ingreso')->middleware('guest');
+Route::get('ingreso', [UsuarioController::class, 'mostrarFormularioLogin'])->middleware('guest')->name('ingreso');
+Route::post('ingreso', [UsuarioController::class, 'autenticar'])->name('ingreso');
 
 Route::get('registro', [UsuarioController::class, 'mostrarFormularioRegistro'])->name('registro');
 Route::post('registro', [UsuarioController::class, 'store']); 

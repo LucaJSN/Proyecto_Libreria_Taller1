@@ -13,6 +13,7 @@ class UsuarioController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         $usuarios = Usuario::with('rol')->get();
@@ -30,7 +31,7 @@ class UsuarioController extends Controller
     }
 
     public function mostrarFormularioLogin(){
-        return view('usuarios.ingresar', ['title' => 'Punto y Barra | Ingrsso']);
+        return view('usuarios.ingresar', ['title' => 'Punto y Barra | Ingreso']);
     }
 
     /**
@@ -42,22 +43,32 @@ class UsuarioController extends Controller
         return view('usuarios.registro', compact('roles'));
     }
 
-    public function autenticar(Request $request){
+    public function autenticar(Request $request)
+    {
         $credenciales = $request->validate([
-            'email'=> 'required|email',
-            'password'=>'required']);
-        if(Auth::attempt($credenciales)){
+        'email' => 'required|email',
+        'password' => 'required'
+        ]);
+    
+        if (Auth::attempt($credenciales, $request->has('remember'))) {
             $request->session()->regenerate();
-            $usuario = Auth::Usuario();
+            $usuario = Auth::user();
+
+            // Sesión adicional (opcional, Auth ya la maneja)
             session([
                 'id' => $usuario->id,
                 'nombre' => $usuario->nombre,
-                'login_time' => now()
+                'rol' => $usuario->rol->nombre ?? 'sin rol',
+                'login_time' => now()->toDateTimeString()
             ]);
-            return redirect()->route('index')->with('exito', 'usuario registrado');
-        }
-    }
 
+            return redirect()->route('index')->with('exito', '¡Bienvenido ' . $usuario->nombre . '!');
+        }
+    
+        return back()->withErrors([
+            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
+        ])->onlyInput('email');
+}
     /**
      * Store a newly created resource in storage.
      */
@@ -102,6 +113,14 @@ class UsuarioController extends Controller
     public function update(Request $request, Usuario $usuario)
     {
         //
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('index')->with('exito', 'Has cerrado sesión correctamente');
     }
 
     /**

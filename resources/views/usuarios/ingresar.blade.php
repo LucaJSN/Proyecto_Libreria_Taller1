@@ -15,13 +15,13 @@
                     @csrf
                     
                     <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" required>
+                        <label for="email" class="form-control">Email</label>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="usuario@ejemplo.com" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="password" placeholder="********" required>
+                        <label for="password" class="form-control">Contraseña</label>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="********" required>
                     </div>
 
                     <div class="mb-3 form-check">
@@ -33,7 +33,7 @@
                 </form>
 
                 <p>¿No tienes cuenta?</p>
-                <a href="<?php echo ('/registro')?>">Registrate Aquí</a>
+                <a href="{{ route('registro') }}">Registrate Aquí</a>
             </div>
         </div>
     </div>

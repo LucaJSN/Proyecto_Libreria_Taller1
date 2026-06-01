@@ -786,3 +786,7 @@ main {
     background-color: white;
     color:#212529
 }
+
+#registrado{
+    justify-content: end;
+}
