@@ -13,10 +13,10 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="img/articulos-escolares.jpg"  alt="...">
+            <img src="img/articulos-principal.jpg"  alt="...">
           </div>
           <div class="carousel-item">
-            <img src="img/articulos-libros.jpg"  alt="...">
+            <img src="img/articulos-escolares.jpg"  alt="...">
           </div>
           <div class="carousel-item">
             <img src="img/articulos-oficina.jpg"  alt="...">
