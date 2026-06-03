@@ -8,6 +8,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ConsultasController;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CarritoController;
 
 Route::get('/', function () {
     return view('index', ['title' => 'Punto y Barra | Inicio']);
@@ -136,4 +137,14 @@ Route::resource('usuarios', UsuarioController::class);
 //     return view('catalogo', ['title' => 'Punto y Barra | Catalogo']);
 // });
 
+
+//Para Carrito
+Route::get('/carrito', function () {
+    return view('carrito');
+});
+
+// Rutas del carrito públicas (tanto para invitados como para registrados)
+Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
+Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
 ?>
