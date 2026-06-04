@@ -5,6 +5,7 @@
         <h1>Comercialización</h1>
 
         <h2 class="mb-5">Métodos de Pago</h2>
+        <p>En punto y barra trabajamos con los siguientes métodos de pago</p>
         <ul class="lista-pagos">
             <li class="metodo-pago tarjeta-pago">
                 <h3>Paga en cuotas</h3>

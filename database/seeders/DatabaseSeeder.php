@@ -16,20 +16,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Crear un Administrador
-        User::create([
-            'name' => 'Admin Luca',
-            'email' => 'admin@test.com',
-            'password' => Hash::make('admin123'),
-            'role' => 'admin', // <--- Necesitaremos agregar esta columna luego
-        ]);
 
-        // Crear un Usuario Común
-        User::create([
-            'name' => 'Juan Perez',
-            'email' => 'juan@test.com',
-            'password' => Hash::make('user123'),
-            'role' => 'comun',
+        $this->call([
+            CategoriaSeeder::class,
+        ]); 
+
+        $this->call([
+            // CategoriaSeeder::class, (si tienes uno, ponlo primero)
+            ProductoSeeder::class,
+        ]); 
+
+        $this->call([
+            RolesSeeder::class,
         ]);
     }
 }

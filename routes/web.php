@@ -4,13 +4,15 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ConsultasController;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CarritoController;
 
 Route::get('/', function () {
     return view('index', ['title' => 'Punto y Barra | Inicio']);
-});
+})->name('index');
 /*
 Route::get('/sobre-mi', function() {
     return view('sobre_mi', ['title' => 'Libreria | Sobre Mí']);
@@ -95,13 +97,14 @@ Route::get('/admin', function () {
 
 //Para vista ingresar
 
-Route::get('/ingresar', function() {
-    return view('ingresar', ['title' => 'Punto y Barra | Login']);
-});
 // Solo pueden entrar los que NO están logueados (guest)
-Route::get('/ingresar', [UserController::class, 'index'])->name('login')->middleware('guest');
+Route::get('ingreso', [UsuarioController::class, 'mostrarFormularioLogin'])->middleware('guest')->name('ingreso');
+Route::post('ingreso', [UsuarioController::class, 'autenticar'])->name('ingreso');
 
-Route::post('/ingresar', [UserController::class, 'store']);
+Route::get('registro', [UsuarioController::class, 'mostrarFormularioRegistro'])->name('registro');
+Route::post('registro', [UsuarioController::class, 'store']); 
+
+Route::get('mostrarusuarios', [UsuarioController::class, 'mostrar'])->middleware(['auth', 'admin']);
 
 //Ruta Cerrar Sesiom
 Route::post('/logout', function (Request $request) {
@@ -114,7 +117,7 @@ Route::post('/logout', function (Request $request) {
 })->name('logout');
 
 Route::get('/ingresar', function() {
-    return view('ingresar', ['title' => 'Punto y Barra | Login']);
+    return view('usuarios.ingresar', ['title' => 'Punto y Barra | Login']);
 });
 
 //Para Consultas
@@ -127,6 +130,8 @@ Route::get('/consulta', function () {
 // La ruta que procesa el formulario
 Route::post('/consulta', [ConsultasController::class, 'store']);
 
+Route::resource('usuarios', UsuarioController::class);
+
 // Esta ruta estaba de sobra
 // Route::get('/catalogo', function(){
 //     return view('catalogo', ['title' => 'Punto y Barra | Catalogo']);
@@ -137,4 +142,9 @@ Route::post('/consulta', [ConsultasController::class, 'store']);
 Route::get('/carrito', function () {
     return view('carrito');
 });
+
+// Rutas del carrito públicas (tanto para invitados como para registrados)
+Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
+Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
+Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
 ?>

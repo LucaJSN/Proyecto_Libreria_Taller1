@@ -13,20 +13,26 @@
             <div class="card border-0 shadow-sm rounded-4 p-4">
 
                 <!-- Producto -->
+                @forelse($itemsCarrito as $items)
                 <div class="row align-items-center mb-4">
 
                     <div class="col-md-2 text-center">
-                        <img src="https://placehold.co/120x120" class="img-fluid rounded" alt="producto">
+                        <img src="{{ asset($items->producto->url_imagen) }}" alt="{{ $items->producto->nombre }}" class="img-fluid" style="max-height: 80px; object-fit: contain;">
                     </div>
 
                     <div class="col-md-5">
                         <h5 class="fw-semibold mb-2">
-                            Nombre del producto
+                            {{ $items->producto->nombre }}
                         </h5>
 
-                        <button class="btn btn-outline-dark btn-sm">
-                            Eliminar
-                        </button>
+                        <form action="{{ route('carrito.eliminar', $items->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que querés eliminar este producto del carrito?');">
+                            @csrf
+                            @method('DELETE') {{-- Simula una petición DELETE --}}
+                            
+                            <button type="submit" class="btn btn-outline-dark btn-sm d-flex align-items-center" style="border-radius: 6px;">
+                                <i class="bi bi-trash me-1"></i> Eliminar
+                            </button>
+                        </form>
                     </div>
 
                     <div class="col-md-3">
@@ -37,7 +43,7 @@
                             </button>
 
                             <span class="px-4 fw-semibold">
-                                1
+                                {{ $items->cantidad }}
                             </span>
 
                             <button class="btn btn-light rounded-0 px-3">
@@ -49,15 +55,16 @@
 
                     <div class="col-md-2 text-end">
                         <h5 class="fw-bold mb-0">
-                            $20.000
+                            {{ $items->producto->precio }}
                         </h5>
                     </div>
 
                 </div>
+                @empty
+                    <p class="text-muted">Tu carrito está vacío.</p>
+                @endforelse
 
                 <hr>
-
-                <!-- Duplicar este bloque por producto -->
 
             </div>
 
@@ -74,12 +81,12 @@
 
                 <div class="d-flex justify-content-between mb-3">
                     <span>Productos</span>
-                    <span>3</span>
+                    <span>{{ $itemsCarrito->sum('cantidad') }}</span>
                 </div>
 
                 <div class="d-flex justify-content-between mb-3">
                     <span>Subtotal</span>
-                    <span>$120.000</span>
+                    <span>${{ $total }}</span>
                 </div>
 
                 <div class="d-flex justify-content-between mb-4">
@@ -88,19 +95,24 @@
                 </div>
 
                 <hr>
-
+                @php
+                    $total = 0;
+                    foreach($itemsCarrito as $item) {
+                        $total += $item->producto->precio * $item->cantidad;
+                    }
+                @endphp
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="fw-bold mb-0">Total</h4>
-                    <h4 class="fw-bold mb-0">$120.000</h4>
+                    <h4 class="fw-bold mb-0">${{$total}}</h4>
                 </div>
 
                 <button class="btn btn-dark w-100 py-3 rounded-3 mb-3">
                     Finalizar compra
                 </button>
 
-                <button class="btn btn-outline-dark w-100 py-3 rounded-3">
+                <a class="btn btn-outline-dark w-100 py-3 rounded-3" href="/catalogo">
                     Seguir comprando
-                </button>
+                </a>
 
             </div>
 

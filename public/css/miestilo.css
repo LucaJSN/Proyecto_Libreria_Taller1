@@ -500,7 +500,7 @@ footer{
 /* 1. Estilos para TODAS las pantallas (Base) */
 /*Contacto*/
 .contacto-container {
-    background-color: rgb(255, 205, 4);
+    /*background-color: rgb(255, 205, 4);*/
     background-color:#41779d;
     padding: 40px; 
     display: flex;
@@ -558,6 +558,10 @@ nav{
     text-decoration-color: white;
 }
 
+#navbarNavDropdown{
+    justify-content: space-between;
+}
+
 #NB{
     padding:0%;
     border: #212529  10px;
@@ -578,6 +582,8 @@ nav{
     border-bottom: 2px solid #ffffff;
     background-color: transparent; /* importante para quitar el fondo oscuro */
 }
+
+
 
 #popup{
     background-color: #2c3e50;
@@ -770,4 +776,24 @@ main {
 #catalogo-header h1{
     color: white;
     font-weight: bold;
+}
+
+.botones-ingreso{
+    justify-items: end;
+}
+
+#boton-ingreso{
+    background-color: white;
+    color:#212529
+}
+
+#registrado{
+    justify-content: end;
+}
+
+.barra_paginacion{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
 }
