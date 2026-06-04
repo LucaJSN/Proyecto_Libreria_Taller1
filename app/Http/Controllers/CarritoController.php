@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Carrito;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CarritoController extends Controller
 {
@@ -34,7 +35,7 @@ class CarritoController extends Controller
             return $item->producto ? $item->producto->precio * $item->cantidad : 0;
         });
 
-        return view('carrito', compact('itemsCarrito', 'total'));
+        return view('carrito', compact('itemsCarrito', 'total'), ['title' => 'Punto y Barra | Carrito']);
     }
 
     /**
@@ -102,5 +103,83 @@ class CarritoController extends Controller
         $item->delete();
 
         return redirect()->route('carrito.index')->with('success', 'Producto eliminado del carrito.');
+    }
+
+    public function vaciarCarrito()
+    {
+        $idUsuario = Auth::id();
+        $sessionId = session()->getId();
+
+        // 1. Buscamos los productos del carrito de ESTA sesión o usuario
+        $itemsCarrito = Carrito::where(function ($query) use ($idUsuario, $sessionId) {
+            if ($idUsuario) {
+                $query->where('id_usuario', $idUsuario);
+            } else {
+                $query->where('session_id', $sessionId);
+            }
+        })->get();
+
+        // 2. Validamos si está vacío para avisarle al usuario de forma amigable
+        if ($itemsCarrito->isEmpty()) {
+            return redirect()->back()->with('error', 'El carrito ya está vacío.');
+        }
+
+        // 3. Borramos todos los registros encontrados
+        $itemsCarrito->each->delete(); 
+
+        // 4. Redirigimos de vuelta a la vista con un mensaje de éxito
+        return redirect()->route('carrito.index')->with('success', 'Se vació el carrito correctamente.');
+    }
+
+    public function procesarCompra()
+    {
+        $idUsuario = Auth::id();
+        $sessionId = session()->getId();
+
+        // 1. Obtener los productos que están en el carrito de este usuario/invitado
+        $itemsCarrito = Carrito::with('producto')
+            ->where(function ($query) use ($idUsuario, $sessionId) {
+                if ($idUsuario) {
+                    $query->where('id_usuario', $idUsuario);
+                } else {
+                    $query->where('session_id', $sessionId);
+                }
+            })->get();
+
+        if ($itemsCarrito->isEmpty()) {
+            console.log("No hay stock suficiente");
+            return redirect()->back()->with('error', 'El carrito está vacío.');
+        }
+
+        // 2. Iniciar la transacción de la Base de Datos de forma segura
+        try {
+            DB::transaction(function () use ($itemsCarrito) {
+                foreach ($itemsCarrito as $item) {
+                    $producto = $item->producto;
+
+                    // Verificar si hay stock suficiente antes de restar
+                    if (!$producto || $producto->stock < $item->cantidad) {
+                        // Lanzamos una excepción para cancelar todo si un producto no tiene stock
+                        throw new \Exception("Stock insuficiente para el producto: " . ($producto ? $producto->nombre : 'Desconocido'));
+                    }
+
+                    // Restar el stock del producto
+                    $producto->stock -= $item->cantidad;
+                    $producto->save(); // Guarda el nuevo stock en la tabla 'productos'
+                }
+
+                // 3. Una vez restado todo el stock con éxito, vaciamos el carrito
+                // Borra todas las filas del carrito que acabamos de procesar
+                $itemsCarrito->each->delete(); 
+            });
+
+            // Si todo sale bien, redirige al catálogo o home con éxito
+            return redirect()->route('productos.index')->with('success', '¡Compra confirmada con éxito! Tu pedido está en camino.');
+
+        } catch (\Exception $e) {
+            // Si algo falló (por ejemplo, se quedaron sin stock en el medio del proceso), 
+            // la transacción hace rollback automático y volvemos atrás con el error.
+            return redirect()->route('carrito.index')->with('error', $e->getMessage());
+        }
     }
 }
