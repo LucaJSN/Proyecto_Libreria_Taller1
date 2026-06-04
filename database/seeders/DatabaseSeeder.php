@@ -25,23 +25,5 @@ class DatabaseSeeder extends Seeder
             // CategoriaSeeder::class, (si tienes uno, ponlo primero)
             ProductoSeeder::class,
         ]); 
-
-        
-
-        // Crear un Administrador
-        User::create([
-            'name' => 'Admin Luca',
-            'email' => 'admin@test.com',
-            'password' => Hash::make('admin123'),
-            'role' => 'admin', // <--- Necesitaremos agregar esta columna luego
-        ]);
-
-        // Crear un Usuario Común
-        User::create([
-            'name' => 'Juan Perez',
-            'email' => 'juan@test.com',
-            'password' => Hash::make('user123'),
-            'role' => 'comun',
-        ]);
     }
 }
