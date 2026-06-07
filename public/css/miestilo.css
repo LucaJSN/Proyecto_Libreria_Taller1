@@ -30,6 +30,10 @@ body { font-size: 16px; }
 
 }
 
+.row{
+    background-color: #41779d;
+}
+
 h1{
     font-weight: bold;
 }
@@ -778,9 +782,16 @@ main {
     font-weight: bold;
 }
 
+.acciones-header{
+    justify-items: flex-end;
+    align-items: center;
+    display: flex;
+}
+/*
 .botones-ingreso{
     justify-items: end;
 }
+*/
 
 #boton-ingreso{
     background-color: white;

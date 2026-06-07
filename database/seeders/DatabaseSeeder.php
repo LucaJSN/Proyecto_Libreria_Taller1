@@ -25,12 +25,9 @@ class DatabaseSeeder extends Seeder
             // CategoriaSeeder::class, (si tienes uno, ponlo primero)
             ProductoSeeder::class,
         ]); 
-<<<<<<< HEAD
 
         $this->call([
             RolesSeeder::class,
         ]);
-=======
->>>>>>> e6c8e6948c8472d6c73bf03d51792733d0cc70a6
     }
 }

@@ -69,7 +69,7 @@ Route::post('/catalogo', function (Request $request) {
 })->name('productos.store');
 
 //Modificación para agregar busqueda de productos
-Route::get('/catalogo', [ProductController::class, 'index']) ->name('productos.index');
+Route::get('/catalogo', [ProductController::class, 'index'])->name('productos.index');
 
 Route::get('/comercializacion', function() {
     return view('comercializacion', ['title' => 'Libreria | Comercialización']);
@@ -85,13 +85,13 @@ Route::get('/admin', function () {
     }
 
     // 2. Verificamos si el rol es 'admin'
-    if (Auth::user()->role !== 'admin') {
+    /*if (Auth::user()->role !== 'admin') {
         // Si no es admin, lo mandamos a la página principal con un error
         return redirect('/')->with('error', 'No tienes permisos de administrador.');
-    }
+    }*/
 
     // 3. Si todo está bien, mostramos la vista que creaste
-    return view('vistaAdmin'); 
+    return view('admin.index'); 
 })->name('admin.index');
 
 
@@ -136,6 +136,8 @@ Route::resource('usuarios', UsuarioController::class);
 // Route::get('/catalogo', function(){
 //     return view('catalogo', ['title' => 'Punto y Barra | Catalogo']);
 // });
+
+/* Para la vista admin */
 
 //Para Carrito
 

@@ -13,13 +13,13 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="img/articulos-principal.jpg"  alt="...">
+            <img src="img/articulos-principal.jpg"  alt="banner artículos principales">
           </div>
           <div class="carousel-item">
-            <img src="img/articulos-escolares.jpg"  alt="...">
+            <img src="img/articulos-escolares.jpg"  alt="banner artículos escolares">
           </div>
           <div class="carousel-item">
-            <img src="img/articulos-oficina.jpg"  alt="...">
+            <img src="img/articulos-oficina.jpg"  alt="banner artículos oficina">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

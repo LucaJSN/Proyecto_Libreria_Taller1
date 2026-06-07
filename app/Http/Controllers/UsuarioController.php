@@ -22,7 +22,7 @@ class UsuarioController extends Controller
 
     public function mostrar(){
         $usuarios = Usuario::all();
-        return view('usuarios.mostrar', compact('usuaros'));
+        return view('usuarios.mostrar', compact('usuarios'));
     }
 
     public function mostrarFormularioRegistro()
@@ -113,6 +113,11 @@ class UsuarioController extends Controller
     public function update(Request $request, Usuario $usuario)
     {
         //
+    }
+
+    public function getUsuarios()
+    {
+        return Usuario::all();
     }
 
     public function logout(Request $request){

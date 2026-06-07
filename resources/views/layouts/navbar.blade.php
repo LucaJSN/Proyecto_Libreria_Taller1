@@ -35,23 +35,23 @@
                     @endif
                     @endauth
                 </ul>
-                
+                <div class="acciones-header">
                 @auth
                 <div class=sesion-activa>
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="img/punto-y-barra-usuarios-registrados.png" width="20px" height="20px">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" id="registrado">
-                            <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
-                            <li><a class="dropdown-item" href="#">Mis Pedidos</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><form action="{{ route('logout') }}" method="POST" class="d-inline">
-                        @csrf
-                        <button type="submit" class="btn btn-danger btn-sm nav-link border-0">
-                            Cerrar Sesión {{ Auth::user()->name }}
-                        </button>
-                            </form>
-                        </ul>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" id="registrado">
+                        <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+                        <li><a class="dropdown-item" href="#">Mis Pedidos</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    @csrf
+                            <button type="submit" class="btn btn-danger btn-sm nav-link border-0">
+                                Cerrar Sesión {{ Auth::user()->name }}
+                            </button>
+                        </form>
+                    </ul>
                     
                 </div>
             @endauth
@@ -66,8 +66,6 @@
                 </div>
                 
             @endguest
-            </div>
-
             <div class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2 {{ request()->is('carrito') ? 'active' : '' }}" 
                 href="{{ url('/carrito') }}">
@@ -78,5 +76,7 @@
 
                 </a>
             </div>
-        </div>
+            </div>
+        </div>    
+    </div>
 </nav>
