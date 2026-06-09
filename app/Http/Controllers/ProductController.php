@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use App\Models\Categoria;
+
 
 
 class ProductController extends Controller
@@ -64,8 +66,11 @@ class ProductController extends Controller
     return redirect()->route('admin.dashboard');
     }
 
+
     public function create()
     {
-        return view('admin.productos.create');
+        $categorias = Categoria::all();
+
+        return view('admin.productos.create', compact('categorias'));
     }
 }
