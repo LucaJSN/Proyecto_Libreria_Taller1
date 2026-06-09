@@ -18,6 +18,7 @@
                 <th>Imagen</th>
                 <th>Nombre</th>
                 <th>Precio</th>
+                <th>stock</th>
                 <th width="180">Acciones</th>
             </tr>
         </thead>
@@ -28,23 +29,25 @@
                     <td>{{ $producto->id }}</td>
 
                     <td>
-                        <img src="{{ asset('storage/' . $producto->imagen) }}"
-                             width="60">
+                        <img src="{{ asset('img/productos' . $producto->imagen) }}"
+                            width="60">
                     </td>
 
                     <td>{{ $producto->nombre }}</td>
 
                     <td>${{ number_format($producto->precio, 2) }}</td>
 
+                    <td>{{ $producto->stock }}</td>
+
                     <td>
                         <a href="{{ route('productos.edit', $producto->id) }}"
-                           class="btn btn-warning btn-sm">
+                            class="btn btn-warning btn-sm">
                             Editar
                         </a>
 
                         <form action="{{ route('productos.destroy', $producto->id) }}"
-                              method="POST"
-                              class="d-inline">
+                            method="POST"
+                            class="d-inline">
 
                             @csrf
                             @method('DELETE')
