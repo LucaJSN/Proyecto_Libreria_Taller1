@@ -30,7 +30,11 @@
                     <!-- Solo se verá el link (btn admin) a esta vista para los administradores -->
                     @if(auth()->user()->role === 'admin')
                     <li class="nav-item">
-                        <a class="nav-link" href="/vistaAdmin">Administración</a>
+                        <a class="nav-link"
+                        href="{{ route('admin.dashboard') }}">
+                            <i class="bi bi-speedometer2"></i>
+                            Administración
+                        </a>
                     </li>
                     @endif
                     @endauth

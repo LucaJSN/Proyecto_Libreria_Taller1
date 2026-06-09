@@ -27,13 +27,11 @@ class ProductController extends Controller
 
 
     //para exportar productos a vistaAdmin
-    public function AdminIndex(){
-        return view('vistaAdmin', ['productos'=>$this->getProductos()]);
-    }
-
-    private function getProductos()
-    {
-        return Producto::all(); 
-    }
+    public function AdminIndex()
+{
+    return view('admin.dashboard', [
+        'productos' => Producto::all()
+    ]);
+}
 
 }
