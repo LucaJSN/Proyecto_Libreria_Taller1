@@ -73,4 +73,16 @@ class ProductController extends Controller
 
         return view('admin.productos.create', compact('categorias'));
     }
+
+    public function destroy($id)
+    {
+        $producto = Producto::findOrFail($id);
+
+        if($producto->url_imagen && file_exists(public_path($producto->url_imagen))){
+            unlink(public_path($producto->url_imagen));
+        }
+        $producto->delete();
+
+        return redirect()->route('admin.dashboard')->   with('exito', 'Producto eliminado exitosamente');
+    }
 }
