@@ -28,10 +28,44 @@ class ProductController extends Controller
 
     //para exportar productos a vistaAdmin
     public function AdminIndex()
-{
-    return view('admin.dashboard', [
-        'productos' => Producto::all()
-    ]);
-}
+    {
+        return view('admin.dashboard', [
+            'productos' => Producto::all()
+        ]);
+    }
 
+    public function store(Request $request)
+    {
+    $datos = $request->only([
+    'nombre',
+    'descripcion',
+    'precio',
+    'stock',
+    'activo',
+    'id_categoria'
+    ]);
+
+    if ($request->hasFile('imagen')) {
+
+        $file = $request->file('imagen');
+
+        $nombreImagen = time().'_'.$file->getClientOriginalName();
+
+        $file->move(
+            public_path('img/productos'),
+            $nombreImagen
+        );
+
+        $datos['url_imagen'] = 'img/productos/'.$nombreImagen;
+    }
+
+    Producto::create($datos);
+
+    return redirect()->route('admin.dashboard');
+    }
+
+    public function create()
+    {
+        return view('admin.productos.create');
+    }
 }

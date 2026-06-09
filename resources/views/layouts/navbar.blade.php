@@ -26,6 +26,9 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('terminos') ? 'active' : '' }}" href="{{ url('/terminos') }}">Terminos y Usos</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('admin') ? 'active' : '' }}" href="{{ url('/admin') }}">vista Admin</a>
+                    </li>
                     @auth
                     <!-- Solo se verá el link (btn admin) a esta vista para los administradores -->
                     @if(auth()->user()->role === 'admin')

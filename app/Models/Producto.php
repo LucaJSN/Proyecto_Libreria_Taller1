@@ -13,7 +13,7 @@ class producto extends Model
         'id_categoria',
         'precio',
         'stock',
-        'ulr_imagen',
+        'url_imagen',
         'activo'
     ];
 
