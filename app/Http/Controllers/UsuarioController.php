@@ -117,7 +117,7 @@ class UsuarioController extends Controller
 
     public function getUsuarios()
     {
-        return Usuario::all();
+        return view('admin.dashboard', ['usuarios' => Usuario::all()]);
     }
 
     public function logout(Request $request){
