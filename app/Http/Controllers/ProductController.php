@@ -78,11 +78,8 @@ class ProductController extends Controller
     {
         $producto = Producto::findOrFail($id);
 
-        if($producto->url_imagen && file_exists(public_path($producto->url_imagen))){
-            unlink(public_path($producto->url_imagen));
-        }
         $producto->delete();
 
-        return redirect()->route('admin.dashboard')->   with('exito', 'Producto eliminado exitosamente');
+        return redirect()->route('admin.dashboard');
     }
 }
