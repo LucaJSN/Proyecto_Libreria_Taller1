@@ -74,9 +74,55 @@ class ProductController extends Controller
         return view('admin.productos.create', compact('categorias'));
     }
 
-    public function destroy($id)
+    public function edit(Request $request)
     {
-        $producto = Producto::findOrFail($id);
+        $producto = Producto::findOrFail($request->id);
+        return view('admin.editarProductos', compact('producto'));
+    }
+
+    public function update(Request $request)
+{
+    $id = $request->id;
+    $producto = Producto::findOrFail($id);
+    
+    // Validar datos
+    $request->validate([
+        'nombre' => 'required|string|max:255',
+        'precio' => 'required|numeric|min:0',
+        'stock' => 'required|integer|min:0',
+        'descripcion' => 'nullable|string',
+        'imagen' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+    ]);
+    
+    // Actualizar campos manualmente
+    $producto->nombre = $request->nombre;
+    $producto->precio = $request->precio;
+    $producto->stock = $request->stock;
+    $producto->descripcion = $request->descripcion;
+    
+    // Manejar nueva imagen si se subió
+    if ($request->hasFile('imagen')) {
+        $file = $request->file('imagen');
+        $nombreImagen = time().'_'.$file->getClientOriginalName();
+        $file->move(public_path('img/productos'), $nombreImagen);
+        
+        // Eliminar imagen anterior si existe
+        if ($producto->url_imagen && file_exists(public_path($producto->url_imagen))) {
+            unlink(public_path($producto->url_imagen));
+        }
+        
+        $producto->url_imagen = 'img/productos/'.$nombreImagen;
+    }
+    
+    $producto->save();
+    
+    return redirect()->route('productos.index')
+        ->with('exito', 'Producto actualizado correctamente');
+}
+    
+    public function destroy(Request $request)
+    {
+        $producto = Producto::findOrFail($request->id);
 
         $producto->delete();
 

@@ -35,4 +35,6 @@ class producto extends Model
     {
         return $this->hasMany(Carrito::class, 'id_producto');
     }
+
+    
 }

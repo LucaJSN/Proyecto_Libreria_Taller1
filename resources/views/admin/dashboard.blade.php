@@ -140,7 +140,7 @@
 ```
 
 </div>
-{{-- //Modal de gestion de productos --}}
+//Modal de gestion de productos
 <div class="modal fade"
      id="productosModal"
      tabindex="-1">

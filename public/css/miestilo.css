@@ -30,10 +30,6 @@ body { font-size: 16px; }
 
 }
 
-.row{
-    background-color: #41779d;
-}
-
 h1{
     font-weight: bold;
 }
@@ -149,6 +145,7 @@ p{
 }
 
 footer{
+    background-color:#212529;
     color: white;
     padding: 10 px;
     margin: 10 px;

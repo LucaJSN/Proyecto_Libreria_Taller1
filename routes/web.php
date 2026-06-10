@@ -34,7 +34,7 @@ Route::get('/consulta', function(){
 
 
 Route::get('/comercializacion', function() {
-    return view('comercializacion', ['title' => 'Libreria | Comercialización']);
+    return view('comercializacion', ['title' => 'Punto y Barra | Comercialización']);
 });
 
 
@@ -42,10 +42,12 @@ Route::get('/comercializacion', function() {
 Route::get('/catalogo', [ProductController::class, 'index'])->name('productos.index');
 
 Route::get('/comercializacion', function() {
-    return view('comercializacion', ['title' => 'Libreria | Comercialización']);
+    return view('comercializacion', ['title' => 'Punto y Barra | Comercialización']);
 });
 
-
+Route::get('terminos', function(){
+    return view('terminos', ['title' => 'Punto y Barra | Terminos']);
+});
 
 //Para vista ingresar
 
