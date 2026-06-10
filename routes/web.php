@@ -80,9 +80,8 @@ Route::get('/ingresar', function() {
 Route::get('/consulta', function () {
     return view('consulta', ['title' => 'Punto y Barra | Consulta']);
 });
-
 // La ruta que procesa el formulario
-Route::post('/consulta', [ConsultasController::class, 'store']);
+Route::post('/consulta', [ConsultasController::class, 'store'])->name('/consulta');
 
 Route::resource('usuarios', UsuarioController::class);
 

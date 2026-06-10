@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Consultas;
 
 class ConsultasController extends Controller
 {
@@ -10,20 +11,25 @@ class ConsultasController extends Controller
     {
         // 1. Validamos los datos
         $request->validate([
-            'name'    => 'required|string|max:100',
-            'email'   => 'required|email',
-            'phone'   => 'required',
-            'message' => 'required|min:5',
+            'nombres'    => 'required|string|max:100',
+            'mail'   => 'required|email',
+            'telefono'   => 'required',
+            'mensaje' => 'required|min:20',
         ]);
 
         // 2. Aquí podrías guardar en la DB si tuvieras un modelo Consulta:
-        // Consulta::create($request->all());
+        Consultas::create($request->all());
 
         // 3. Redireccionamos con los datos para tu modal/alerta
         return back()->with([
             'success' => true,
-            'nombre'  => $request->name,
-            'email'   => $request->email
+            'nombres'  => $request->name,
+            'mail'   => $request->email
         ]);
+    }
+
+    public function getConsultas()
+    {
+        return view('admin.dashboard', []);
     }
 }
