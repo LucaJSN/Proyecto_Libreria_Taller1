@@ -104,9 +104,6 @@ Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciarCarrito'])->n
 Route::get('/admin', [ProductController::class, 'AdminIndex'])
     ->name('admin.dashboard');
 
-Route::get('/admin', [ProductController::class, 'AdminIndex'])
-->name('admin.dashboard');
-
 Route::get('/admin/productos/create', [ProductController::class, 'create'])
     ->name('productos.create');
 
