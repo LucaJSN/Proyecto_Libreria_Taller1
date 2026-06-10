@@ -33,6 +33,46 @@ class ProductController extends Controller
         'productos' => Producto::all()
     ]);
 }
+
+    public function store(Request $request)
+    {
+    $datos = $request->only([
+    'nombre',
+    'descripcion',
+    'precio',
+    'stock',
+    'activo',
+    'id_categoria'
+    ]);
+
+    if ($request->hasFile('imagen')) {
+
+        $file = $request->file('imagen');
+
+        $nombreImagen = time().'_'.$file->getClientOriginalName();
+
+        $file->move(
+            public_path('img/productos'),
+            $nombreImagen
+        );
+
+        $datos['url_imagen'] = 'img/productos/'.$nombreImagen;
+    }
+
+    Producto::create($datos);
+
+    return redirect()->route('admin.dashboard');
+    }
+
+
+    public function create()
+    {
+        $categorias = Categoria::all();
+
+        return view('admin.productos.create', compact('categorias'));
+    }
+
+
     public function edit($id)
     {
         $producto = Producto::findOrFail($id);
