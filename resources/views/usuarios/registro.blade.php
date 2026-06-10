@@ -9,8 +9,18 @@
             <div class="card shadow p-4 border-0" style="border-radius: 15px;">
                 <h2 class="mb-4 text-center fw-bold">Crear una cuenta nueva</h2>
                 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 {{-- ID: formLogin para el script --}}
-                <form action="{{ route('registro') }}" method="POST">
+                <form id="registroForm" action="{{ route('registro') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre usuario</label>
@@ -40,13 +50,31 @@
                 </form>
 
                 <p>¿Ya tienes cuenta?</p>
-                <a href="<?php echo ('ingresar')?>">Inicia sesion aquí</a>
+                <a href="{{route ('ingreso')}}">Inicia sesion aquí</a>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+document.getElementById('registroForm').addEventListener('submit', function(e) {
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('password_confirmation').value;
+    const errorDiv = document.getElementById('confirmError');
+    
+    // Limpiar error anterior
+    errorDiv.textContent = '';
+    
+    if (password !== confirmPassword) {
+        e.preventDefault(); // Prevenir el envío del formulario
+        errorDiv.textContent = '⚠️ Las contraseñas no coinciden';
+        errorDiv.style.color = 'red';
+        return false;
+    }
+    
+    return true;
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirm_password');
@@ -79,31 +107,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 }); 
-/*
-    // 1. Esperamos a que TODO el HTML esté cargado en el navegador
-    document.addEventListener('DOMContentLoaded', function() {
-        
-        const form = document.getElementById('formLogin');
-        
-        if (form) {
-            form.addEventListener('submit', function(event) {
-                // 2. Frenamos el envío para evitar errores de Symfony
-                event.preventDefault();
-
-                // 3. Buscamos el elemento en el DOM
-                const modalElement = document.getElementById('pagina_construccion');
-
-                if (modalElement) {
-                    // 4. Si lo encuentra, lo inicializamos y mostramos
-                    const miModal = new bootstrap.Modal(modalElement);
-                    miModal.show();
-                } else {
-                    // Si entra aquí es que el @ include fallo o el ID es distinto
-                    console.error("DEBUG: El ID 'pagina_construccion' no existe en esta página.");
-                    alert("El modal no se cargó. Revisa el código fuente con Ctrl+U.");
-                }
-            });
-        }
-    }); */
 </script>
 @endsection

@@ -145,6 +145,7 @@ p{
 }
 
 footer{
+    background-color:#212529;
     color: white;
     padding: 10 px;
     margin: 10 px;
@@ -778,9 +779,16 @@ main {
     font-weight: bold;
 }
 
+.acciones-header{
+    justify-items: flex-end;
+    align-items: center;
+    display: flex;
+}
+/*
 .botones-ingreso{
     justify-items: end;
 }
+*/
 
 #boton-ingreso{
     background-color: white;
