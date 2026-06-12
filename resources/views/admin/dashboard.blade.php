@@ -15,15 +15,72 @@
             <div class="card-header">
                 <h4 class="mb-0">Gestión de Ventas</h4>
             </div>
+            @foreach($ventas as $venta)
 
-            <div class="card-body">
-                <p><strong>Ventas hoy:</strong> --</p>
-                <p><strong>Pendientes:</strong> --</p>
+                <div class="card mb-3">
 
-                <a href="#" class="btn btn-primary">
-                    Ver más
-                </a>
-            </div>
+                    <div class="card-header">
+                        Venta #{{ $venta->id }}
+                    </div>
+
+                    <div class="card-body">
+
+                        <p>
+                            <strong>Usuario:</strong>
+                            {{ $venta->usuario->nombre }}
+                        </p>
+
+                        <p>
+                            <strong>Total:</strong>
+                            ${{ number_format($venta->total, 2) }}
+                        </p>
+
+                        <table class="table">
+
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+
+                                @foreach($venta->detalles as $detalle)
+
+                                    <tr>
+
+                                        <td>
+                                            {{ $detalle->producto->nombre }}
+                                        </td>
+
+                                        <td>
+                                            {{ $detalle->cantidad }}
+                                        </td>
+
+                                        <td>
+                                            ${{ number_format($detalle->precio_unitario, 2) }}
+                                        </td>
+
+                                        <td>
+                                            ${{ number_format($detalle->subtotal, 2) }}
+                                        </td>
+
+                                    </tr>
+
+                                @endforeach
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            @endforeach
         </div>
     </div>
 
