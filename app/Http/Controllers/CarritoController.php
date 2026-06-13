@@ -161,7 +161,7 @@ class CarritoController extends Controller
                 $total += $item->cantidad * $item->producto->precio;
             }
 
-            DB::transaction(function () use ($itemsCarrito) {
+            DB::transaction(function () use ($itemsCarrito, $idUsuario, $total) {
                 $venta = Venta::create([
                     'id_usuario' => $idUsuario,
                     'fecha_venta' => now(),
@@ -202,4 +202,6 @@ class CarritoController extends Controller
             dd($e->getMessage());
         }
     }
+
+    
 }

@@ -15,6 +15,16 @@ class Venta extends Model
         'estado'
     ];
 
+    public function index()
+    {
+        $ventas = Venta::with([
+            'usuario',
+            'detalles.producto'
+        ])->get();
+
+        return view('admin.ventas', compact('ventas'));
+    }
+
     public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'id_usuario');

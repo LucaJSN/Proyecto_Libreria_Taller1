@@ -100,8 +100,7 @@ Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciarCarrito'])->n
 
 
 //Para Vista Admin
-
-Route::get('/admin', [ProductController::class, 'AdminIndex'])
+Route::get('/admin', [AdminController::class, 'index'])
     ->name('admin.dashboard');
 
 Route::get('/admin/productos/create', [ProductController::class, 'create'])
