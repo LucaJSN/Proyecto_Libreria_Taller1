@@ -90,6 +90,62 @@
             {{ $productos->links() }}
         </div>
 </div>
+
+@if(session('venta_realizada'))
+
+<div class="modal fade"
+     id="compraExitosaModal"
+     tabindex="-1">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+        <div class="modal-content text-dark">
+
+        <div class="modal-header">
+            <h3 class="modal-title">
+                ¡Gracias por su compra!
+            </h3>
+        </div>
+
+        <div class="modal-body">
+            Su pedido fue registrado correctamente.
+        </div>
+
+            <div class="modal-footer">
+
+                <a href="{{ route('factura.pdf', session('venta_realizada')) }}"
+                   class="btn btn-primary">
+                    Descargar Factura
+                </a>
+
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Seguir Comprando
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    let modal = new bootstrap.Modal(
+        document.getElementById('compraExitosaModal')
+    );
+
+    modal.show();
+});
+</script>
+
+@endif
 <style>
     .hover-shadow:hover {
         transform: translateY(-5px);
