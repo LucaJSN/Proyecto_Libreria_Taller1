@@ -16,16 +16,16 @@
                         <p>Seguinos para enterarte de todas las novedades.</p>
                         
                         <div class="redes-lista">
-                            <a href="https://www.instagram.com" class="red-link instagram">
+                            <a href="https://www.instagram.com" target="_blank" class="red-link instagram">
                             <img src="img/instagram.png">
                             </a>
-                            <a href="https://www.facebook.com/" class="red-link facebook">
+                            <a href="https://www.facebook.com/" target="_blank" class="red-link facebook">
                             <img src="img/facebook.png">
                             </a>
-                            <a href="https://api.whatsapp.com" class="red-link whatsapp">
+                            <a href="https://api.whatsapp.com" target="_blank" class="red-link whatsapp">
                             <img src="img/whatsapp.png">
                             </a>
-                            <a href="https://www.tiktok.com/es-419/ class="red-link tiktok">
+                            <a href="https://www.tiktok.com/es-419/" target="_blank" class="red-link tiktok">
                             <img src="img/tik-tok.png">
                             </a>
                         </div>
