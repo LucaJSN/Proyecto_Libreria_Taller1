@@ -90,7 +90,7 @@
     <div class="col-md-6">
     <div class="card shadow-sm h-100">
             <div class="card-header">
-                <h4 class="mb-0">Top 5 Productos Más Vendidos</h4>
+                <h4 class="mb-0">🔥Top 5 Productos Más Vendidos🔥</h4>
             </div>
 
             <div class="card-body">
@@ -108,7 +108,7 @@
                                 {{ $item->producto->nombre }}
 
                                 <span class="badge bg-primary rounded-pill">
-                                    {{ $item->total_vendido }}
+                                    {{ $item->total_vendido }}🔥
                                 </span>
 
                             </li>
