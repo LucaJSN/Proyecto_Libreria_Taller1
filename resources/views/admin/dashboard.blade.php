@@ -83,6 +83,42 @@
             @endforeach
         </div>
     </div>
+    <div class="col-md-6">
+    <div class="card shadow-sm h-100">
+            <div class="card-header">
+                <h4 class="mb-0">Top 5 Productos Más Vendidos</h4>
+            </div>
+
+            <div class="card-body">
+
+                @if($masVendidos->isEmpty())
+                    <p>No hay ventas registradas.</p>
+                @else
+
+                    <ol class="list-group list-group-numbered">
+
+                        @foreach($masVendidos as $item)
+
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                                {{ $item->producto->nombre }}
+
+                                <span class="badge bg-primary rounded-pill">
+                                    {{ $item->total_vendido }}
+                                </span>
+
+                            </li>
+
+                        @endforeach
+
+                    </ol>
+
+                @endif
+
+            </div>
+        </div>
+    </div>
+
 
     <!-- Productos -->
     <div class="col-md-6">
@@ -197,7 +233,7 @@
 ```
 
 </div>
-//Modal de gestion de productos
+<!-- Modal de gestion de productos -->
 <div class="modal fade"
      id="productosModal"
      tabindex="-1">
