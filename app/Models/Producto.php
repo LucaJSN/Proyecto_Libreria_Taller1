@@ -3,10 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class producto extends Model
 {
     // Esto le da permiso a Laravel para llenar estos campos automáticamente
+    use SoftDeletes;
+
     protected $fillable = [
         'nombre', 
         'descripcion', 

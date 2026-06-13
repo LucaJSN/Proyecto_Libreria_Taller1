@@ -7,6 +7,8 @@ use App\Models\Carrito;
 use App\Models\Producto;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Venta;
+use App\Models\DetalleVenta;
 
 class CarritoController extends Controller
 {
@@ -153,7 +155,19 @@ class CarritoController extends Controller
 
         // 2. Iniciar la transacción de la Base de Datos de forma segura
         try {
+            $total = 0;
+
+            foreach ($itemsCarrito as $item) {
+                $total += $item->cantidad * $item->producto->precio;
+            }
+
             DB::transaction(function () use ($itemsCarrito) {
+                $venta = Venta::create([
+                    'id_usuario' => $idUsuario,
+                    'fecha_venta' => now(),
+                    'total' => $total,
+                    'estado' => 'Pendiente'
+                ]);
                 foreach ($itemsCarrito as $item) {
                     $producto = $item->producto;
 
@@ -162,6 +176,14 @@ class CarritoController extends Controller
                         // Lanzamos una excepción para cancelar todo si un producto no tiene stock
                         throw new \Exception("Stock insuficiente para el producto: " . ($producto ? $producto->nombre : 'Desconocido'));
                     }
+
+                    DetalleVenta::create([
+                        'id_venta' => $venta->id,
+                        'id_producto' => $producto->id,
+                        'cantidad' => $item->cantidad,
+                        'precio_unitario' => $producto->precio,
+                        'subtotal' => $item->cantidad * $producto->precio
+                    ]);
 
                     // Restar el stock del producto
                     $producto->stock -= $item->cantidad;
@@ -177,9 +199,7 @@ class CarritoController extends Controller
             return redirect()->route('productos.index')->with('success', '¡Compra confirmada con éxito! Tu pedido está en camino.');
 
         } catch (\Exception $e) {
-            // Si algo falló (por ejemplo, se quedaron sin stock en el medio del proceso), 
-            // la transacción hace rollback automático y volvemos atrás con el error.
-            return redirect()->route('carrito.index')->with('error', $e->getMessage());
+            dd($e->getMessage());
         }
     }
 }
