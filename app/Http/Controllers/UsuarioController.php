@@ -16,7 +16,7 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        $usuarios = Usuario::with('rol')->get();
+        $usuarios = usuario::orderBy('created_at', 'desc')->paginate(10);
         return view('usuarios.index', compact('usuarios'));
     }
 
@@ -104,9 +104,24 @@ class UsuarioController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        //
+        
     }
 
+    public function adminEdit(Request $request){
+        $usuario = Usuario::findOrFail($request->id);
+        return view('admin.usuarios.editarUsuario', compact('usuario'));
+    }
+
+
+    public function adminUpdate(Request $request){
+        $id = $request->id;
+        $usuario = Usuario::findOrFail($id);
+
+        $usuario->rol_id = $request->rol_id;
+
+        return redirect()->route('admin.dashboard')
+            ->with('exito','Rol de usuario actualizado correctamente');
+    }
     /**
      * Update the specified resource in storage.
      */

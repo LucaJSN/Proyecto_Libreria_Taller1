@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card shadow-sm p-4">
-                <h2 class="mb-4 text-center">Contacto</h2>
+                <h2 class="mb-4 text-center">Consultas</h2>
                 
                 <form action="{{ route('/consulta') }}" method="POST" id="formConsulta">
                     @csrf

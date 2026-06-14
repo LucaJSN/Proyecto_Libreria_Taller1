@@ -30,6 +30,22 @@ class ConsultasController extends Controller
 
     public function getConsultas()
     {
-        return view('admin.dashboard', []);
+        return view('admin.dashboard', [
+            'consultas' => Consultas::all()
+        ]);
+    }
+
+    public function verConsulta(Request $request){
+        $consulta = $request->id;
+        return view('admin.consultas.ver', compact($consulta));
+    }
+
+    public function destroy(Request $request)
+    {
+        $consulta = Consultas::findOrFail($request->id);
+
+        $consulta->delete();
+
+        return redirect()->route('admin.dashboard');
     }
 }
