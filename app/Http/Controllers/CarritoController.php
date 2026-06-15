@@ -161,7 +161,7 @@ class CarritoController extends Controller
                 $total += $item->cantidad * $item->producto->precio;
             }
 
-            DB::transaction(function () use ($itemsCarrito, $idUsuario, $total) {
+            DB::transaction(function () use ($itemsCarrito, $idUsuario, $total, &$venta) {
                 $venta = Venta::create([
                     'id_usuario' => $idUsuario,
                     'fecha_venta' => now(),
@@ -196,7 +196,7 @@ class CarritoController extends Controller
             });
 
             // Si todo sale bien, redirige al catálogo o home con éxito
-            return redirect()->route('productos.index')->with('success', '¡Compra confirmada con éxito! Tu pedido está en camino.');
+            return redirect()->route('productos.index') ->with('venta_realizada', $venta->id);
 
         } catch (\Exception $e) {
             dd($e->getMessage());

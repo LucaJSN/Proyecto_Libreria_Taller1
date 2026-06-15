@@ -10,6 +10,7 @@ use App\Models\Producto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VentaController;
 
 Route::get('/', function () {
     return view('index', ['title' => 'Punto y Barra | Inicio']);
@@ -117,3 +118,9 @@ Route::put('/admin/productos/{id}', [ProductController::class, 'update'])
 
 Route::delete('/admin/productos/{id}', [ProductController::class, 'destroy'])
     ->name('productos.destroy');
+
+//para facturas
+Route::get(
+    '/factura/{id}',
+    [VentaController::class, 'factura']
+)->name('factura.pdf');
