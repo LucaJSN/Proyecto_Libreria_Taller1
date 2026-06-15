@@ -102,7 +102,13 @@
     
   </div>
 </section>
-<section>
+<section class="seccion-productos py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold mb-0 fs-3">Otros productos</h2>
+            <a href="{{ route('productos.index') }}" class="btn btn-dark btn-sm">
+                Ver más
+            </a>
+        </div>
   <div class="row g-4 producto-grid">
       @forelse($productosSinOrden as $producto)
           <div class="col-md-6 col-lg-3">
