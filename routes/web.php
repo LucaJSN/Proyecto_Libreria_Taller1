@@ -149,3 +149,8 @@ Route::get('/admin/consultas/{id}', [ConsultasController::class, 'verConsulta'])
 
 Route::delete('/admin/consultas/{id}', [ConsultasController::class, 'destroy'])
     ->name('consultas.destroy');
+
+//Para ver compras del usuario
+Route::get('/mis-compras', [VentaController::class, 'misCompras'])
+    ->middleware('auth')
+    ->name('ventas.mis-compras');

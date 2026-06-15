@@ -530,6 +530,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Usuario</th>
+                            <th>correo</th>
                             <th>Fecha</th>
                             <th>Total</th>
                             <th>Acciones</th>
@@ -546,6 +547,10 @@
 
                                 <td>
                                     {{ $venta->usuario->nombre }}
+                                </td>
+
+                                <td>
+                                    {{ $venta->usuario->email }}
                                 </td>
 
                                 <td>
