@@ -69,6 +69,10 @@ p{
     color: black;
 }
 
+.btn-vermas{
+    justify-self: flex-end;
+}
+
 .carousel-inner{
     max-height: 700px;
     width: fit-content;
@@ -91,8 +95,24 @@ p{
     gap: 10px; 
     
     /* Centra los productos en la pantalla */
-    justify-content: center; 
+    justify-content: center, space-around; 
+    align-items: center;
+    padding: 25px;
+}
+
+.producto-grid{
+    display: grid;
+    justify-content: center;
     padding: 20px;
+    padding-top: 5px;
+}
+
+.seccion-productos{
+    padding:20px;
+}
+
+.seccion-cuotas{
+    padding: 1rem;
 }
 
 .seccion_productos img{
@@ -232,7 +252,6 @@ footer{
 /* Estilos de los títulos */
 .seccion-comercializacion h1 {
     color: white;
-    font-size: 1rem;
     margin-bottom: 10px;
 }
 .seccion-comercializacion h2 {
@@ -612,7 +631,7 @@ nav{
 
 /* 2. Estilos del título para celular */
 #comercializacion h1 {
-    font-size: 1rem !important; 
+    font-size: 2.5rem !important; 
     width: 100% !important;
     white-space: normal !important;
     word-wrap: break-word !important;
@@ -804,4 +823,14 @@ main {
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
+}
+
+#edicion{
+    color:white;
+}
+
+#btn-edicion{
+    border-radius: 5%;
+    background-color: #41779d;
+    color: white
 }
