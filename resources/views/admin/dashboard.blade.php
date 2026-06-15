@@ -76,17 +76,21 @@
                         </table>
 
                     </div>
-
                 </div>
-
             @endforeach
+            <a href="#"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#ventasModal" id="btn-edicion">
+                Ver más
+            </a>
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="card shadow-sm h-100">
             <div class="card-header">
-                <h4 class="mb-0">Top 5 Productos Más Vendidos</h4>
+                <h4 class="mb-0">🔥Top 5 Productos Más Vendidos🔥</h4>
             </div>
 
             <div class="card-body">
@@ -104,7 +108,7 @@
                                 {{ $item->producto->nombre }}
 
                                 <span class="badge bg-primary rounded-pill">
-                                    {{ $item->total_vendido }}
+                                    {{ $item->total_vendido }}🔥
                                 </span>
 
                             </li>
@@ -240,8 +244,8 @@
             </div>
 
             <div class="card-body">
-                <p><strong>Total usuarios:</strong> --</p>
-                <p><strong>Administradores:</strong> --</p>
+                <p><strong>Total usuarios:</strong> {{ $todosUsuarios->count() }} </p>
+                <p><strong>Administradores:</strong> {{ $todosUsuarios->where('rol_id', 1)->count() }} </p>
                 <!-- Tabla de usuarios -->
             <div class="table-responsive">
                 <table class="table table-bordered table-hover">
@@ -326,9 +330,11 @@
                     </tbody>
                 </table>
             </div>
-                <a href="#" class="btn btn-primary" id="btn-edicion">
-                    Ver más
-                </a>
+                @if($todosUsuarios->count() > 3)
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuariosModal" id="btn-edicion">
+                    Ver más ({{ $todosUsuarios->count() - 10 }} restantes)
+                </button>
+            @endif
             </div>
         </div>
     </div>
@@ -376,7 +382,7 @@
                     </thead>
 
                     <tbody>
-                        @foreach($productos as $producto)
+                        @foreach($usuarios as $usuario)
                             <tr>
                                 <td>{{ $producto->id }}</td>
                                 <td>{{ $producto->nombre }}</td>
@@ -416,5 +422,239 @@
     </div>
 
 </div>
+
+<div class="modal fade"
+    id="usuariosModal"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-xl">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Gestión de Usuarios
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach($usuarios as $usuario)
+                            <tr>
+                                <td>{{ $usuario->id }}</td>
+                                <td>{{ $usuario->nombre }}</td>
+                                <td>{{ $usuario->email }}</td>
+                                <td>
+                                    @if($usuario->rol_id == 1)
+                                    <span class="badge bg-danger">Administrador</span>
+                                @else
+                                    <span class="badge bg-success">Usuario</span>
+                                @endif
+                                </td>
+
+                                <td>
+                                    <a href="{{ route('usuarios.edit', $usuario->id) }}"
+                                        class="btn btn-warning btn-sm">
+                                        Editar
+                                    </a>
+
+                                    <form action="{{ route('usuarios.destroy', $usuario->id) }}"
+                                        method="POST"
+                                        class="d-inline">
+
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit"
+                                                class="btn btn-danger btn-sm">
+                                            Eliminar
+                                        </button>
+
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade"
+    id="ventasModal"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-xl">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Gestión de Ventas
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <table class="table table-striped">
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach($ventas as $venta)
+
+                            <tr>
+
+                                <td>{{ $venta->id }}</td>
+
+                                <td>
+                                    {{ $venta->usuario->nombre }}
+                                </td>
+
+                                <td>
+                                    {{ $venta->fecha_venta }}
+                                </td>
+
+                                <td>
+                                    ${{ number_format($venta->total, 2) }}
+                                </td>
+
+                                <td>
+
+                                    <button
+                                        class="btn btn-info btn-sm"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#detalleVenta{{ $venta->id }}">
+                                        Ver detalle
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+@foreach($ventas as $venta)
+
+<div class="modal fade"
+    id="detalleVenta{{ $venta->id }}"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-lg">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Venta #{{ $venta->id }}
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <table class="table">
+
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach($venta->detalles as $detalle)
+
+                            <tr>
+
+                                <td>
+                                    {{ $detalle->producto->nombre }}
+                                </td>
+
+                                <td>
+                                    {{ $detalle->cantidad }}
+                                </td>
+
+                                <td>
+                                    ${{ number_format($detalle->precio_unitario, 2) }}
+                                </td>
+
+                                <td>
+                                    ${{ number_format($detalle->subtotal, 2) }}
+                                </td>
+
+                            </tr>
+
+                        @endforeach
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+@endforeach
+
+
 
 @endsection

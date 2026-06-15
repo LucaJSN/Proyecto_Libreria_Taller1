@@ -100,7 +100,8 @@ Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciarCarrito'])->n
 
 //Para Vista Admin
 Route::get('/admin', [AdminController::class, 'index'])
-    ->name('admin.dashboard');
+    ->name('admin.dashboard')
+    ->middleware('admin');
 
 Route::get('/admin/productos/create', [ProductController::class, 'create'])
     ->name('productos.create');
@@ -119,7 +120,6 @@ Route::delete('/admin/productos/{id}', [ProductController::class, 'destroy'])
 
 Route::get('/admin/usuarios/{id}', [UsuarioController::class, 'adminEdit'])
 ->name('usuarios.editar');
-
 Route::put('/admin/usuarios/{id}', [UsuarioController::class, 'adminUpdate'])
 ->name('usuarios.update');
 Route::delete('/admin/usuarios/{id}', [UsuarioController::class, 'destroy'])
@@ -127,3 +127,6 @@ Route::delete('/admin/usuarios/{id}', [UsuarioController::class, 'destroy'])
 
 Route::get('/admin/consultas/{id}', [ConsultasController::class, 'verConsulta'])
 ->name('consultas.ver');
+
+Route::delete('/admin/consultas/{id}', [ConsultasController::class, 'destroy'])
+->name('consultas.destroy');

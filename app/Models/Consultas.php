@@ -8,6 +8,9 @@ use Illuminate\Notifications\Notifiable;
 class Consultas extends Model
 {
     protected $table= 'consultas';
-    protected $fillable = ['nombres', 'mail', 'telefono', 'mensaje'];
+    protected $fillable = ['nombres', 'mail', 'telefono', 'mensaje','leida'];
+    protected $casts = [
+        'leida' => 'boolean',  // Para que lo trate como booleano
+    ];
 
 }

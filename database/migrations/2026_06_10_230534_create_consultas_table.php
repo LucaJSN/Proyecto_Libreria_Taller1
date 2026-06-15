@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('mail');
             $table->string('telefono');
             $table->text('mensaje');
+            $table->boolean('leida')->default(false);
         });
     }
 
