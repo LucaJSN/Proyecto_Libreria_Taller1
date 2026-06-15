@@ -48,7 +48,7 @@
                             <span class="text-white ms-1">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+                            <li><a class="dropdown-item" href="{{ route('miPerfil') }}">Mi Perfil</a></li>
                             <li><a class="dropdown-item" href="#">Mis Compras</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>

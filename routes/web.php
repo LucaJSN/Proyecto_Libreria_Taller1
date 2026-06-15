@@ -11,9 +11,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\AdminController;
 
-Route::get('/', function () {
-    return view('index', ['title' => 'Punto y Barra | Inicio']);
-})->name('index');
+Route::get('/', [ProductController::class, 'inicio'])->name('index');
+
 /*
 Route::get('/sobre-mi', function() {
     return view('sobre_mi', ['title' => 'Libreria | Sobre Mí']);
@@ -124,6 +123,15 @@ Route::put('/admin/usuarios/{id}', [UsuarioController::class, 'adminUpdate'])
 ->name('usuarios.update');
 Route::delete('/admin/usuarios/{id}', [UsuarioController::class, 'destroy'])
 ->name('usuarios.destroy');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/miPerfil', function () {
+        return view('usuarios.miPerfil', ['title' => 'Punto y Barra | Mi Perfil']);
+    })->name('miPerfil');
+    
+    Route::put('/perfil/cambiar-password', [UsuarioController::class, 'cambiarPassword'])
+        ->name('perfil.cambiar-password');
+});
 
 Route::get('/admin/consultas/{id}', [ConsultasController::class, 'verConsulta'])
 ->name('consultas.ver');

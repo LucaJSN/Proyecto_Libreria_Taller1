@@ -69,6 +69,10 @@ p{
     color: black;
 }
 
+.btn-vermas{
+    justify-self: flex-end;
+}
+
 .carousel-inner{
     max-height: 700px;
     width: fit-content;
@@ -91,8 +95,24 @@ p{
     gap: 10px; 
     
     /* Centra los productos en la pantalla */
-    justify-content: center; 
+    justify-content: center, space-around; 
+    align-items: center;
+    padding: 25px;
+}
+
+.producto-grid{
+    display: grid;
+    justify-content: center;
     padding: 20px;
+    padding-top: 5px;
+}
+
+.seccion-productos{
+    padding:20px;
+}
+
+.seccion-cuotas{
+    padding: 1rem;
 }
 
 .seccion_productos img{

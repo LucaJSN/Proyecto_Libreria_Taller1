@@ -80,6 +80,7 @@ class UsuarioController extends Controller
             'password' => 'required|min:8|confirmed',
         ]);
 
+
         $usuario = Usuario::create([
             'nombre' => $validated['nombre'],
             'email' => $validated['email'],
@@ -102,10 +103,34 @@ class UsuarioController extends Controller
     */    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Usuario $usuario)
-    {
-        
+    public function cambiarPassword(Request $request)
+{
+    $request->validate([
+        'password_actual' => 'required',
+        'password' => 'required|min:8|confirmed',
+    ]);
+
+    $usuario = Auth::user();
+
+    if (!Hash::check($request->password_actual, $usuario->password)) {
+        return back()->with('error', 'Contraseña actual incorrecta.');
     }
+
+    // Evitar que guarde la misma contraseña
+    if (Hash::check($request->password, $usuario->password)) {
+        return back()->with('error', 'La nueva contraseña debe ser diferente a la actual.');
+    }
+
+    // Actualizar contraseña
+    $usuario->update([
+        'password' => Hash::make($request->password)
+    ]);
+
+    // Opcional: cerrar sesión en otros dispositivos
+    // Auth::logoutOtherDevices($request->password);
+
+    return back()->with('exito', 'Contraseña cambiada exitosamente.');
+}
 
     public function adminEdit(Request $request){
         $usuario = Usuario::findOrFail($request->id);
