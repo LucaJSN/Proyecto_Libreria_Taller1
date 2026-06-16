@@ -40,21 +40,21 @@
             </a>
         </div>
 {{-- Grid de productos --}}
-  <div class="row g-4 producto-grid">
-      @forelse($productos as $producto)
-          <div class="col-md-6 col-lg-3">
-              <div class="card h-100 shadow-sm border-0">
-                  {{-- Imagen --}}
-                  @if($producto->url_imagen)
-                      <img src="{{ asset($producto->url_imagen) }}" 
-                          class="card-img-top" 
-                          alt="{{ $producto->nombre }}"
-                          style="height: 200px; object-fit: cover;">
-                  @else
-                      <img src="{{ asset('img/producto-default.jpg') }}" 
-                          class="card-img-top" 
-                          alt="Sin imagen"
-                          style="height: 200px; object-fit: cover;">
+<div class="row g-4 producto-grid">
+    @forelse($productos as $producto)
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 shadow-sm border-0">
+                {{-- Imagen --}}
+                @if($producto->url_imagen)
+                    <img src="{{ asset($producto->url_imagen) }}" 
+                        class="card-img-top" 
+                        alt="{{ $producto->nombre }}"
+                        style="height: 200px; object-fit: cover;">
+                @else
+                    <img src="{{ asset('img/producto-default.jpg') }}" 
+                        class="card-img-top" 
+                        alt="Sin imagen"
+                        style="height: 200px; object-fit: cover;">
                   @endif
                   
                   {{-- Cuerpo de la tarjeta --}}
@@ -68,39 +68,37 @@
                       {{-- Stock --}}
                       <p class="small mb-3">
                           <strong>Stock:</strong> 
-                          <span class="{{ $producto->stock > 0 ? 'text-dark' : 'text-secondary' }}">
-                              {{ $producto->stock }}
-                          </span>
-                      </p>
-                      
-                      {{-- Botón según stock --}}
-                      @if($producto->stock > 0)
-                          <form action="{{ route('carrito.agregar', $producto->id) }}" method="POST" class="mt-auto">
-                              @csrf
-                              <button type="submit" class="btn btn-warning w-100">
-                                  Agregar al carrito
-                              </button>
-                          </form>
-                      @else
-                          <button class="btn btn-secondary w-100" disabled>
-                              Agotado
-                          </button>
-                      @endif
-                  </div>
-              </div>
-          </div>
-      @empty
-          <div class="col-12">
-              <p class="text-center text-muted">No hay productos disponibles.</p>
-          </div>
-      @endforelse
-  </div>
+                        <span class="{{ $producto->stock > 0 ? 'text-dark' : 'text-secondary' }}">
+                            {{ $producto->stock }}
+                        </span>
+                    </p>
+                    {{-- Botón según stock --}}
+                    @if($producto->stock > 0)
+                        <form action="{{ route('carrito.agregar', $producto->id) }}" method="POST" class="mt-auto">
+                            @csrf
+                            <button type="submit" class="btn btn-warning w-100">
+                                Agregar al carrito
+                            </button>
+                        </form>
+                    @else
+                        <button class="btn btn-secondary w-100" disabled>
+                            Agotado
+                        </button>
+                    @endif
+                </div>
+            </div>
+        </div>
+        @empty
+        <div class="col-12">
+            <p class="text-center text-muted">No hay productos disponibles.</p>
+        </div>
+        @endforelse
+    </div>
 </section>
 <section class="seccion-cuotas py-5">
-  <div class="conteiner">
-    <img src="img/cuotas.jpg">
-    
-  </div>
+    <div class="conteiner">
+        <img src="img/cuotas.jpg">
+    </div>
 </section>
 <section class="seccion-productos py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
