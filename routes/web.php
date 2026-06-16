@@ -177,3 +177,10 @@ Route::delete('/admin/consultas/{id}', [ConsultasController::class, 'destroy'])
 Route::get('/mis-compras', [VentaController::class, 'misCompras'])
     ->middleware('auth')
     ->name('ventas.mis-compras');
+
+//Para aumentar cantidad en carrito
+Route::post('/carrito/aumentar/{id}', [CarritoController::class, 'aumentarCantidad'])
+    ->name('carrito.aumentar');
+
+Route::post('/carrito/disminuir/{id}', [CarritoController::class, 'disminuirCantidad'])
+    ->name('carrito.disminuir');

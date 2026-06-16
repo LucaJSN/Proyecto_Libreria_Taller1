@@ -205,5 +205,31 @@ class CarritoController extends Controller
         }
     }
 
+    public function aumentarCantidad($id)
+    {
+        $item = Carrito::findOrFail($id);
+
+        if ($item->cantidad < $item->producto->stock) {
+            $item->cantidad++;
+            $item->save();
+        }
+
+        return back();
+    }
+
+    public function disminuirCantidad($id)
+    {
+        $item = Carrito::findOrFail($id);
+
+        if ($item->cantidad > 1) {
+            $item->cantidad--;
+            $item->save();
+        } else {
+            $item->delete();
+        }
+
+        return back();
+    }
+
     
 }
