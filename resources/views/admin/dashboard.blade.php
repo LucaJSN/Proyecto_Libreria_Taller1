@@ -33,10 +33,10 @@
                             <strong>Total:</strong>
                             ${{ number_format($venta->total, 2) }}
                         </p>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
 
-                        <table class="table">
-
-                            <thead>
+                            <thead class="table-dark">
                                 <tr>
                                     <th>Producto</th>
                                     <th>Cantidad</th>
@@ -77,6 +77,7 @@
 
                     </div>
                 </div>
+            </div>
             @endforeach
             <a href="#"
             class="btn btn-primary"
@@ -165,7 +166,7 @@
                                             class="btn btn-warning btn-sm">
                                             Editar
                                         </a>
-
+                                        
                                         <form action="{{ route('productos.destroy', $producto->id) }}"
                                             method="POST"
                                             class="d-inline">
@@ -283,12 +284,13 @@
                                             1|  class="btn btn-warning">
                                             Editar
                                         </a>
-                                        <button type="button" 
+                                        
+                                        <!-- <button type="button" 
                                                 class="btn btn-danger"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#deleteModal{{ $usuario->id }}">
                                             Eliminar
-                                        </button>
+                                        </button> -->
                                     </div>
                                     
                                     <!-- Modal de confirmación de eliminación -->
