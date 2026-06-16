@@ -382,7 +382,7 @@
                     </thead>
 
                     <tbody>
-                        @foreach($usuarios as $usuario)
+                        @foreach($productos as $producto)
                             <tr>
                                 <td>{{ $producto->id }}</td>
                                 <td>{{ $producto->nombre }}</td>
@@ -530,6 +530,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Usuario</th>
+                            <th>correo</th>
                             <th>Fecha</th>
                             <th>Total</th>
                             <th>Acciones</th>
@@ -549,6 +550,10 @@
                                 </td>
 
                                 <td>
+                                    {{ $venta->usuario->email }}
+                                </td>
+
+                                <td>
                                     {{ $venta->fecha_venta }}
                                 </td>
 
@@ -561,7 +566,7 @@
                                     <button
                                         class="btn btn-info btn-sm"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#detalleVenta{{ $venta->id }}">
+                                        data-bs-target="#detalleVenta{{ $venta->id }}" id="btn-edicion">
                                         Ver detalle
                                     </button>
 
@@ -654,7 +659,6 @@
 
 </div>
 @endforeach
-
-
+</div>
 
 @endsection

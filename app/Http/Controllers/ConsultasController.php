@@ -17,7 +17,7 @@ class ConsultasController extends Controller
             'nombres'    => 'required|string|max:100',
             'mail'       => 'required|email',
             'telefono'   => 'required|string',
-            'mensaje'    => 'required|min:20',
+            'mensaje'    => 'required|min:10',
         ]);
 
         // 2. Guardamos en la base de datos

@@ -40,31 +40,31 @@
                 </div>
 
                 <div class="col-lg-4" id="consulta">
-                    <form action="/consulta" method="POST" id="formConsulta">
-                        @csrf
-                        
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Nombre y Apellido</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Tu nombre" required>
-                        </div>
+                    <form action="{{ route('consulta') }}" method="POST" id="formConsulta">
+                    @csrf
+                    
+                    <div class="mb-3">
+                        <label for="nombres" class="form-label">Nombre y Apellido</label>
+                        <input type="text" name="nombres" class="form-control" id="name" placeholder="Tu nombre" required>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo Electrónico</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="nombre@ejemplo.com" required>
-                        </div>
+                    <div class="mb-3">
+                        <label for="mail" class="form-label">Correo Electrónico</label>
+                        <input type="email" name="mail" class="form-control" id="email" placeholder="nombre@ejemplo.com" required>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Teléfono</label>
-                            <input type="number" name="phone" class="form-control" id="phone" placeholder="+54..." required>
-                        </div>
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="number" name="telefono" class="form-control" id="phone" placeholder="+54..." required>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Mensaje</label>
-                            <textarea name="message" class="form-control" id="message" rows="3" required></textarea>
-                        </div>
+                    <div class="mb-3">
+                        <label for="mensaje" class="form-label">Mensaje</label>
+                        <textarea name="mensaje" class="form-control" id="message" rows="3" required></textarea>
+                    </div>
 
-                        <button type="submit" class="btn btn-dark w-100 mb-3">Enviar Mensaje</button>
-                    </form>
+                    <button type="submit" class="btn btn-dark w-100 mb-3">Enviar Mensaje</button>
+                </form>
                 </div>
             </div>
         {{-- </div> --}}

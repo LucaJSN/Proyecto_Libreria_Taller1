@@ -107,6 +107,8 @@ class CarritoController extends Controller
         return redirect()->route('carrito.index')->with('success', 'Producto eliminado del carrito.');
     }
 
+    
+
     public function vaciarCarrito()
     {
         $idUsuario = Auth::id();

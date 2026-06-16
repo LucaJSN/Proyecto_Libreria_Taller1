@@ -49,7 +49,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="{{ route('miPerfil') }}">Mi Perfil</a></li>
-                            <li><a class="dropdown-item" href="#">Mis Compras</a></li>
+                            <li><a class="dropdown-item" href="{{ route('ventas.mis-compras') }}">Mis Compras</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">

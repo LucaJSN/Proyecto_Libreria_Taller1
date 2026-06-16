@@ -74,12 +74,14 @@
                     </p>
                     {{-- Botón según stock --}}
                     @if($producto->stock > 0)
-                        <form action="{{ route('carrito.agregar', $producto->id) }}" method="POST" class="mt-auto">
+                        <form action="{{ route('carrito.agregar') }}" method="POST" class="mt-auto">
                             @csrf
-                            <button type="submit" class="btn btn-warning w-100">
+                                <input type="hidden" name="id_producto" value="{{ $producto->id }}">
+                                <input type="hidden" name="cantidad" value="1">
+                                <button type="submit" class="btn btn-warning w-100">
                                 Agregar al carrito
                             </button>
-                        </form>
+                          </form>
                     @else
                         <button class="btn btn-secondary w-100" disabled>
                             Agotado
@@ -142,10 +144,12 @@
                       
                       {{-- Botón según stock --}}
                       @if($producto->stock > 0)
-                          <form action="{{ route('carrito.agregar', $producto->id) }}" method="POST" class="mt-auto">
+                          <form action="{{ route('carrito.agregar') }}" method="POST" class="mt-auto">
                               @csrf
-                              <button type="submit" class="btn btn-warning w-100">
-                                  Agregar al carrito
+                                <input type="hidden" name="id_producto" value="{{ $producto->id }}">
+                                <input type="hidden" name="cantidad" value="1">
+                                <button type="submit" class="btn btn-warning w-100">
+                                Agregar al carrito
                               </button>
                           </form>
                       @else

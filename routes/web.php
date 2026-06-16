@@ -82,6 +82,7 @@ Route::get('/consulta', function () {
 });
 // La ruta que procesa el formulario
 Route::post('/consulta', [ConsultasController::class, 'store'])->name('/consulta');
+Route::post('/contacto', [ConsultasController::class, 'store'])->name('consulta');
 
 Route::resource('usuarios', UsuarioController::class);
 
@@ -92,11 +93,11 @@ Route::resource('usuarios', UsuarioController::class);
 Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
 Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
 Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
-
 Route::post('/carrito/confirmar', [CarritoController::class, 'procesarCompra'])->name('carrito.confirmar');
 
-Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciarCarrito'])->name('carrito.vaciar');
 
+Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciarCarrito'])->name('carrito.vaciar');
+Route::post('index', [CarritoController::class, 'agregar'])->name('carrito.agregar');
 
 //Para Vista Admin
 Route::get('/admin', [AdminController::class, 'index'])
@@ -145,3 +146,34 @@ Route::get(
     '/factura/{id}',
     [VentaController::class, 'factura']
 )->name('factura.pdf');
+
+Route::get('/admin/usuarios/{id}', [UsuarioController::class, 'adminEdit'])
+    ->name('usuarios.editar');
+
+Route::put('/admin/usuarios/{id}', [UsuarioController::class, 'adminUpdate'])
+    ->name('usuarios.update');
+
+Route::delete('/admin/usuarios/{id}', [UsuarioController::class, 'destroy'])
+    ->name('usuarios.destroy');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/miPerfil', function () {
+        return view('usuarios.miPerfil', ['title' => 'Punto y Barra | Mi Perfil']);
+    })->name('miPerfil');
+
+    Route::put('/perfil/cambiar-password', [UsuarioController::class, 'cambiarPassword'])
+        ->name('perfil.cambiar-password');
+});
+
+
+
+Route::get('/admin/consultas/{id}', [ConsultasController::class, 'verConsulta'])
+    ->name('consultas.ver');
+
+Route::delete('/admin/consultas/{id}', [ConsultasController::class, 'destroy'])
+    ->name('consultas.destroy');
+
+//Para ver compras del usuario
+Route::get('/mis-compras', [VentaController::class, 'misCompras'])
+    ->middleware('auth')
+    ->name('ventas.mis-compras');

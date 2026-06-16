@@ -33,7 +33,7 @@ class ProductController extends Controller
         ->take(4) //Paginación de 4 productos por página, con preservación de la query string para mantener la búsqueda al cambiar de página
         ->get();
         $productosSinOrden = Producto::inRandomOrder()  // ORDEN ALEATORIO
-            ->take(8)                                   // 8 productos
+            ->take(4)                                   // 4
             ->get();
         return view('index', compact('productos', 'productosSinOrden'), ['title' => 'Punto y Barra | Inicio']);
     }
