@@ -12,9 +12,8 @@ use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VentaController;
 
-Route::get('/', function () {
-    return view('index', ['title' => 'Punto y Barra | Inicio']);
-})->name('index');
+Route::get('/', [ProductController::class, 'inicio'])->name('index');
+
 /*
 Route::get('/sobre-mi', function() {
     return view('sobre_mi', ['title' => 'Libreria | Sobre Mí']);
@@ -81,9 +80,9 @@ Route::get('/ingresar', function() {
 Route::get('/consulta', function () {
     return view('consulta', ['title' => 'Punto y Barra | Consulta']);
 });
-
 // La ruta que procesa el formulario
-Route::post('/consulta', [ConsultasController::class, 'store']);
+Route::post('/consulta', [ConsultasController::class, 'store'])->name('/consulta');
+Route::post('/contacto', [ConsultasController::class, 'store'])->name('consulta');
 
 Route::resource('usuarios', UsuarioController::class);
 
@@ -94,15 +93,16 @@ Route::resource('usuarios', UsuarioController::class);
 Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
 Route::post('/carrito/agregar', [CarritoController::class, 'agregar'])->name('carrito.agregar');
 Route::delete('/carrito/eliminar/{id}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
-
 Route::post('/carrito/confirmar', [CarritoController::class, 'procesarCompra'])->name('carrito.confirmar');
 
-Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciarCarrito'])->name('carrito.vaciar');
 
+Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciarCarrito'])->name('carrito.vaciar');
+Route::post('index', [CarritoController::class, 'agregar'])->name('carrito.agregar');
 
 //Para Vista Admin
 Route::get('/admin', [AdminController::class, 'index'])
-    ->name('admin.dashboard');
+    ->name('admin.dashboard')
+    ->middleware('admin');
 
 Route::get('/admin/productos/create', [ProductController::class, 'create'])
     ->name('productos.create');
@@ -119,8 +119,68 @@ Route::put('/admin/productos/{id}', [ProductController::class, 'update'])
 Route::delete('/admin/productos/{id}', [ProductController::class, 'destroy'])
     ->name('productos.destroy');
 
+Route::get('/admin/usuarios/{id}', [UsuarioController::class, 'adminEdit'])
+->name('usuarios.editar');
+Route::put('/admin/usuarios/{id}', [UsuarioController::class, 'adminUpdate'])
+->name('usuarios.update');
+Route::delete('/admin/usuarios/{id}', [UsuarioController::class, 'destroy'])
+->name('usuarios.destroy');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/miPerfil', function () {
+        return view('usuarios.miPerfil', ['title' => 'Punto y Barra | Mi Perfil']);
+    })->name('miPerfil');
+    
+    Route::put('/perfil/cambiar-password', [UsuarioController::class, 'cambiarPassword'])
+        ->name('perfil.cambiar-password');
+});
+
+Route::get('/admin/consultas/{id}', [ConsultasController::class, 'verConsulta'])
+->name('consultas.ver');
+
+Route::delete('/admin/consultas/{id}', [ConsultasController::class, 'destroy'])
+->name('consultas.destroy');
+
 //para facturas
 Route::get(
     '/factura/{id}',
     [VentaController::class, 'factura']
 )->name('factura.pdf');
+
+Route::get('/admin/usuarios/{id}', [UsuarioController::class, 'adminEdit'])
+    ->name('usuarios.editar');
+
+Route::put('/admin/usuarios/{id}', [UsuarioController::class, 'adminUpdate'])
+    ->name('usuarios.update');
+
+Route::delete('/admin/usuarios/{id}', [UsuarioController::class, 'destroy'])
+    ->name('usuarios.destroy');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/miPerfil', function () {
+        return view('usuarios.miPerfil', ['title' => 'Punto y Barra | Mi Perfil']);
+    })->name('miPerfil');
+
+    Route::put('/perfil/cambiar-password', [UsuarioController::class, 'cambiarPassword'])
+        ->name('perfil.cambiar-password');
+});
+
+
+
+Route::get('/admin/consultas/{id}', [ConsultasController::class, 'verConsulta'])
+    ->name('consultas.ver');
+
+Route::delete('/admin/consultas/{id}', [ConsultasController::class, 'destroy'])
+    ->name('consultas.destroy');
+
+//Para ver compras del usuario
+Route::get('/mis-compras', [VentaController::class, 'misCompras'])
+    ->middleware('auth')
+    ->name('ventas.mis-compras');
+
+//Para aumentar cantidad en carrito
+Route::post('/carrito/aumentar/{id}', [CarritoController::class, 'aumentarCantidad'])
+    ->name('carrito.aumentar');
+
+Route::post('/carrito/disminuir/{id}', [CarritoController::class, 'disminuirCantidad'])
+    ->name('carrito.disminuir');

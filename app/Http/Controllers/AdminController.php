@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
+use App\Models\Consultas;
+use App\Models\Usuario;
 use App\Models\Producto;
 use App\Models\Venta;
 use App\Models\DetalleVenta;
@@ -11,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
+    
     public function index()
     {
         $productos = Producto::all();
@@ -19,6 +24,13 @@ class AdminController extends Controller
             'usuario',
             'detalles.producto'
         ])->get();
+
+        $usuarios = Usuario::latest()->paginate(10);
+        
+        // Para el modal: todos (o podrías paginarlos también)
+        $todosUsuarios = Usuario::all();
+
+        $consultas = Consultas::all();
 
         $masVendidos = DetalleVenta::select(
             'id_producto',
@@ -33,7 +45,10 @@ class AdminController extends Controller
         return view('admin.dashboard', compact(
             'productos',
             'ventas',
-            'masVendidos'
+            'masVendidos',
+            'usuarios',
+            'todosUsuarios',
+            'consultas'
         ));
     }
 }

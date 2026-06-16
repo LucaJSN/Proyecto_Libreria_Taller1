@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User; // 1. IMPORTANTE: Sin esto, Laravel no encuentra la tabla
+use App\Models\Usuario;
 use Illuminate\Support\Facades\Hash; // 2. IMPORTANTE: Para encriptar la clave
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -14,6 +15,10 @@ class UserController extends Controller
     public function index() {
         // Aquí es donde le dices: "Cuando alguien entre a /ingresar, dale la vista"
         return view('ingresar'); 
+    }
+
+    public function adminIndex(){
+        return view('admin.dashboard', ['usuarios' => Usuario::all()]);
     }
 
     public function store(Request $request)
@@ -39,4 +44,5 @@ class UserController extends Controller
     
     return back()->withErrors(['email' => 'Correo o clave incorrectos']);
     }
+
 }

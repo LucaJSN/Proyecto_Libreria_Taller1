@@ -18,13 +18,24 @@ class ProductController extends Controller
             $query->where('nombre', 'like', '%' . $busqueda . '%');
 
         })
-        ->paginate(3)->withQueryString(); //Paginación de 3 productos por página, con preservación de la query string para mantener la búsqueda al cambiar de página
+        ->paginate(4)->withQueryString(); //Paginación de 4 productos por página, con preservación de la query string para mantener la búsqueda al cambiar de página
 
         return view('catalogo',[
             'productos'=>$productos,
             'busqueda' =>$busqueda,
             'title' => 'Punto y Barra | Catalogo'
         ]);
+    }
+
+    public function inicio(){
+        
+        $productos = producto::orderBy('created_at','desc')
+        ->take(4) //Paginación de 4 productos por página, con preservación de la query string para mantener la búsqueda al cambiar de página
+        ->get();
+        $productosSinOrden = Producto::inRandomOrder()  // ORDEN ALEATORIO
+            ->take(4)                                   // 4
+            ->get();
+        return view('index', compact('productos', 'productosSinOrden'), ['title' => 'Punto y Barra | Inicio']);
     }
 
 
@@ -77,7 +88,7 @@ class ProductController extends Controller
     public function edit(Request $request)
     {
         $producto = Producto::findOrFail($request->id);
-        return view('admin.editarProductos', compact('producto'));
+        return view('admin.productos.editarProductos', compact('producto'));
     }
 
     public function update(Request $request)

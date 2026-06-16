@@ -4,8 +4,7 @@
 
 <div class="container">
 
-```
-<h2 class="mb-4">Panel de Administración</h2>
+<h1 class="mb-4">Panel de Administración</h1>
 
 <div class="row g-4">
 
@@ -82,13 +81,14 @@
             <a href="#"
             class="btn btn-primary"
             data-bs-toggle="modal"
-            data-bs-target="#ventasModal">
+            data-bs-target="#ventasModal" id="btn-edicion">
                 Ver más
             </a>
         </div>
     </div>
+
     <div class="col-md-6">
-    <div class="card shadow-sm h-100">
+        <div class="card shadow-sm h-100">
             <div class="card-header">
                 <h4 class="mb-0">🔥Top 5 Productos Más Vendidos🔥</h4>
             </div>
@@ -131,7 +131,7 @@
                 <h4 class="mb-0">Productos</h4>
 
                 <a href="{{ route('productos.create') }}"
-                   class="btn btn-success btn-sm">
+                    class="btn btn-success btn-sm">
                     Agregar
                 </a>
             </div>
@@ -145,7 +145,7 @@
 
                 <div class="table-responsive">
                     <table class="table table-sm">
-                        <thead>
+                        <thead class="table-dark">
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
@@ -162,7 +162,7 @@
 
                                     <td>
                                         <a href="{{ route('productos.edit', $producto->id) }}"
-                                           class="btn btn-warning btn-sm">
+                                            class="btn btn-warning btn-sm">
                                             Editar
                                         </a>
 
@@ -189,7 +189,7 @@
 
                 <a href="#" class="btn btn-primary"
                     data-bs-toggle="modal"
-                    data-bs-target="#productosModal">
+                    data-bs-target="#productosModal" id="btn-edicion">
                         Ver todos los productos
                     </a>
 
@@ -205,12 +205,33 @@
             </div>
 
             <div class="card-body">
-                <p><strong>Sin responder:</strong> --</p>
-                <p><strong>Respondidas:</strong> --</p>
+                
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Mail</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($consultas as $consulta)
+                            <tr>
+                                <td>{{ $consulta->id }}</td>
+                                <td>{{ $consulta->mail}}</td>
+                                <td>
+                                    <a href="{{ route('consultas.ver', $consulta->id) }}" class="btn btn-sm" id="btn-edicion">
+                                        ver consulta
+                                    </a>
+                                </td>
+                            </tr>
+                            
+                            @endforeach
+                        </tbody>
+                    </table>
 
-                <a href="#" class="btn btn-primary">
-                    Ver más
-                </a>
+                </div>
             </div>
         </div>
     </div>
@@ -223,24 +244,109 @@
             </div>
 
             <div class="card-body">
-                <p><strong>Total usuarios:</strong> --</p>
-                <p><strong>Administradores:</strong> --</p>
-
-                <a href="#" class="btn btn-primary">
-                    Ver más
-                </a>
+                <p><strong>Total usuarios:</strong> {{ $todosUsuarios->count() }} </p>
+                <p><strong>Administradores:</strong> {{ $todosUsuarios->where('rol_id', 1)->count() }} </p>
+                <!-- Tabla de usuarios -->
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($usuarios as $usuario)
+                        <tr>
+                            <td>{{ $usuario->id }}</td>
+                            <td>
+                                {{ $usuario->nombre }}
+                                @if($usuario->id == auth()->id())
+                                    <span class="badge bg-info ms-1">Tú</span>
+                                @endif
+                            </td>
+                            <td>{{ $usuario->email }}</td>
+                            <td>
+                                @if($usuario->rol_id == 1)
+                                    <span class="badge bg-danger">Administrador</span>
+                                @else
+                                    <span class="badge bg-secondary">Usuario</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($usuario->id != auth()->id())
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a href="{{ route('usuarios.editar', $usuario->id) }}" 
+                                            1|  class="btn btn-warning">
+                                            Editar
+                                        </a>
+                                        <button type="button" 
+                                                class="btn btn-danger"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal{{ $usuario->id }}">
+                                            Eliminar
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Modal de confirmación de eliminación -->
+                                    <div class="modal fade" id="deleteModal{{ $usuario->id }}" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-danger text-white">
+                                                    <h5 class="modal-title">Confirmar Eliminación</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ¿Estás seguro que deseas eliminar al usuario <strong>{{ $usuario->name }}</strong>?
+                                                    <br>
+                                                    <small class="text-muted">Esta acción no se puede deshacer.</small>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                    <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <span class="text-muted">---</span>
+                                @endif
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">
+                                No hay usuarios registrados
+                            </td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+                @if($todosUsuarios->count() > 3)
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#usuariosModal" id="btn-edicion">
+                    Ver más ({{ $todosUsuarios->count() - 10 }} restantes)
+                </button>
+            @endif
             </div>
         </div>
     </div>
 
 </div>
-```
+
 
 </div>
-<!-- Modal de gestion de productos -->
+<!-- Modal de gestion de productos-->
 <div class="modal fade"
-     id="productosModal"
-     tabindex="-1">
+    id="productosModal"
+    tabindex="-1">
 
     <div class="modal-dialog modal-xl">
 
@@ -260,7 +366,7 @@
             <div class="modal-body">
 
                 <a href="{{ route('productos.create') }}"
-                   class="btn btn-success mb-3">
+                    class="btn btn-success mb-3">
                     Agregar Producto
                 </a>
 
@@ -285,13 +391,13 @@
 
                                 <td>
                                     <a href="{{ route('productos.edit', $producto->id) }}"
-                                       class="btn btn-warning btn-sm">
+                                        class="btn btn-warning btn-sm">
                                         Editar
                                     </a>
 
                                     <form action="{{ route('productos.destroy', $producto->id) }}"
-                                          method="POST"
-                                          class="d-inline">
+                                        method="POST"
+                                        class="d-inline">
 
                                         @csrf
                                         @method('DELETE')
@@ -316,9 +422,90 @@
     </div>
 
 </div>
+
 <div class="modal fade"
-     id="ventasModal"
-     tabindex="-1">
+    id="usuariosModal"
+    tabindex="-1">
+
+    <div class="modal-dialog modal-xl">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    Gestión de Usuarios
+                </h5>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal">
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach($usuarios as $usuario)
+                            <tr>
+                                <td>{{ $usuario->id }}</td>
+                                <td>{{ $usuario->nombre }}</td>
+                                <td>{{ $usuario->email }}</td>
+                                <td>
+                                    @if($usuario->rol_id == 1)
+                                    <span class="badge bg-danger">Administrador</span>
+                                @else
+                                    <span class="badge bg-success">Usuario</span>
+                                @endif
+                                </td>
+
+                                <td>
+                                    <a href="{{ route('usuarios.edit', $usuario->id) }}"
+                                        class="btn btn-warning btn-sm">
+                                        Editar
+                                    </a>
+
+                                    <form action="{{ route('usuarios.destroy', $usuario->id) }}"
+                                        method="POST"
+                                        class="d-inline">
+
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit"
+                                                class="btn btn-danger btn-sm">
+                                            Eliminar
+                                        </button>
+
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade"
+    id="ventasModal"
+    tabindex="-1">
 
     <div class="modal-dialog modal-xl">
 
@@ -343,6 +530,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Usuario</th>
+                            <th>correo</th>
                             <th>Fecha</th>
                             <th>Total</th>
                             <th>Acciones</th>
@@ -362,6 +550,10 @@
                                 </td>
 
                                 <td>
+                                    {{ $venta->usuario->email }}
+                                </td>
+
+                                <td>
                                     {{ $venta->fecha_venta }}
                                 </td>
 
@@ -374,7 +566,7 @@
                                     <button
                                         class="btn btn-info btn-sm"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#detalleVenta{{ $venta->id }}">
+                                        data-bs-target="#detalleVenta{{ $venta->id }}" id="btn-edicion">
                                         Ver detalle
                                     </button>
 
@@ -398,8 +590,8 @@
 @foreach($ventas as $venta)
 
 <div class="modal fade"
-     id="detalleVenta{{ $venta->id }}"
-     tabindex="-1">
+    id="detalleVenta{{ $venta->id }}"
+    tabindex="-1">
 
     <div class="modal-dialog modal-lg">
 
@@ -467,4 +659,6 @@
 
 </div>
 @endforeach
+</div>
+
 @endsection

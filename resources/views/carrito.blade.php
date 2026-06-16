@@ -50,17 +50,27 @@
                     <div class="col-md-3">
                         <div class="d-flex align-items-center justify-content-center border rounded overflow-hidden">
 
-                            <button class="btn btn-light rounded-0 px-3">
-                                -
-                            </button>
+                           <form action="{{ route('carrito.disminuir', $items->id) }}"
+                                method="POST"
+                                class="d-inline">
+                                @csrf
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    -
+                                </button>
+                            </form>
 
-                            <span class="px-4 fw-semibold">
+                            <span class="mx-2">
                                 {{ $items->cantidad }}
                             </span>
 
-                            <button class="btn btn-light rounded-0 px-3">
-                                +
-                            </button>
+                            <form action="{{ route('carrito.aumentar', $items->id) }}"
+                                method="POST"
+                                class="d-inline">
+                                @csrf
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    +
+                                </button>
+                            </form>
 
                         </div>
                     </div>

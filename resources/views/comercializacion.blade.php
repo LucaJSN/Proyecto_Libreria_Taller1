@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="seccion-comercializacion" id="comercializacion">
-        <h1>Comercialización</h1>
+            <h1>Comercialización</h1>
+        
 
         <h2 class="mb-5">Métodos de Pago</h2>
         <p>En punto y barra trabajamos con los siguientes métodos de pago</p>

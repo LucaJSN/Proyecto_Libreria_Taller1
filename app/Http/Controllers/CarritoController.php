@@ -107,6 +107,8 @@ class CarritoController extends Controller
         return redirect()->route('carrito.index')->with('success', 'Producto eliminado del carrito.');
     }
 
+    
+
     public function vaciarCarrito()
     {
         $idUsuario = Auth::id();
@@ -201,6 +203,32 @@ class CarritoController extends Controller
         } catch (\Exception $e) {
             dd($e->getMessage());
         }
+    }
+
+    public function aumentarCantidad($id)
+    {
+        $item = Carrito::findOrFail($id);
+
+        if ($item->cantidad < $item->producto->stock) {
+            $item->cantidad++;
+            $item->save();
+        }
+
+        return back();
+    }
+
+    public function disminuirCantidad($id)
+    {
+        $item = Carrito::findOrFail($id);
+
+        if ($item->cantidad > 1) {
+            $item->cantidad--;
+            $item->save();
+        } else {
+            $item->delete();
+        }
+
+        return back();
     }
 
     

@@ -32,7 +32,7 @@
                         <img src="{{ asset($producto->url_imagen) }}" class="card-img-top" alt="{{ $producto->nombre }}" style="max-height: 100%; object-fit: contain;">
                     </div>
                     
-                    <div class="card-body d-flex flex-column p-4">
+                    <div class="card-body">
                         <!-- Categoría en la parte superior -->
                         <div class="mb-2">
                             <span class="badge bg-secondary-subtle text-secondary px-2 py-1 small fw-semibold" style="font-size: 0.75rem;">
@@ -52,7 +52,7 @@
                         
                         <!-- Fila de Precio y Stock (Contraste con Naranja Cálido) -->
                         <div class="d-flex align-items-baseline justify-content-between mb-3 pt-2 border-top">
-                            <span class="fs-4 fw-extrabold" style="color: #f57c00; font-weight: 800;">
+                            <span class="fs-4 fw-extrabold" style="color: #28333c; font-weight: 800;">
                                 ${{ number_format($producto->precio, 2, ',', '.') }}
                             </span>
                             <span class="text-muted small">
@@ -68,7 +68,7 @@
                                     <input type="hidden" name="id_producto" value="{{ $producto->id }}">
                                     <input type="hidden" name="cantidad" value="1">
                                     
-                                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold shadow-sm" style="background-color: #0d6efd; border-radius: 8px;">
+                                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold shadow-sm" style="background-color: #55769a; border-radius: 8px;">
                                         <i class="bi bi-cart-plus me-2"></i>Agregar al carrito
                                     </button>
                                 </form>
