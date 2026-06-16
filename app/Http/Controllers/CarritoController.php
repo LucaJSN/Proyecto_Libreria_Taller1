@@ -45,6 +45,9 @@ class CarritoController extends Controller
      */
     public function agregar(Request $request)
     {
+        if(Auth::user()->rol_id == 1){
+            return redirect()->route('admin.dashboard');
+        } else{
         $request->validate([
             'id_producto' => 'required|exists:productos,id',
             'cantidad' => 'required|integer|min:1',
@@ -81,6 +84,7 @@ class CarritoController extends Controller
         }
 
         return redirect()->route('carrito.index')->with('success', 'Producto añadido al carrito.');
+        }
     }
 
     /**
