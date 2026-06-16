@@ -382,7 +382,7 @@
                     </thead>
 
                     <tbody>
-                        @foreach($usuarios as $usuario)
+                        @foreach($productos as $producto)
                             <tr>
                                 <td>{{ $producto->id }}</td>
                                 <td>{{ $producto->nombre }}</td>
