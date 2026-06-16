@@ -119,12 +119,14 @@
                 </div>
 
                 @if($itemsCarrito->count() > 0)
+                    @auth
                     <form action="{{ route('carrito.confirmar') }}" method="POST" class="text-end mt-4">
                         @csrf
                         <button type="submit" class="btn btn-dark w-100 py-3 rounded-3 mb-3" style="border-radius: 8px;">
                             <i class="bi bi-check-circle me-2"></i>Confirmar Compra
                         </button>
                     </form>
+                    @endauth
                 @endif
 
                 <a class="btn btn-outline-dark w-100 py-3 rounded-3" href="/catalogo">

@@ -10,6 +10,7 @@ use App\Models\Producto;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CarritoController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VentaController;
 
 Route::get('/', [ProductController::class, 'inicio'])->name('index');
 
@@ -138,3 +139,9 @@ Route::get('/admin/consultas/{id}', [ConsultasController::class, 'verConsulta'])
 
 Route::delete('/admin/consultas/{id}', [ConsultasController::class, 'destroy'])
 ->name('consultas.destroy');
+
+//para facturas
+Route::get(
+    '/factura/{id}',
+    [VentaController::class, 'factura']
+)->name('factura.pdf');

@@ -14,7 +14,7 @@
             <div class="card-header">
                 <h4 class="mb-0">Gestión de Ventas</h4>
             </div>
-            @foreach($ventas as $venta)
+            @foreach($ventas->take(2) as $venta)
 
                 <div class="card mb-3">
 
