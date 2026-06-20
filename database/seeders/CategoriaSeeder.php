@@ -11,11 +11,15 @@ class CategoriaSeeder extends Seeder
     {
         // Asegúrate de cambiar los campos según las columnas reales de tu tabla
         Categoria::create([
-            'nombre' => 'UTILES',
+            'nombre' => 'LIBROS',
         ]);
 
         Categoria::create([
-            'nombre' => 'LIBROS',
+            'nombre' => 'ESCOLAR',
+        ]);
+
+        Categoria::create([
+            'nombre' => 'OFICINA',
         ]);
     }
 }

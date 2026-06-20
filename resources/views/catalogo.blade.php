@@ -63,6 +63,7 @@
                         <!-- Botón de Acción Azul -->
                         <div class="d-grid mt-auto">
                             @if($producto->stock > 0)
+                                @auth
                                 <form action="{{ route('carrito.agregar') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="id_producto" value="{{ $producto->id }}">
@@ -72,6 +73,7 @@
                                         <i class="bi bi-cart-plus me-2"></i>Agregar al carrito
                                     </button>
                                 </form>
+                                @endauth
                             @else
                                 <button class="btn btn-secondary py-2 fw-semibold" disabled style="border-radius: 8px;">
                                     Agotado

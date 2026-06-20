@@ -18,7 +18,7 @@ class ProductController extends Controller
             $query->where('nombre', 'like', '%' . $busqueda . '%');
 
         })
-        ->paginate(4)->withQueryString(); //Paginación de 4 productos por página, con preservación de la query string para mantener la búsqueda al cambiar de página
+        ->paginate(8)->withQueryString(); //Paginación de 4 productos por página, con preservación de la query string para mantener la búsqueda al cambiar de página
 
         return view('catalogo',[
             'productos'=>$productos,
