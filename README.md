@@ -1,4 +1,4 @@
-<p align="center"><a href="http://proyecto_libreria_taller1.test" target="_blank"><img src="punto-y-barra.svg" width="400" alt="Punto y Barra Logo"></a></p>
+<p align="center"><a href="http://proyecto_libreria_taller1.test" target="_blank"><img src="img/punto-y-barra.svg" width="400" alt="Punto y Barra Logo"></a></p>
 
 <p align="center">
 <a href="https://img.shields.io/badge/version-1.0.0-blue"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
