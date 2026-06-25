@@ -1,58 +1,157 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="http://proyecto_libreria_taller1.test" target="_blank"><img src="punto-y-barra.svg" width="400" alt="Punto y Barra Logo"></a></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href="https://img.shields.io/badge/version-1.0.0-blue"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://img.shields.io/badge/PHP-8.2-purple"><img src="https://img.shields.io/badge/PHP-8.2-purple" alt="Total Downloads"></a>
+<a href="https://img.shields.io/badge/Laravel-11.x-red"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://img.shields.io/badge/license-MIT-green"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Acerca del Proyecto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Punto y Barra es una aplicación web de e-comerce que gestiona una librería ficticia, desarrollado con laravel 
+Permite a los usuarios:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Gestión de usuarios y roles
+- Creación y edición de productos de librería
+- Reportes y estadísticas en tiempo real
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Autor
 
-## Learning Laravel
+Desarrollado por SAUCEDO Nielsen Luca y OVALLE Bravo Bautista
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Características Principales
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- **Autenticación**: Login seguro con Laravel Sanctum
+- **Panel Admin**: Dashboard interactivo con estadísticas
+- **API REST**: Endpoints para integración con frontend
 
-## Agentic Development
+## Tecnologías utilizadas
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+- Php
+- Html y Css
+- Laravel
+- Bootstrap
 
-```bash
-composer require laravel/boost --dev
+## Instalación
 
-php artisan boost:install
-```
+### Requisitos Previos
+- PHP >= 8.2
+- Composer
+- MySQL / PostgreSQL / SQLite
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## Pasos de Instalación:
 
-## Contributing
+### Clonar el repositorio
+git clone https://github.com/LucaJSN/Proyecto_Libreria_Taller1
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Entrar al directorio
+cd C:Documentos/Laravel/proyecto-libreria-taller1
 
-## Code of Conduct
+## Instalar dependencias PHP
+composer install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Copiar archivo de entorno
+cp .env.example .env
 
-## Security Vulnerabilities
+## Generar clave de aplicación
+php artisan key:generate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Configucion de base de datos
+- DB_CONNECTION=mariadb
+- DB_HOST=127.0.0.1
+- DB_PORT=33060
+- DB_DATABASE=puntobarra
+- DB_USERNAME=root
+- DB_PASSWORD= pybl2026
 
-## License
+## Ejecutar migraciones 
+php artisan migrate
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Ejecutar datos de prueba
+php artisan db:seed
+
+## Iniciar el servidor de desarrollo
+php artisan serve
+
+## Datos del usuario administrador
+- email = admin@puntoybarra.com
+- contraseña = admin123
+
+# Especificación de Requerimientos de Software
+
+## 1. Introducción
+### Propósito: 
+Definir los requisitos funcionales y no funcionales de la aplicación web “Punto y Barra”, destinada a la venta de artículos de librería online.
+### Alcance: 
+Gestión de usuarios, catálogo de libros, carrito de compras, pagos online y administración de stock. No contempla integración con marketplaces externos ni logística avanzada.
+#### Definiciones y siglas:
+- ERS: Especificación de Requerimientos de Software
+- GUI: Interfaz Gráfica de Usuario
+- Admin: Usuario con permisos de administrador
+- Referencias: Documentación de Laravel, manual de Bootstrap, guías de integración de pasarelas de pago.
+## 2. Descripción general
+### Perspectiva del producto: 
+Aplicación web responsive desarrollada con Laravel y desplegada en servidores de la facultad.
+#### Funciones del producto:
+- Registro e inicio de sesión de usuarios.
+- Búsqueda y filtrado de libros.
+- Carrito de compras y checkout.
+- Procesamiento de pagos.
+- Gestión de catálogo y stock por parte del administrador.
+- Características del usuario:
+- Clientes con conocimientos básicos de navegación web.
+- Administradores con formación técnica media.
+### Restricciones:
+- Backend en Laravel + PHP.
+- Frontend con Bootstrap, HTML y CSS (mínimo uso de JS).
+- Compatible con navegadores modernos.
+- Tiempo de respuesta < 2 segundos.
+- Suposiciones y dependencias:
+- Requiere conexión estable a internet.
+- Hosting provisto por la facultad.
+- Integración con pasarela de pago (ej: MercadoPago).
+## 3. Requisitos específicos
+### Requisitos funcionales:
+- RF1: El sistema debe permitir a los clientes registrarse con email y contraseña.
+- RF2: El sistema debe validar usuarios mediante login.
+- RF3: Los clientes podrán buscar libros por título, autor o género.
+- RF4: El sistema debe permitir agregar y quitar libros del carrito.
+- RF5: El sistema debe procesar pagos online y generar comprobantes.
+- RF6: El administrador podrá cargar, editar y eliminar libros del catálogo.
+
+
+### Requisitos no funcionales:
+- RNF1: La interfaz debe ser intuitiva y accesible.
+- RNF2: El sistema debe estar disponible el 99% del tiempo.
+- RNF3: El tiempo de carga de cada pantalla debe ser menor a 2 segundos.
+- RNF4: La información sensible debe estar cifrada (HTTPS + encriptación).
+- RNF5: El sistema debe soportar al menos 500 usuarios simultáneos.
+### Casos de uso:
+- Comprar un libro.
+- Registrar un nuevo usuario.
+- Administrar catálogo.
+## 4. Apéndices
+### 4.1 Glosario
+- Carrito de compras: Módulo que permite al usuario seleccionar libros y almacenarlos temporalmente antes de la compra.
+- Checkout: Proceso de confirmación de compra y pago.
+- Pasarela de pago: Servicio externo que procesa transacciones (ej: MercadoPago).
+- Admin: Usuario con permisos para gestionar catálogo, stock y usuarios.
+### 4.2 Referencias técnicas
+- Documentación oficial de Laravel (framework backend).
+- Manual de Bootstrap (framework frontend).
+- Guías de integración de MercadoPago.
+- Normas de accesibilidad WCAG 2.1.
+### 4.3 Suposiciones adicionales
+- El sistema será utilizado principalmente en Argentina, por lo que se contemplan métodos de pago locales.
+- El catálogo inicial tendrá aproximadamente 200 libros, con posibilidad de expansión.
+- El sistema se desplegará en un servidor de la facultad, con mantenimiento básico provisto por el equipo docente
+
+# Licencia
+Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
+
+# Agradecimientos
+- Laravel - El framework PHP para artesanos web
+- Bootstrap - Framework CSS
+- MariaDB - Sistema de base de datos
